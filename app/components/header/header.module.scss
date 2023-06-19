@@ -1,37 +1,104 @@
 .header {
-  background-image: linear-gradient(
-                  to right,
-                  #54b3d6,
-                  #54b3d6 50%,
-                  #000 50%
-  );
-  background-size: 200% 100%;
-  background-position: -100%;
-  display: inline-block;
-  padding: 5px 0;
+  max-width: 1180px;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.link {
+  font-family: 'Cera Pro', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #292929;
+
+}
+
+.about__container {
   position: relative;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 11;
+}
+
+.icon {
+  transition: all .3s linear;
+  transform: rotate(0deg);
+}
+
+.active__icon {
+  transform: rotate(180deg);
+}
+
+.select {
+  position: absolute;
+  top: 15px;
+  left: -50px;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
   transition: all 0.3s ease-in-out;
+  width: max-content;
   cursor: pointer;
 }
 
-.header:before {
-  content: '';
-  background: #54b3d6;
-  display: block;
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  transition: all 0.3s ease-in-out;
+.select_active {
+  height: 100px;
+  opacity: 1;
 }
 
-.header:hover {
-  background-position: 0;
+.link__about__wrapper {
+  //background: #FFFFFF;
+  background: #12979B;
+  border: 0.2px solid #000000;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+
+  &:nth-child(2) {
+    border-top: none;
+  }
 }
 
-.header:hover::before {
+.link__about {
+  color: white;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  width: 190px;
+  height: auto;
+  max-height: 33px;
+  object-fit: contain;
+}
+
+.active {
+  color: #12979B;
+}
+
+.button {
+  background: #12979B;
+  border-radius: 10px;
+  width: 186px;
+  height: 35px;
+  font-family: 'Cera Pro', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
 }

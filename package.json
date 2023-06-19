@@ -14,17 +14,24 @@
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.4",
+    "@mui/styles": "^5.13.2",
+    "@mui/x-date-pickers": "^6.7.0",
     "@types/node": "20.2.5",
     "@types/react": "18.2.9",
     "@types/react-dom": "18.2.4",
+    "dayjs": "^1.11.8",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "imagemin-webp": "^8.0.0",
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-input-mask": "^2.0.4",
     "react-material-ui-carousel": "^3.4.2",
     "sass": "^1.63.2",
     "typescript": "5.1.3"
+  },
+  "devDependencies": {
+    "@types/react-input-mask": "^3.0.2"
   }
 }

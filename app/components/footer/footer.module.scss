@@ -3,18 +3,19 @@
 
 .footer {
   background: #292929;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .info__container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 45px 0 40px;
+  padding: 45px 40px 40px;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .logo__container {
-
 }
 
 .logo__img {
@@ -35,7 +36,6 @@
 }
 
 .general {
-
 }
 
 .info__title {
@@ -52,11 +52,9 @@
 }
 
 .general__list {
-
 }
 
 .general__link {
-
 }
 
 .schedule {
@@ -111,7 +109,7 @@
 }
 
 .social__text {
-  font-family: 'Cera Pro', sans-serif;
+  font-family: "Cera Pro", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -135,7 +133,7 @@
   transition: 0.2s all ease-in-out;
 
   &:hover {
-    background: #12979B;
+    background: #12979b;
   }
 }
 
@@ -144,12 +142,7 @@
 }
 
 .general__link {
-  background-image: linear-gradient(
-                  to right,
-                  #12979B,
-                  #12979B 50%,
-                  #fff 50%
-  );
+  background-image: linear-gradient(to right, #12979b, #12979b 50%, #fff 50%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -162,8 +155,8 @@
 }
 
 .general__link:before {
-  content: '';
-  background: #12979B;
+  content: "";
+  background: #12979b;
   display: block;
   position: absolute;
   bottom: -3px;
@@ -181,3 +174,6 @@
   width: 100%;
 }
 
+@media screen and (max-width: 1200px) {
+
+}

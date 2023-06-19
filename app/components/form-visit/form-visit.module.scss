@@ -1,0 +1,46 @@
+.form {
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 580px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.form__title {
+  font-family: 'Cera Pro', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 31px;
+
+  color: #292929;
+  margin-bottom: 30px;
+}
+
+.input {
+  background: #F2F2F2;
+  border-radius: 15px;
+  border: none;
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 27px;
+}
+
+.button {
+  margin-top: 24px;
+  background: #12979B;
+  border-radius: 10px;
+  font-family: 'Cera Pro', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  color: #FFFFFF;
+  border: none;
+  width: 144px;
+  height: 46px;
+}
