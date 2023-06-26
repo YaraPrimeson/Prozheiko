@@ -1,0 +1,38 @@
+.btn__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn {
+  border-radius: 11px;
+  background: linear-gradient(317deg, #12979B 82.29%, rgba(62, 180, 184, 0.51) 100%);
+  color: #FFF;
+  font-size: 14px;
+  font-family: Cera Pro, sans-serif;
+  font-weight: 700;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  min-width: 300px;
+  margin: 0 auto;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.input {
+  font-family: Cera Pro, sans-serif;
+  margin: 10px auto;
+  max-width: 340px;
+  padding: 10px 27px;
+  border: none;
+  width: 100%;
+  border-radius: 15px;
+  background: #F2F2F2;
+}

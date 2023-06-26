@@ -1,0 +1,230 @@
+.page {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.service__info {
+    margin: 36px auto;
+}
+
+.service__info__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service__info__list {
+    background: #FFFFFF;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 380px;
+    padding: 26px 36px;
+}
+
+.service__info__subtitle {
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 31px;
+    color: #292929;
+}
+
+.info__body__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 17px;
+    gap: 20px;
+}
+
+.info__text__container {
+
+}
+
+.info__body__text {
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.15em;
+    color: #292929;
+}
+
+.dental__care {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 80px;
+}
+
+.dental__care__img__wrapper {
+
+}
+
+.dental__care__img {
+    width: 400px;
+    height: 414px;
+    object-fit: contain;
+}
+
+.dental__care__text__wrapper {
+
+}
+
+.dental__care__title {
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    color: #292929;
+
+}
+
+.dental__care__text {
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin: 26px 0 50px;
+}
+
+.dental__care__button {
+    background: linear-gradient(271.18deg, #12979B 87.49%, rgba(62, 180, 184, 0.51) 99.44%);
+    border-radius: 11px;
+    border: none;
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FFFFFF;
+    width: 325px;
+    height: 45px;
+}
+
+.about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 80px;
+    margin: 60px auto;
+}
+
+.about__text__container {
+    width: 50%;
+}
+
+.about__title {
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 60px;
+    color: #292929;
+    margin-bottom: 20px;
+}
+
+.about__text {
+
+}
+
+.about__button {
+    background: #12979B;
+    border-radius: 10px;
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    color: #FFFFFF;
+    width: 160px;
+    height: 45px;
+    border: none;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.about__img__container {
+    width: 50%;
+}
+
+.about__img {
+    width: 100%;
+    max-width: 575px;
+    height: 514px;
+    object-fit: contain;
+}
+
+.emergency {
+    margin-bottom: 50px;
+}
+
+.emergency__wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.emergency__text__wrapper {
+
+}
+
+.emergency__image {
+    float: left;
+    margin-right: 100px;
+    margin-bottom: 32px;
+    width: 400px;
+    height: 500px;
+    object-fit: contain;
+}
+
+.emergency__title {
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 60px;
+    color: #292929;
+    margin-bottom: 20px;
+
+}
+
+.emergency__text {
+    font-family: 'Cera Pro', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #000000;
+}
+
+.comments {
+    border-top: 1px solid #000000;
+    margin: 60px 0;
+    padding-top: 90px;
+}
+
+.comments__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comments__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 60px;
+    color: #292929;
+    margin-bottom: 60px;
+}
+

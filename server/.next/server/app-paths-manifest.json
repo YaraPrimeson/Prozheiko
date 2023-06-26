@@ -1,0 +1,12 @@
+{
+  "/page": "app/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/about-clinic/page": "app/about-clinic/page.js",
+  "/about/page": "app/about/page.js",
+  "/about-doctors/page": "app/about-doctors/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/contacts/page": "app/contacts/page.js",
+  "/clinic/page": "app/clinic/page.js",
+  "/services-and-prices/page": "app/services-and-prices/page.js"
+}

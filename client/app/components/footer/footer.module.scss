@@ -1,0 +1,148 @@
+@import "../../styles/variables";
+@import "../../assets/font/stylesheet.css";
+
+.footer {
+  background: #292929;
+  color: #ffffff;
+}
+
+.info__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 45px 40px 40px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.logo__container {
+}
+
+.logo__img {
+  margin-bottom: 13px;
+}
+
+.logo__subtitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 40px;
+}
+
+.logo__phone {
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 29px;
+}
+
+.general {
+}
+
+.info__title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 40px;
+}
+
+.general__list__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.general__list {
+}
+
+.general__link {
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule__wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.schedule__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.contacts__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__link__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social__container {
+  background: #aeafb2;
+  padding: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.social__text__wrapper {
+}
+
+.social__text {
+  font-family: "Cera Pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.social__links__wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+}
+
+.social__link {
+  background: #292929;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s all ease-in-out;
+
+  &:hover {
+    background: #12979b;
+  }
+}
+
+.facebook {
+  align-items: end;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+
+}
