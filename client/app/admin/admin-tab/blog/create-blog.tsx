@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import { AppContext } from "@/app/context/Context";
 import style from "./blog.module.scss";
 import {

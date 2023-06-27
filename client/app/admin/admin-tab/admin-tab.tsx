@@ -1,12 +1,11 @@
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TagTab from "@/app/admin/admin-tab/tag/tag-tab";
 import CreateBlog from "@/app/admin/admin-tab/blog/create-blog";
 import PriceTab from "@/app/admin/admin-tab/price/price-tab";
-import { Stack } from "@mui/material";
+import Blog from "../blog/page";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -16,7 +15,6 @@ interface TabPanelProps {
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -56,10 +54,16 @@ const AdminTab = () => {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab sx={{ width: "33%" }} label="tags" {...a11yProps(0)} />
-          <Tab sx={{ width: "33%" }} label="blog" {...a11yProps(1)} />
+          <Tab sx={{ width: "20%" }} label="tags" {...a11yProps(0)} />
+          <Tab sx={{ width: "20%" }} label="create blog" {...a11yProps(1)} />
+          <Tab sx={{ width: "20%" }} label="blog" {...a11yProps(1)} />
           <Tab
-            sx={{ width: "33%" }}
+            sx={{ width: "20%" }}
+            label="price and services edit"
+            {...a11yProps(1)}
+          />
+          <Tab
+            sx={{ width: "20%" }}
             label="price and services"
             {...a11yProps(2)}
           />
@@ -70,6 +74,12 @@ const AdminTab = () => {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <CreateBlog />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Blog />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <PriceTab />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <PriceTab />

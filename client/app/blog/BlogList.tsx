@@ -1,20 +1,37 @@
 "use client";
-import React, { useContext, useLayoutEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
 import { AppContext } from "@/app/context/Context";
+import TagList from "@/app/components/tag-list/TagList";
+import style from "./blog-list.module.scss";
 
 const BlogList = () => {
   const { getAllBlog, blog } = useContext(AppContext);
 
-  console.log(blog, "BlogList 8 str");
   useLayoutEffect(() => {
     getAllBlog();
   }, []);
+  useEffect(() => {
+    // console.log(
+    //   blog?.map((article: any) => article?.map((block: any) => block))
+    // );
+    console.log(
+      blog?.map((article: any) => article.blocks.map((val: any) => val))
+    );
+    console.log(blog);
+  }, [blog]);
   return (
-    <div>
-      {blog.map((article: any) => (
-        <div key={article?._id}>
-          <h1>{article?.type}</h1>
-          <h3>{article?.title}</h3>
+    <div className={style.container}>
+      <TagList />
+      {blog.map((item: any, index) => (
+        <div key={index}>
+          {item.blocks.map((block: any) => {
+            if (block.type === "title") {
+              return <h2 key={block._id}>{block.value}</h2>;
+            } else if (block.type === "paragraph") {
+              return <p key={block._id}>{block.value}</p>;
+            }
+            return null; // handle other block types if needed
+          })}
         </div>
       ))}
     </div>

@@ -1,0 +1,30 @@
+.container {
+  margin: 60px auto 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px 20px;
+}
+
+.list {
+  width: 280px;
+  height: 78px;
+  color: #292929;
+  font-size: 25px;
+  font-family: Cera Pro, sans-serif;
+  font-weight: 500;
+  line-height: 100%;
+  box-shadow: 2px 4px 4px 4px rgba(0, 0, 0, 0.1490196078);
+  padding: 11px 5px 5px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  transition: all 2s ease;
+  cursor: pointer;
+}
+
+.list__active {
+  border-right: #12979B solid 20px;
+  transition: all .4s ease;
+}
