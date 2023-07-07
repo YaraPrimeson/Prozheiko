@@ -4,65 +4,72 @@ import api from "../api";
 
 export const AppContext = createContext({
   tags: [],
+  tagsLoading: true,
   getAllTags: () => {},
-  createTag: (tag: string) => {},
-  editTag: (_id: string, tag: string) => {},
-  deleteTag: (_id: string) => {},
+  createTag: () => {},
+  editTag: () => {},
+  deleteTag: () => {},
   blog: [],
   getAllBlog: () => {},
-  createBlog: (blog: any) => {},
-  editBlog: (_id: string, blog: any) => {},
-  deleteBlog: (_id: string) => {},
+  createBlog: (blog) => {},
+  editBlog: () => {},
+  deleteBlog: () => {},
   price: [],
   getAllPrice: () => {},
-  createPrice: (price: any) => {},
-  editPrice: (_id: string, price: any) => {},
-  deletePrice: (_id: string) => {},
+  createPrice: () => {},
+  editPrice: () => {},
+  deletePrice: () => {},
 });
-const Context = ({ children }: { children: React.ReactNode }) => {
+const Context = ({ children }) => {
   const [tags, setTags] = useState([]);
+  const [tagsLoading, setTagsLoading] = useState(true);
   const getAllTags = () => {
-    api.tags.getTags().then((res) => setTags(res));
+    setTagsLoading(true);
+    api.tags
+      .getTags()
+      .then((res) => setTags(res))
+      .finally(() => setTagsLoading(false));
   };
-  const createTag = (tag: string) => {
+  const createTag = (tag) => {
     api.tags.createTag(tag).then(getAllTags);
   };
-  const editTag = (_id: string, tag: string) => {
+  const editTag = (_id, tag) => {
     api.tags.editTag(_id, tag).then(getAllTags);
   };
-  const deleteTag = (_id: string) => {
+  const deleteTag = (_id) => {
     api.tags.deleteTag(_id).then(getAllTags);
   };
   const [blog, setBlog] = useState([]);
   const getAllBlog = () => {
     api.blog.getBlog().then((res) => setBlog(res));
   };
-  const createBlog = (article: any) => {
+  const createBlog = (article) => {
     api.blog.createBlog(article).then(getAllBlog);
   };
-  const editBlog = (_id: string, article: any) => {
+  const editBlog = (_id, article) => {
     api.blog.editBlog(_id, article).then(getAllBlog);
   };
-  const deleteBlog = (_id: string) => {
+  const deleteBlog = (_id) => {
     api.blog.deleteBlog(_id).then(getAllBlog);
   };
   const [price, setPrice] = useState([]);
   const getAllPrice = () => {
     api.price.getPrice().then((res) => setPrice(res));
   };
-  const createPrice = (price: any) => {
+  const createPrice = (price) => {
     api.price.createPrice(price).then(getAllPrice);
   };
-  const editPrice = (_id: string, price: any) => {
+  const editPrice = (_id, price) => {
     api.price.editPrice(_id, price).then(getAllPrice);
   };
-  const deletePrice = (_id: string) => {
+  const deletePrice = (_id) => {
     api.price.deletePrice(_id).then(getAllPrice);
   };
   return (
     <AppContext.Provider
       value={{
         tags,
+        tagsLoading,
         getAllTags,
         deleteTag,
         createTag,

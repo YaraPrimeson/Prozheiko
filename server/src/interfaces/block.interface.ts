@@ -1,7 +1,5 @@
-import ITag from "./tag.interface";
-
 export default interface IBlock {
-  tag: ITag;
-  type: "title" | "paragraph" | "img";
-  value: string | File;
+  type: "title" | "subtitle" | "list" | "paragraph" | "img";
+  value: string | File | string[];
+  img?: { data: Buffer; contentType: String };
 }

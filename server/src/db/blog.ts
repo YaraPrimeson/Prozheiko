@@ -6,6 +6,9 @@ export default {
   getBlogs() {
     return Blog.find().sort({ createdAt: -1 });
   },
+  getBlog(_id: Types.ObjectId) {
+    return Blog.findById(_id);
+  },
   createBlog(data: IBlog) {
     const blog = new Blog(data);
     return blog.save();

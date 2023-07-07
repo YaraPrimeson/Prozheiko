@@ -7,9 +7,11 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "max-content",
-  bgcolor: "transparent",
+  boxShadow: "1px 1px 5px rgba(0, 0, 0, 0.25)",
+  borderRadius: "15px",
+  bgcolor: "background.paper",
   border: "none",
-  boxShadow: 0,
+  p: "0",
   "&:active": { border: "none" },
   "&:focus-visible": { border: "none" },
 };

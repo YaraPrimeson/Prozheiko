@@ -1,34 +1,53 @@
-"use client";
-import React, { useContext, useEffect, useLayoutEffect } from "react";
-import { AppContext } from "@/app/context/Context";
+import React from "react";
 import TagList from "@/app/components/tag-list/TagList";
 import style from "./blog-list.module.scss";
+import { Metadata } from "next";
+import Link from "next/link";
 
-const BlogList = () => {
-  const { getAllBlog, blog } = useContext(AppContext);
+export const metadata: Metadata = {
+  title: "Blog | Prozheiko",
+};
 
-  useLayoutEffect(() => {
-    getAllBlog();
-  }, []);
-  useEffect(() => {
-    // console.log(
-    //   blog?.map((article: any) => article?.map((block: any) => block))
-    // );
-    console.log(
-      blog?.map((article: any) => article.blocks.map((val: any) => val))
-    );
-    console.log(blog);
-  }, [blog]);
+async function getTags() {
+  // const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const response = await fetch("http://localhost:5050/api/tags/all");
+  return response.json();
+}
+
+async function getBlogs() {
+  // const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const response = await fetch("http://localhost:5050/api/blog/all", {
+    next: { revalidate: 60 },
+  });
+  return response.json();
+}
+
+const BlogList = async () => {
+  const tags = await getTags();
+  const blog = await getBlogs();
   return (
     <div className={style.container}>
-      <TagList />
-      {blog.map((item: any, index) => (
+      {/*<ul>*/}
+      {/*  {posts.map((post: any) => (*/}
+      {/*    <li key={post._id}> {post.tag}</li>*/}
+      {/*  ))}*/}
+      {/*</ul>*/}
+      <TagList
+        tags={tags}
+        // activeTag={activeTag}
+        // handleActiveTag={handleActiveTag}
+      />
+      {blog?.map((item: any, index: any) => (
         <div key={index}>
-          {item.blocks.map((block: any) => {
+          {item?.blocks?.map((block: any) => {
             if (block.type === "title") {
               return <h2 key={block._id}>{block.value}</h2>;
             } else if (block.type === "paragraph") {
-              return <p key={block._id}>{block.value}</p>;
+              return (
+                <Link href={`/blog/${item._id}`} key={block._id}>
+                  {block.value}
+                </Link>
+              );
             }
             return null; // handle other block types if needed
           })}

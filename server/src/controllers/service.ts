@@ -12,6 +12,15 @@ export default {
       return res.status(500).json({ error: true });
     }
   },
+  async getService(req: Request, res: Response) {
+    try {
+      const serviceId = stringToObjectId(req.params.id);
+      const data = await service.getService(serviceId);
+      return res.status(200).json(data);
+    } catch (e) {
+      return res.status(500).json({ error: true });
+    }
+  },
   async newService(req: Request, res: Response) {
     try {
       const data = req.body.data;

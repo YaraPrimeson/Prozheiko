@@ -2,10 +2,14 @@ import { Types } from "mongoose";
 
 import Service from "../models/Service";
 import IService from "../interfaces/service.interface";
+import Blog from "../models/Blog";
 
 export default {
   getServices() {
     return Service.find().sort({ createdAt: -1 });
+  },
+  getService(_id: Types.ObjectId) {
+    return Service.findById(_id);
   },
   createService(data: IService) {
     const service = new Service(data);

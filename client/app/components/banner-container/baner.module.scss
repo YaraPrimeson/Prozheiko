@@ -1,10 +1,12 @@
-.banner__container{
+.banner__container {
   width: 100%;
   height: auto;
   margin-bottom: 60px;
 }
-.banner{
+
+.banner {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
+  max-height: 400px;
 }
