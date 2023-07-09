@@ -102,3 +102,26 @@
   border: none;
   cursor: pointer;
 }
+
+.button_mob {
+  display: none;
+
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    position: relative;
+    justify-content: center;
+    position: relative;
+  }
+  .button_mob {
+    display: flex;
+    position: absolute;
+    top: 7px;
+    right: 30px;
+  }
+
+  .link, .about__container, .select, .link__about__wrapper, .link__about, .active, .button {
+    display: none;
+  }
+}

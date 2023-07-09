@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import style from "./header.module.scss";
-import logo from "../../assets/images/Logo.webp";
+import logo from "../../assets/images/logo.webp";
+import ModalContainer from "@/app/components/modal/ModalContainer";
+import FormVisit from "@/app/components/form-visit/FormVisit";
+import HeaderMob from "@/app/components/header/HeaderMob";
 
 const TheHeader = () => {
   const pathname = usePathname();
-  const [selectOpen, setSelectOpen] = useState(false);
-
+  const [selectOpen, setSelectOpen] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const handleSelectOpen = () => {
     setSelectOpen(true);
   };
@@ -132,9 +135,16 @@ const TheHeader = () => {
           >
             КОНТАКТИ
           </Link>
-          <button className={style.button} onClick={() => console.log("test")}>
+          <button className={style.button} onClick={() => setOpenModal(true)}>
             ЗАПИСАТИСЬ НА ВІЗИТ
           </button>
+          <ModalContainer
+            open={openModal}
+            handleClose={() => setOpenModal(false)}
+          >
+            <FormVisit />
+          </ModalContainer>
+          <HeaderMob />
         </header>
       ) : null}
     </>

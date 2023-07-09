@@ -29,7 +29,8 @@ const main = async () => {
     server.use(
       express.static(path.resolve(__dirname, "../../client", ".next"))
     );
-    server.use(express.static(".next"));
+    // server.use(express.static(".next"));
+    server.use(express.static("../../client/next"));
     server.all("*", (req: any, res: any) => {
       return handle(req, res);
     });

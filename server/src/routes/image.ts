@@ -7,16 +7,19 @@ import path from "path";
 const router = Router();
 
 const storage = multer.diskStorage({
-  destination: "./uploads",
+  // destination: "./uploads",
+  destination: "../client/public",
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-const upload = multer({
+
+const image = multer({
   storage: storage,
 });
 
-router.get("/upload", upload.single("image"), uploadFile.uploadFile);
-router.post("/upload", upload.single("image"), uploadFile.uploadFile);
+router.get("/all", image.single("image"), uploadFile.getImages);
+router.post("/upload", image.single("image"), uploadFile.uploadFile);
+router.delete("/:id", image.single("image"), uploadFile.deleteImage);
 
 export default router;

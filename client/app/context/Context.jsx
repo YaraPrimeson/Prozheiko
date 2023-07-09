@@ -19,6 +19,10 @@ export const AppContext = createContext({
   createPrice: () => {},
   editPrice: () => {},
   deletePrice: () => {},
+  images: [],
+  getAllImages: () => {},
+  createImage: () => {},
+  deleteImage: () => {},
 });
 const Context = ({ children }) => {
   const [tags, setTags] = useState([]);
@@ -65,6 +69,17 @@ const Context = ({ children }) => {
   const deletePrice = (_id) => {
     api.price.deletePrice(_id).then(getAllPrice);
   };
+
+  const [images, setImages] = useState([]);
+  const getAllImages = () => {
+    api.images.getImages().then((res) => setImages(res));
+  };
+  const createImage = (price) => {
+    api.images.createImage(price).then(getAllImages);
+  };
+  const deleteImage = (_id) => {
+    api.images.deleteImage(_id).then(getAllImages);
+  };
   return (
     <AppContext.Provider
       value={{
@@ -84,6 +99,10 @@ const Context = ({ children }) => {
         createPrice,
         editPrice,
         deletePrice,
+        images,
+        getAllImages,
+        createImage,
+        deleteImage,
       }}
     >
       {children}

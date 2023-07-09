@@ -1,0 +1,22 @@
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Image {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  originalname String
+  mimetype     String
+  path         String
+}
+
+model ITag {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  tag String
+}

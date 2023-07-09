@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const withImages = require("next-images");
+
+const nextConfig = {
+  images: {
+    domains: ["localhost"], // Додайте ваш домен
+  },
+};
 
 module.exports = nextConfig;
