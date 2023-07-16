@@ -26,13 +26,17 @@ yarn-error.log*
 
 # local env files
 .env*.local
+<<<<<<< HEAD:client/.gitignore
 .env
+=======
+/public/.env
+>>>>>>> f45b59d7 (g):.gitignore
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+client/next-env.d.ts
 
 .idea
 .DS_Store
