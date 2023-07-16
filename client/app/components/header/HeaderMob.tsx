@@ -1,18 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import style from "./header.module.scss";
-const HeaderMob = () => {
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/app/assets/images/logo.webp";
+
+interface HeaderMobProps {
+  pathname: string;
+}
+
+const HeaderMob: FC<HeaderMobProps> = ({ pathname }) => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const toggleDrawer = (status: boolean) => {
@@ -21,36 +21,100 @@ const HeaderMob = () => {
 
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      className={style.header__mob__list}
       role="presentation"
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
     >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <ul>
+        <li className={style.link__wrapper}>
+          <Image
+            loading="lazy"
+            src={logo}
+            alt="prozheiko dental studio"
+            className={style.img__mob}
+          />
+        </li>
+        <li
+          className={
+            pathname === "/"
+              ? `${style.active} ${style.link__wrapper}`
+              : style.link__wrapper
+          }
+        >
+          <Link
+            className={
+              pathname === "/"
+                ? `${style.active} ${style.link__mob}`
+                : style.link__mob
+            }
+            href="/"
+          >
+            Головна
+          </Link>
+        </li>
+
+        <li className={style.link__wrapper}>
+          <Link
+            className={
+              pathname === "/about-clinic"
+                ? `${style.active} ${style.link__mob}`
+                : style.link__mob
+            }
+            href="/about-clinic"
+          >
+            Про клініку
+          </Link>
+        </li>
+        <li className={style.link__wrapper}>
+          <Link
+            className={
+              pathname === "/about-doctors"
+                ? `${style.active} ${style.link__mob}`
+                : style.link__mob
+            }
+            href="/about-doctors"
+          >
+            Лікарі
+          </Link>
+        </li>
+        <li className={style.link__wrapper}>
+          <Link
+            className={
+              pathname === "/services-and-prices"
+                ? `${style.active} ${style.link__mob}`
+                : style.link__mob
+            }
+            href="/services-and-prices"
+          >
+            Послуги та ціни
+          </Link>
+        </li>
+        <li className={style.link__wrapper}>
+          <Link
+            className={
+              pathname === "/blog"
+                ? `${style.active} ${style.link__mob}`
+                : style.link__mob
+            }
+            href="/blog"
+          >
+            Блог
+          </Link>
+        </li>
+        <li className={style.link__wrapper}>
+          <Link
+            href="/contacts"
+            className={
+              pathname === "/contacts"
+                ? `${style.active} ${style.link__mob}`
+                : style.link__mob
+            }
+          >
+            Контакти
+          </Link>
+        </li>
+      </ul>
     </Box>
   );
 

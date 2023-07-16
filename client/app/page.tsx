@@ -198,7 +198,7 @@ export default function Home() {
               університеті імені А. А. Богомольця та Військово-медичній Академії
               стажувався у найкращих українських та закордонних спеціалістів.
             </p>
-            <Link href="/about-clinic">
+            <Link href="/about-clinic" className={style.about__clinic__link}>
               <button className={style.about__button}>
                 БІЛЬШЕ
                 <svg
@@ -268,7 +268,9 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <p className={style.emergency__text}>
+          <p
+            className={`${style.emergency__text} ${style.emergency__text__last}`}
+          >
             4. Травма щелепи, відколовся зуб, випала пломба – у всіх цих
             випадках треба якнайшвидше звернутися до стоматолога.
             <br />

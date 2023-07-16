@@ -49,14 +49,16 @@ const Page = () => {
               alt={"doctors"}
             />
           </div>
-          <p className={globalStyles.text}>
-            Наш принцип роботи заключається в Комплексному лікуванні пацієнтів з
-            залученням вузькопрофільних лікарів: після повної діагностики
-            порожнини роту на основі огляду та додаткових досліджень, команда
-            лікарів складає План лікування пацієнта. Саме це дає змогу нашій
-            команді надавати послуги високої якості та гарантувати нашим
-            пацієнтам бездоганну та здорову посмішку.
-          </p>
+          <div className={style.text__wrapper__bottom}>
+            <p className={globalStyles.text}>
+              Наш принцип роботи заключається в Комплексному лікуванні пацієнтів
+              з залученням вузькопрофільних лікарів: після повної діагностики
+              порожнини роту на основі огляду та додаткових досліджень, команда
+              лікарів складає План лікування пацієнта. Саме це дає змогу нашій
+              команді надавати послуги високої якості та гарантувати нашим
+              пацієнтам бездоганну та здорову посмішку.
+            </p>
+          </div>
         </section>
         <section className={style.philosophy}>
           <Image
@@ -79,8 +81,10 @@ const Page = () => {
           </div>
         </section>
         <section className={style.doctors}>
-          <Link href={"/about-doctors"}>
-            <h3 className={`${globalStyles.hover__link} ${globalStyles.title}`}>
+          <Link href={"/about-doctors"} className={style.doctors__link}>
+            <h3
+              className={`${globalStyles.hover__link} ${globalStyles.title} ${style.doctors__title}`}
+            >
               Лікарі
             </h3>
           </Link>

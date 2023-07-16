@@ -20,24 +20,23 @@ async function getBlogArticle(id: string) {
 }
 
 const BlogArticle = async ({ params: { id } }: any) => {
-  const article = await getBlogArticle(id);
-  console.log(article);
+  // const article = await getBlogArticle(id);
   return (
     <>
       <BannerContainer image={Blog} altDescription={"Blog"} />
       <section className={style.blog}>
         <div className={style.tag__container}>
-          <h2 className={style.tag}>{article.tag}</h2>
+          {/*<h2 className={style.tag}>{article.tag}</h2>*/}
         </div>
         <div>
-          {article?.blocks?.map((block: any) => {
-            if (block.type === "title") {
-              return <h2 key={block._id}>{block.value}</h2>;
-            } else if (block.type === "paragraph") {
-              return <p key={block._id}>{block.value}</p>;
-            }
-            return null; // handle other block types if needed
-          })}
+          {/*{article?.blocks?.map((block: any) => {*/}
+          {/*  if (block.type === "title") {*/}
+          {/*    return <h2 key={block._id}>{block.value}</h2>;*/}
+          {/*  } else if (block.type === "paragraph") {*/}
+          {/*    return <p key={block._id}>{block.value}</p>;*/}
+          {/*  }*/}
+          {/*  return null; // handle other block types if needed*/}
+          {/*})}*/}
         </div>
         <FormVisit />
       </section>

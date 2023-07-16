@@ -1,21 +1,34 @@
 // import { PrismaClient } from "@prisma/client";
 //
 // declare global {
-//   var prisma: PrismaClient | undefined;
+//   namespace NodeJS {
+//     interface Global {
+//       prisma: PrismaClient;
+//     }
+//   }
 // }
-// const prisma = global.prisma || new PrismaClient();
 //
-// if (process.env.NODE_ENV === "development") global.prisma = prisma;
+// let prisma: PrismaClient;
+//
+// if (typeof window === "undefined") {
+//   if (process.env.NODE_ENV === "production") {
+//     prisma = new PrismaClient();
+//   } else {
+//     if (!global.prisma) {
+//       global.prisma = new PrismaClient();
+//     }
+//
+//     prisma = global.prisma;
+//   }
+// }
+//
 // export default prisma;
 
 import { PrismaClient } from "@prisma/client";
-
 declare global {
-  namespace NodeJS {
-    interface Global {
-      prisma: PrismaClient;
-    }
-  }
+  // allow global `var` declarations
+  // eslint-disable-next-line no-var
+  var prisma: PrismaClient | undefined;
 }
 
 let prisma: PrismaClient;
@@ -31,5 +44,5 @@ if (typeof window === "undefined") {
     prisma = global.prisma;
   }
 }
-
+//@ts-ignore
 export default prisma;

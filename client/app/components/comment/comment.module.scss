@@ -1,20 +1,24 @@
-.comments__card__wrapper{
+.comments__card__wrapper {
   display: flex;
   flex-direction: row;
   gap: 38px;
 }
+
 .comment {
   width: 372px;
+  min-width: 372px;
   background: rgba(18, 151, 155, 0.07);
   border-radius: 5px;
   position: relative;
-  padding:11px 17px ;
+  padding: 11px 17px;
 }
-.icon{
+
+.icon {
   position: absolute;
   top: 25px;
   left: 20px;
 }
+
 .text__wrapper {
   width: 260px;
   margin: 0 auto;
@@ -28,7 +32,6 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-
   color: #000000;
 }
 
@@ -36,7 +39,7 @@
   display: flex;
   flex-direction: row;
   gap: 17px;
-  margin-top:25px ;
+  margin-top: 25px;
 }
 
 .avatar__wrapper {
@@ -54,7 +57,6 @@
   font-weight: 700;
   font-size: 34px;
   line-height: 51px;
-
   color: #FFFFFF;
 }
 
@@ -71,7 +73,6 @@
   font-weight: 700;
   font-size: 15px;
   line-height: 19px;
-
   color: #000000;
 
 }
@@ -82,7 +83,38 @@
   font-weight: 500;
   font-size: 10px;
   line-height: 13px;
-
   color: #8B8D92;
-
 }
+
+@media screen and (max-width: 1200px) {
+  .comments__card__wrapper {
+    width: 100%;
+    padding: 0 50px;
+    overflow-x: auto;
+  }
+  .comments__card__wrapper::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .comments__card__wrapper {
+    padding: 0 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .comment {
+    width: 100%;
+    min-width: auto;
+  }
+  .text__wrapper {
+    padding-top: 10px;
+    padding-left: 50px;
+  }
+  .avatar__wrapper {
+    width: 50px;
+    height: 50px;
+  }
+}
+

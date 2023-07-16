@@ -53,17 +53,17 @@ const TagTab = () => {
     setCurrentTagInput("");
   };
   const handleCreateTag = () => {
-    createTag(currentTagInput);
+    // createTag(currentTagInput);
     handleClose();
   };
   const handleEditTag = () => {
-    editTag(currentTag, currentTagInput);
+    // editTag(currentTag, currentTagInput);
     handleCloseEdit();
   };
-  const handleDeleteTag = () => {
-    deleteTag(currentTag);
-    handleCloseDelete();
-  };
+  // const handleDeleteTag = () => {
+  //   deleteTag(currentTag);
+  //   handleCloseDelete();
+  // };
   useLayoutEffect(() => {
     getAllTags();
   }, []);
@@ -139,7 +139,7 @@ const TagTab = () => {
           <p className={style.modal__title}>delete tag</p>
           <button
             style={{ marginTop: "20px" }}
-            onClick={handleDeleteTag}
+            // onClick={handleDeleteTag}
             className={style.btn}
           >
             Видалити тег

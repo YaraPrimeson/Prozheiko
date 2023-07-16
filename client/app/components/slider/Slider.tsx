@@ -18,7 +18,7 @@ const Slider = () => {
   ];
 
   return (
-    <Carousel height={"500px"} animation="slide">
+    <Carousel animation="slide">
       {items.map((item, index) => (
         <Item key={index} item={item} />
       ))}
@@ -30,8 +30,8 @@ const Item = ({ item }: any) => (
   <Paper
     sx={{
       width: "100%",
-      minHeight: "500px",
-      height: "auto",
+      // minHeight: "500px",
+      height: "270px",
       maxHeight: "500px",
     }}
   >
@@ -39,7 +39,7 @@ const Item = ({ item }: any) => (
       loading="lazy"
       src={item.image}
       style={{
-        maxHeight: "550px",
+        maxHeight: "500px",
         objectFit: "cover",
         width: "100%",
         height: "100%",

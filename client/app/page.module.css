@@ -20,7 +20,8 @@
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     width: 380px;
-    padding: 26px 36px;
+    min-width: 380px;
+    padding: 26px 15px 26px 36px;
 }
 
 .service__info__subtitle {
@@ -132,7 +133,10 @@
 }
 
 .about__text {
-
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    color: #000;
 }
 
 .about__button {
@@ -228,3 +232,242 @@
     margin-bottom: 60px;
 }
 
+
+@media screen and (max-width: 1200px) {
+    .service__info {
+        margin: 36px auto 50px;
+    }
+
+    .service__info__wrapper {
+        overflow-x: auto;
+        padding: 5px 26px;
+        justify-content: space-between;
+    }
+
+    .service__info__wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .dental__care {
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .dental__care__text__wrapper {
+        text-align: center;
+    }
+
+    .dental__care__title, .emergency__title {
+        line-height: 105%;
+    }
+
+    .dental__care__text {
+        margin: 34px auto;
+    }
+
+    .about {
+        flex-direction: column;
+        gap: 34px;
+    }
+
+    .about__text__container {
+        order: 2;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about__title {
+        width: 100%;
+    }
+
+    .about__clinic__link {
+        margin-right: auto;
+    }
+
+    .about__img__container {
+        order: 1;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about__img {
+        width: 595px;
+        max-width: 595px;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .emergency__wrapper {
+        flex-direction: column;
+    }
+
+    .emergency__image {
+        float: none;
+        margin: 0 auto 40px;
+        width: 600px;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .emergency__text__wrapper, .emergency__text__last {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .comments__title {
+        margin-left: 12%;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    .service__info__list {
+        width: 330px;
+        min-width: 330px;
+    }
+
+    .dental__care__img {
+        object-fit: cover;
+    }
+
+    .dental__care__title, .emergency__title {
+        font-size: 45px;
+    }
+
+    .dental__care__text {
+        font-size: 25px;
+        line-height: 110%;
+    }
+
+    .dental__care__button {
+        width: 350px;
+        height: 50px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .comments {
+        margin: 50px 0;
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .about {
+        margin: 36px auto;
+    }
+
+    .about__img {
+        width: 100vw;
+        max-width: 595px;
+        max-height: 300px;
+        height: auto;
+    }
+
+    .about__clinic__link {
+        margin: 0;
+    }
+
+    .about__button {
+        margin-top: 40px;
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .emergency__image {
+        width: 100vw;
+        height: auto;
+        max-height: 250px;
+    }
+
+    .emergency__text {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .service__info__wrapper {
+        padding: 5px 16px;
+    }
+
+    .service__info {
+        margin: 36px auto;
+    }
+
+    .dental__care {
+        max-width: 100%;
+        gap: 30px;
+    }
+
+    .dental__care__img {
+        width: 100vw;
+        max-width: 400px;
+        height: auto;
+        max-height: 250px;
+    }
+
+    .dental__care__text__wrapper {
+        padding: 0 10px;
+    }
+
+    .dental__care__title, .emergency__title {
+        font-size: 40px;
+    }
+
+    .dental__care__text {
+        font-size: 20px;
+        margin: 25px auto;
+    }
+
+    .comments {
+        margin: 36px 0;
+        padding-top: 20px;
+    }
+
+    .comments__title {
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+}
+
+
+@media screen and (max-width: 370px) {
+    .about__text__container, .emergency__text__wrapper, .emergency__text__last {
+        width: 90%;
+    }
+
+    .dental__care__title, .emergency__title {
+        font-size: 35px;
+    }
+
+    .dental__care__button {
+        width: 90%;
+        font-size: 14px;
+
+    }
+
+    .comments__title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .service__info__list {
+        width: 300px;
+        min-width: 300px;
+        padding: 20px 12px 20px 30px;
+    }
+    .dental__care__button{
+        font-size: 12px;
+    }
+}

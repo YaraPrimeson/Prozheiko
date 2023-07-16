@@ -90,6 +90,7 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   font-family: "Cera Pro", sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -100,6 +101,7 @@ a {
 li {
   list-style: none;
 }
+
 fieldset {
-  border: none!important;
+  border: none !important;
 }

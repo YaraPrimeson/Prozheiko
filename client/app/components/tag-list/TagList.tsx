@@ -14,7 +14,7 @@ interface TagListProps {
 
 // const TagList: FC<TagListProps> = ({ activeTag, tags, handleActiveTag }) => {
 const TagList: FC<TagListProps> = ({ tags }) => {
-  const { tagsLoading } = useContext(AppContext);
+  // const { tagsLoading } = useContext(AppContext);
   // if (tagsLoading) {
   //   return (
   //     <div

@@ -7,6 +7,7 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
+  // url      = "mongodb://localhost:27017/prisma"
 }
 
 model Image {
@@ -16,7 +17,7 @@ model Image {
   path         String
 }
 
-model ITag {
+model Tag {
   id  String @id @default(auto()) @map("_id") @db.ObjectId
   tag String
 }

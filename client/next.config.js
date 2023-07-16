@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-const withImages = require("next-images");
 
 const nextConfig = {
+  experimental: {
+    // serverActions: true,
+    appDir: true,
+  },
   images: {
     domains: ["localhost"], // Додайте ваш домен
   },

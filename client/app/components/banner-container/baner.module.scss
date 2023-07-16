@@ -9,4 +9,11 @@
   height: auto;
   object-fit: cover;
   max-height: 400px;
+  display: block;
+}
+
+@media screen and (max-width: 700px) {
+  .banner__container {
+    margin-bottom: 30px;
+  }
 }

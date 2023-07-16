@@ -33,6 +33,9 @@
   line-height: 25px;
   color: #FFFFFF;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h3.hover__link {
@@ -79,4 +82,25 @@ h3.hover__link {
 
 .hover__link:hover::before {
   width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .title {
+    font-size: 45px;
+    line-height: 110%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .button {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }

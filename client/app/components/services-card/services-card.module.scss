@@ -10,6 +10,7 @@
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   width: 180px;
+  min-width: 180px;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -26,4 +27,23 @@
   color: #292929;
   margin-bottom: 26px;
   text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .services__card {
+    overflow-x: auto;
+    padding: 5px 26px;
+    justify-content: space-between;
+  }
+
+  .services__card::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .services__card {
+    gap: 10px;
+  }
+
 }

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.info__container}>
-        <div className={style.logo__container}>
+        <div className={style.footer__list}>
           <Image
             className={style.logo__img}
             src={logo}
@@ -19,11 +19,14 @@ const Footer = () => {
             loading="lazy"
           />
           <p className={style.logo__subtitle}>Місце здорових посмішок</p>
-          <a className={style.logo__phone} href="tel:+38 (073) 38-38-532">
+          <a
+            className={`${style.logo__phone} ${globalStyle.hover__link}`}
+            href="tel:+38 (073) 38-38-532"
+          >
             +38 (073) 38-38-532
           </a>
         </div>
-        <div className={style.general}>
+        <div className={style.footer__list}>
           <h6 className={style.info__title}>ПРО ГОЛОВНЕ</h6>
           <ul className={style.general__list__container}>
             <li className={style.general__list}>
@@ -68,7 +71,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className={style.schedule}>
+        <div className={`${style.schedule} ${style.footer__list}`}>
           <h6 className={style.info__title}>ГОДИНИ ПРИЙОМУ</h6>
           <div className={style.schedule__wrapper}>
             <div className={style.schedule__container}>
@@ -83,7 +86,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className={style.contacts__container}>
+        <div className={`${style.contacts__container} ${style.footer__list}`}>
           <h6 className={style.info__title}>КОНТАКТИ</h6>
           <div className={style.contact__link__container}>
             <a className={style.contact__link} href="tel:+38 (073) 38-38-532">
@@ -101,7 +104,9 @@ const Footer = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              +38 (073) 38-38-532
+              <span className={globalStyle.hover__link}>
+                +38 (073) 38-38-532
+              </span>
             </a>
             <a className={style.contact__link} href="tel:+38 (068) 38-38-532">
               <svg
@@ -118,7 +123,9 @@ const Footer = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              +38 (068) 38-38-532
+              <span className={globalStyle.hover__link}>
+                +38 (068) 38-38-532
+              </span>
             </a>
             <a className={style.contact__link} href="tel:+38 (044) 38-38-532">
               <svg
@@ -135,7 +142,9 @@ const Footer = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              +38 (044) 38-38-532
+              <span className={globalStyle.hover__link}>
+                +38 (044) 38-38-532
+              </span>
             </a>
             <a
               className={style.contact__link}
@@ -161,7 +170,9 @@ const Footer = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              clients@prozheiko.kiev.ua
+              <span className={globalStyle.hover__link}>
+                clients@prozheiko.kiev.ua
+              </span>
             </a>
             <a
               className={style.contact__link}
@@ -188,7 +199,9 @@ const Footer = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              Бульвар Дружби народів 6-Б
+              <span className={globalStyle.hover__link}>
+                Бульвар Дружби народів 6-Б
+              </span>
             </a>
           </div>
         </div>
@@ -196,7 +209,10 @@ const Footer = () => {
       <div className={style.social__container}>
         <div className={style.social__text__wrapper}>
           <p className={style.social__text}>
-            Усі права захищено © Стоматологічна клініка PROZHEIKO DENTAL STUDIO
+            Усі права захищено © Стоматологічна клініка{" "}
+            <span className={style.social__block__text}>
+              PROZHEIKO DENTAL STUDIO
+            </span>
           </p>
         </div>
         <div className={style.social__links__wrapper}>
@@ -248,7 +264,8 @@ const Footer = () => {
               />
               <path
                 d="M5.71753 7.14075L9.43518 4.99957L5.71753 2.8584V7.14075Z"
-                fill="black"
+                fill="#292929"
+                className={style.social__link__youtube}
               />
             </svg>
           </a>
