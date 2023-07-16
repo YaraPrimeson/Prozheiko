@@ -16,11 +16,9 @@ export default function RootLayout({
     return (
         <html lang="uk">
         <body>
-        {/*<Context>*/}
         <TheHeader/>
         <main style={{flex: " 1 1 auto"}}>{children}</main>
         <Footer/>
-        {/*</Context>*/}
         </body>
         </html>
     );
