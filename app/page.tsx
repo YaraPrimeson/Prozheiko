@@ -1,5 +1,4 @@
 import style from "./page.module.css";
-import Slider from "@/app/components/slider/Slider";
 import ServicesCard from "@/app/components/services-card/ServicesCard";
 import Image from "next/image";
 import dentalCare from "./assets/images/dental-care.png";
@@ -8,11 +7,12 @@ import emergencyDentalCare from "./assets/images/emergency-dental-care.webp";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import CommentContainer from "@/app/components/comment/CommentContainer";
 import Link from "next/link";
+import SliderSlick from "@/app/components/slider/SliderSlick";
 
 export default function Home() {
   return (
     <>
-      <Slider />
+      <SliderSlick />
       <div className={style.page}>
         <section className={style.service__info}>
           <ul className={style.service__info__wrapper}>

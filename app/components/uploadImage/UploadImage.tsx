@@ -1,12 +1,10 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "@/app/admin/admin-tab/blog/blog.module.scss";
-import { AppContext } from "@/app/context/Context";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import Image from "next/image";
 
 const UploadImage = () => {
-  const { getAllImages, images } = useContext(AppContext);
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState("");
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -45,12 +43,7 @@ const UploadImage = () => {
 
       setImageUrl(imageUrl);
     }
-    getAllImages();
   }, [file]);
-
-  useEffect(() => {
-    console.log(images);
-  }, [images]);
   return (
     <div>
       {/*<button onClick={() => setOpenModal(true)}>add img</button>*/}
@@ -70,14 +63,14 @@ const UploadImage = () => {
       )}
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div style={{ width: "400px", height: "200px" }}>
-          {images.map((img: any) => (
-            <img
-              key={img._id}
-              style={{ width: "50px", height: "50px" }}
-              src={`/public/uploads/${img.filename}`}
-              alt=""
-            />
-          ))}
+          {/*{images.map((img: any) => (*/}
+          {/*  <img*/}
+          {/*    key={img._id}*/}
+          {/*    style={{ width: "50px", height: "50px" }}*/}
+          {/*    src={`/public/uploads/${img.filename}`}*/}
+          {/*    alt=""*/}
+          {/*  />*/}
+          {/*))}*/}
           {/*<img*/}
           {/*  style={{ width: "50px", height: "50px" }}*/}
           {/*  src={*/}

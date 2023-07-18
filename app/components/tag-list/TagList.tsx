@@ -1,7 +1,6 @@
 "use client";
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 
-import { AppContext } from "@/app/context/Context";
 import style from "./tag.module.scss";
 import { Skeleton } from "@mui/material";
 import { ITag } from "@/app/components/tag-list/interface";

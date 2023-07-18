@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import InputMask from "react-input-mask";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/uk";
@@ -82,7 +82,7 @@ const FormVisit = () => {
       <InputMask
         placeholder="+380 093 123 45 67"
         className={style.input}
-        value={phone ?? 0}
+        value={phone ?? ""}
         onChange={handleChangePhone}
         type="tel"
         mask="+(380) 99-999-99-99"

@@ -144,7 +144,7 @@ const TheHeader = () => {
           >
             <FormVisit />
           </ModalContainer>
-          <HeaderMob pathname={pathname} />
+          <HeaderMob pathname={pathname ?? ""} />
         </header>
       ) : null}
     </>

@@ -9,6 +9,11 @@
   background: #FFFFFF;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
+
+  &:focus-visible {
+    border: none;
+    outline: none;
+  }
 }
 
 .form__title {
@@ -101,7 +106,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
   .form {
     padding: 14px 14px 9px;
   }

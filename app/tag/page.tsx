@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { createTag, getTags } from "@/lib/tag";
 // import { createTagAction } from "@/app/_actions";
@@ -10,11 +9,9 @@ export default function Page() {
   // async function action(data: FormData) {
   //   const tag = data.get("tag");
   //   if (!tag || typeof tag !== "string") return;
-  //   console.log("start");
   //   await createTag(tag);
   // }
 
-  // console.log(tags);
   return (
     <div>
       {/*<form action={action}>*/}

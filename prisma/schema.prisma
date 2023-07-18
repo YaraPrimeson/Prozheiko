@@ -6,8 +6,8 @@ generator client {
 
 datasource db {
   provider = "mongodb"
+  // url      = "mongodb+srv://YaraPrimeson:1234@cluster0.hevxves.mongodb.net/prozheiko?retryWrites=true&w=majority"
   url      = env("DATABASE_URL")
-  // url      = "mongodb://localhost:27017/prisma"
 }
 
 model Image {
