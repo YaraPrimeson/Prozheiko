@@ -1,6 +1,5 @@
 import React from "react";
 import FormVisit from "@/app/components/form-visit/FormVisit";
-import BlogList from "@/app/blog/BlogList";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import Blog from "../assets/images/blog.webp";
 import style from "./blog-list.module.scss";
@@ -21,7 +20,7 @@ const Page = () => {
       ],
     },
     {
-      title: "Сканування",
+      title: "Професійна гігієна порожнини рота",
       img: img2,
       id: "2",
 
@@ -40,7 +39,7 @@ const Page = () => {
       ],
     },
     {
-      title: "title4",
+      title: "Сканування",
       id: "4",
       img: img4,
       blocks: [
@@ -63,7 +62,6 @@ const Page = () => {
             <h1 className={style.title}>{article.title}</h1>
           </div>
         ))}
-        {/*<BlogList />*/}
       </section>
       <section className={style.form__wrapper}>
         <FormVisit />

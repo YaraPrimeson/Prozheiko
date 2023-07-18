@@ -20,10 +20,70 @@
 
 }
 
+.hover__wrapper {
+  position: relative;
+  background: rgba(4, 149, 168, 0.18);
+  transition: 0.5s all ease;
+}
+
 .doctor__img {
   width: 367px;
   height: 420px;
   object-fit: contain;
+  margin: 0 auto;
+  display: block;
+  transition: 0.5s all ease;
+}
+
+.hover__wrapper:hover {
+  background: rgba(18, 151, 155, 0.90);
+  transition: 0.5s all ease;
+}
+
+.hover__wrapper:hover .doctor__img {
+  opacity: 0.1;
+  transition: 0.5s all ease;
+}
+
+.hover__wrapper:hover .opacity__text {
+  opacity: 1;
+  transition: 0.5s all ease;
+  bottom: 120px;
+  width: 100%;
+}
+
+.opacity__text {
+  font-size: 17px;
+  opacity: 0;
+  line-height: 21px;
+  transition: 0.5s all ease;
+  color: #3D3D3D;
+  position: absolute;
+  bottom: 0;
+  padding: 0 20px;
+}
+
+.wrapper__opacity {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.list__opacity {
+  color: #FFF;
+  font-family: Cera Pro, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 105%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.icon__check {
+  min-width: 22px;
+  min-height: 22px;
 }
 
 .doctor__position {

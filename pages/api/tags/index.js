@@ -1,10 +1,9 @@
-import { createTag, getTags } from "../../..//lib/tag";
+import { createTag, getTags } from "../../../lib/tag";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
       const { tags, error } = await getTags();
-      console.log(tags);
       if (error) throw new Error(error);
       return res.status(200).json({ tags });
     } catch (error) {
@@ -14,10 +13,9 @@ const handler = async (req, res) => {
 
   if (req.method === "POST") {
     try {
-      const data = req.body;
-      const { tags, error } = await createTag(data);
-      console.log(tags);
-      if (error) throw new Error(error);
+      const { tag } = req.body;
+      const { tags, error } = await createTag(tag);
+      if (error) console.log("error", error);
       return res.status(200).json({ tags });
     } catch (error) {
       return res.status(500).json({ error: error.message });

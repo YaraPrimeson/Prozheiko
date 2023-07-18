@@ -6,10 +6,10 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "max-content",
+  width: "94%",
   p: "0",
-  "&:active": { border: "none" },
-  "&:focus-visible": { border: "none" },
+  "&:active": { border: "none", outline: "none" },
+  "&:focus-visible": { border: "none", outline: "none" },
 };
 
 interface ModalContainerProps {
