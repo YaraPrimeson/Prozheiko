@@ -3,7 +3,6 @@ import style from "./service.module.scss";
 import serviceArr from "@/app/services-and-prices/servicesArray";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import Service from "@/app/assets/images/services.webp";
-import Image from "next/image";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import Card from "@/app/components/card/card";
 
