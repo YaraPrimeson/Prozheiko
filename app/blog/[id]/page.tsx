@@ -15,7 +15,7 @@ type BlogArticleProps = {
 export function generateMetadata({ params }: BlogArticleProps) {
   const item = dataArray.find((data) => data.id === params.id);
   return {
-    title: item?.title,
+    title: `Prozheiko | ${item?.title}`,
   };
 }
 
