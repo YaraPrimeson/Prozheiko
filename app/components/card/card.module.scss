@@ -1,0 +1,105 @@
+
+.tag__container {
+
+}
+
+.tag {
+  color: #292929;
+  font-family: Cera Pro, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  margin-bottom: 25px;
+}
+
+.tag__line {
+  background: #12979B;
+  width: 169px;
+  height: 5px;
+  display: inline-block;
+}
+
+.service__wrapper {
+
+}
+
+.title__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 33px;
+  width: 80%;
+  margin: 60px auto 30px;
+}
+
+.title {
+  color: #292929;
+  font-family: Cera Pro, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.price__container {
+  border-radius: 10px;
+  background: #12979B;
+  min-width: 170px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price {
+  color: #FFF;
+  font-family: Cera Pro, sans-serif;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 105%;
+}
+
+.img {
+  max-width: 950px;
+  width: 100%;
+  height: 100%;
+  max-height: 572px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.text__container {
+  margin: 40px 0 90px;
+}
+
+.subtitle {
+  color: #292929;
+  font-family: Cera Pro, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 125%;
+  margin: 25px 0;
+}
+
+.text {
+  color: #000;
+  font-family: Cera Pro, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 125%;
+  white-space: break-spaces;
+}
+
+.list {
+  list-style: disc;
+  color: #000;
+  font-family: Cera Pro, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 20px;
+}

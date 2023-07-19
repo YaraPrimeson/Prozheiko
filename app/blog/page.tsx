@@ -3,65 +3,41 @@ import FormVisit from "@/app/components/form-visit/FormVisit";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import Blog from "../assets/images/blog.webp";
 import style from "./blog-list.module.scss";
-import img1 from "../assets/services/Rectangle 25.png";
-import img2 from "../assets/services/Rectangle 26.png";
-import img3 from "../assets/services/Rectangle28.png";
-import img4 from "../assets/services/Rectangle29.png";
+import Link from "next/link";
+import arr from "./blogArray";
+import TagList from "@/app/components/tag-list/TagList";
 
 const Page = () => {
-  const arr = [
-    {
-      title: "Консультація та діагностика ротової порожнини",
-      img: img1,
-      id: "1",
-      blocks: [
-        { type: "subtitle", value: "subtitle" },
-        { type: "paragraph", value: "paragraph" },
-      ],
-    },
-    {
-      title: "Професійна гігієна порожнини рота",
-      img: img2,
-      id: "2",
-
-      blocks: [
-        { type: "subtitle", value: "subtitle" },
-        { type: "paragraph", value: "paragraph" },
-      ],
-    },
-    {
-      title: "Онлайн-консультація",
-      id: "3",
-      img: img3,
-      blocks: [
-        { type: "subtitle", value: "subtitle" },
-        { type: "paragraph", value: "paragraph" },
-      ],
-    },
-    {
-      title: "Сканування",
-      id: "4",
-      img: img4,
-      blocks: [
-        { type: "subtitle", value: "subtitle" },
-        { type: "paragraph", value: "paragraph" },
-      ],
-    },
-  ];
   return (
     <>
       <BannerContainer image={Blog} altDescription={"Blog"} />
+      <section>
+        <TagList />
+      </section>
       <section className={style.list}>
-        {arr.map((article) => (
-          <div className={style.wrapper} key={article.id}>
-            <img
-              className={style.img}
-              src={article.img.src}
-              alt={article.title}
-            />
-            <h1 className={style.title}>{article.title}</h1>
-          </div>
-        ))}
+        {arr.map((article, index) => {
+          const isFirstTag = index === 0 || article.tag !== arr[index - 1].tag;
+          return (
+            <>
+              {isFirstTag && (
+                <div>
+                  <h3 className={style.tag__title}>{article.tag}</h3>
+                  <span className={style.tag__title__line}></span>
+                </div>
+              )}
+              <Link key={article.id} href={`/blog/${article.id}`}>
+                <div className={style.wrapper}>
+                  <img
+                    className={style.img}
+                    src={article.img.src}
+                    alt={article.title}
+                  />
+                  <h1 className={style.title}>{article.title}</h1>
+                </div>
+              </Link>
+            </>
+          );
+        })}
       </section>
       <section className={style.form__wrapper}>
         <FormVisit />

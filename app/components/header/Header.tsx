@@ -76,7 +76,11 @@ const TheHeader = () => {
             >
               <li
                 onClick={handleSelectClose}
-                className={style.link__about__wrapper}
+                className={
+                  pathname === "/about-clinic"
+                    ? `${style.link__about__wrapper} ${style.link__about__wrapper__active}`
+                    : `${style.link__about__wrapper}`
+                }
               >
                 <Link
                   className={`${style.link} ${style.link__about}`}
@@ -87,7 +91,13 @@ const TheHeader = () => {
               </li>
               <li
                 onClick={handleSelectClose}
-                className={style.link__about__wrapper}
+                className={
+                  pathname === "/about-doctors"
+                    ? `${style.link__about__wrapper} ${style.link__about__wrapper__active}`
+                    : `${style.link__about__wrapper}`
+
+                  // style.link__about__wrapper
+                }
               >
                 <Link
                   className={`${style.link} ${style.link__about}`}
@@ -118,7 +128,6 @@ const TheHeader = () => {
           >
             БЛОГ
           </Link>
-
           <Image
             loading="lazy"
             src={logo}

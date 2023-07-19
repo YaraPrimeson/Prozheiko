@@ -108,6 +108,7 @@
     color: #FFFFFF;
     width: 325px;
     height: 45px;
+    cursor: pointer;
 }
 
 .about {
@@ -211,7 +212,11 @@
 
     color: #000000;
 }
-
+.form__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .comments {
     border-top: 1px solid #000000;
     margin: 60px 0;
@@ -467,7 +472,8 @@
         min-width: 300px;
         padding: 20px 12px 20px 30px;
     }
-    .dental__care__button{
+
+    .dental__care__button {
         font-size: 12px;
     }
 }

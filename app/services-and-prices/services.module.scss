@@ -7,6 +7,22 @@
   gap: 60px;
 }
 
+.tag__title {
+  color: #292929;
+  font-family: Cera Pro, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.tag__title__line {
+  display: inline-block;
+  width: 169px;
+  height: 5px;
+  background: #12979B;
+}
+
 .card {
   display: flex;
   flex-direction: row;
@@ -91,6 +107,9 @@
 
 .form__wrapper {
   margin: 90px auto 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1200px) {

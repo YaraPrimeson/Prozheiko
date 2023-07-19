@@ -9,13 +9,14 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import style from "./form-visit.module.scss";
-import { TextField } from "@mui/material";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FormVisit = () => {
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<number | null>(null);
-  // const [date, setDate] = useState<Dayjs | null>(dayjs(new Date()));
   const [date, setDate] = useState<Dayjs | null>(null);
+
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setName(value);
@@ -24,6 +25,29 @@ const FormVisit = () => {
     let numb = Number(e?.target?.value.replace(/\D/g, "").replace(/^7/, "8"));
     setPhone(numb as number);
   };
+
+  const notifySuccess = () =>
+    toast.success("Дякую", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  const notifyError = () =>
+    toast.error("error", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   const Send = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const chat_id = "-505440378";
@@ -55,70 +79,82 @@ const FormVisit = () => {
       requestOptionsPush
     )
       .then((response) => {
-        // successFetch();
-        // window.location.href = "/";
+        notifySuccess();
         setName("");
         setPhone(null);
         setDate(null);
-        alert("cool");
       })
       .catch((error) => {
-        console.log(error);
+        notifyError();
       });
   };
   return (
-    <form className={style.form} onSubmit={(e) => Send(e)}>
-      <h3 className={style.form__title}>
-        Заплануйте свій візит до стоматолога
-      </h3>
-      <input
-        className={style.input}
-        onChange={handleChangeName}
-        value={name}
-        type="text"
-        name="name"
-        placeholder="Ім’я та Прізвище"
-      />
-      <InputMask
-        placeholder="+380 093 123 45 67"
-        className={style.input}
-        value={phone ?? ""}
-        onChange={handleChangePhone}
-        type="tel"
-        mask="+(380) 99-999-99-99"
-      />
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <MobileDateTimePicker
-          sx={{ mt: "20px" }}
-          disablePast={true}
-          ampm={false}
+    <>
+      <form className={style.form} onSubmit={(e) => Send(e)}>
+        <h3 className={style.form__title}>
+          Заплануйте свій візит до стоматолога
+        </h3>
+        <input
           className={style.input}
-          label={"Побажання щодо часу/дати"}
-          // renderInput={(params) => (
-          //   <TextField
-          //     inputProps={{
-          //       placeholder: "hello",
-          //     }}
-          //     InputProps={{
-          //       placeholder: "hello",
-          //     }}
-          //     {...params}
-          //   />
-          // )}
-          value={date}
-          onChange={(newValue) => setDate(newValue)}
+          onChange={handleChangeName}
+          value={name}
+          type="text"
+          name="name"
+          placeholder="Ім’я та Прізвище"
         />
-      </LocalizationProvider>
-      <button
-        type="submit"
-        className={style.button}
-        disabled={
-          !name || (phone ? phone.toString().length !== 12 : true) || !date
-        }
-      >
-        ВІДПРАВИТИ
-      </button>
-    </form>
+        <InputMask
+          placeholder="+380 093 123 45 67"
+          className={style.input}
+          value={phone ?? ""}
+          onChange={handleChangePhone}
+          type="tel"
+          mask="+(380) 99-999-99-99"
+        />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <MobileDateTimePicker
+            sx={{ mt: "20px" }}
+            disablePast={true}
+            ampm={false}
+            className={style.input}
+            label={"Побажання щодо часу/дати"}
+            // renderInput={(params) => (
+            //   <TextField
+            //     inputProps={{
+            //       placeholder: "hello",
+            //     }}
+            //     InputProps={{
+            //       placeholder: "hello",
+            //     }}
+            //     {...params}
+            //   />
+            // )}
+            value={date}
+            onChange={(newValue) => setDate(newValue)}
+          />
+        </LocalizationProvider>
+        <button
+          type="submit"
+          className={style.button}
+          disabled={
+            !name || (phone ? phone.toString().length !== 12 : true) || !date
+          }
+        >
+          ВІДПРАВИТИ
+        </button>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </form>
+    </>
   );
 };
 export default FormVisit;

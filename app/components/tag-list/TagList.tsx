@@ -1,9 +1,10 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 import style from "./tag.module.scss";
 import { Skeleton } from "@mui/material";
 import { ITag } from "@/app/components/tag-list/interface";
+import tagArray from "@/app/components/tag-list/tagArray";
 
 interface TagListProps {
   // activeTag: string;
@@ -12,7 +13,7 @@ interface TagListProps {
 }
 
 // const TagList: FC<TagListProps> = ({ activeTag, tags, handleActiveTag }) => {
-const TagList: FC<TagListProps> = ({ tags }) => {
+const TagList = () => {
   // const { tagsLoading } = useContext(AppContext);
   // if (tagsLoading) {
   //   return (
@@ -38,30 +39,33 @@ const TagList: FC<TagListProps> = ({ tags }) => {
   //     </div>
   //   );
   // }
-
+  const tags = tagArray;
+  const [activeTag, setActiveTag] = useState("Показати всі");
+  const handleActiveTag = (tag: string) => {
+    setActiveTag(tag);
+  };
   return (
     <ul className={style.container}>
       <>
-        <li
-          // onClick={() => handleActiveTag("Показати всі")}
-          className={
-            // activeTag === "Показати всі"
-            //   ? `${style.list} ${style.list__active}`
-            //   : style.list
-            style.list
-          }
-        >
-          Показати всі
-        </li>
-        {tags?.map(({ tag, _id }: ITag) => (
+        {/*<li*/}
+        {/*  onClick={() => handleActiveTag("Показати всі")}*/}
+        {/*  className={*/}
+        {/*    activeTag === "Показати всі"*/}
+        {/*      ? `${style.list} ${style.list__active}`*/}
+        {/*      : style.list*/}
+        {/*    style.list*/}
+        {/*  }*/}
+        {/*>*/}
+        {/*  Показати всі*/}
+        {/*</li>*/}
+        {tags?.map(({ tag }) => (
           <li
-            key={_id}
-            // onClick={() => handleActiveTag(tag)}
+            key={tag}
+            onClick={() => handleActiveTag(tag)}
             className={
-              // activeTag === tag
-              //   ? `${style.list} ${style.list__active}`
-              //   : style.list
-              style.list
+              activeTag === tag
+                ? `${style.list} ${style.list__active}`
+                : `${style.list}`
             }
           >
             {tag}

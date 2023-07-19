@@ -13,6 +13,22 @@
   width: 90%;
 }
 
+.tag__title {
+  color: #292929;
+  font-family: Cera Pro, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.tag__title__line {
+  display: inline-block;
+  width: 169px;
+  height: 5px;
+  background: #12979B;
+}
+
 .wrapper {
   background: #F6F6F6;
   display: flex;
@@ -49,6 +65,9 @@
 
 .form__wrapper {
   margin: 90px auto 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 900px) {

@@ -2,7 +2,6 @@ import React from "react";
 import { createTag, getTags } from "@/lib/tag";
 // import { createTagAction } from "@/app/_actions";
 // import { getAllTags } from "@/prisma/tag";
-
 export default function Page() {
   // const { tags }: any = await getAllTags();
   // console.log(tags);
@@ -11,7 +10,6 @@ export default function Page() {
   //   if (!tag || typeof tag !== "string") return;
   //   await createTag(tag);
   // }
-
   return (
     <div>
       {/*<form action={action}>*/}

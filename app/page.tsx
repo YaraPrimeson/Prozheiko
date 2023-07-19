@@ -165,25 +165,27 @@ export default function Home() {
               пацієнтів! Ми пропонуємо комплекс послуг для лікування та
               покращення зовнішнього вигляду зубів у комфортній атмосфері!
             </p>
-            <button className={style.dental__care__button}>
-              ДІАГНОСТИКА РОТОВОЇ ПОРОЖНИНИ
-              <svg
-                style={{ marginLeft: "7px" }}
-                width="7"
-                height="10"
-                viewBox="0 0 7 10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1.03961 8.54688L5.09168 5.03125L1.03961 1.51562"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+            <Link href={"/services-and-prices"}>
+              <button className={style.dental__care__button}>
+                ДІАГНОСТИКА РОТОВОЇ ПОРОЖНИНИ
+                <svg
+                  style={{ marginLeft: "7px" }}
+                  width="7"
+                  height="10"
+                  viewBox="0 0 7 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.03961 8.54688L5.09168 5.03125L1.03961 1.51562"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </Link>
           </div>
         </section>
         <ServicesCard />
@@ -281,7 +283,7 @@ export default function Home() {
             потрібний вам час: зателефонуйте нам, щоб обрати найближчі години!
           </p>
         </section>
-        <section>
+        <section className={style.form__container}>
           <FormVisit />
         </section>
       </div>

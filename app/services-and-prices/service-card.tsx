@@ -7,10 +7,11 @@ type TServiceCard = {
   title: string;
   text: string;
   price: string;
-  img?: string;
+  img: string;
   list?: string[];
+  id?: string;
 };
-const ServiceCard = ({ img, title, text, price, list }: TServiceCard) => {
+const ServiceCard = ({ img, title, text, price, list, id }: TServiceCard) => {
   return (
     <div className={style.card}>
       <img className={style.img} src={img} alt={title} />
@@ -55,7 +56,7 @@ const ServiceCard = ({ img, title, text, price, list }: TServiceCard) => {
           </ul>
         )}
         <div className={style.btn__container}>
-          <Link href={"#"}>
+          <Link href={`/services-and-prices/${id}`}>
             <button className={`${style.btn} ${global.button}`}>
               ДІЗНАТИСЬ БІЛЬШЕ
               <svg
