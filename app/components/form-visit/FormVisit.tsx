@@ -9,10 +9,13 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import style from "./form-visit.module.scss";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const FormVisit = () => {
+type FormVisitProps = {
+  closeModal?: () => void;
+};
+const FormVisit = ({ closeModal }: FormVisitProps) => {
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<number | null>(null);
   const [date, setDate] = useState<Dayjs | null>(null);
@@ -26,8 +29,8 @@ const FormVisit = () => {
     setPhone(numb as number);
   };
 
-  const notifySuccess = () =>
-    toast.success("Дякую", {
+  const notifySuccess = () => {
+    toast.success("Дякуємо, ми звʼяжемося в найближчий час", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -37,8 +40,9 @@ const FormVisit = () => {
       progress: undefined,
       theme: "light",
     });
+  };
   const notifyError = () =>
-    toast.error("error", {
+    toast.error("сталася помилка, спробуйте ,будь ласка, пізніше", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -78,13 +82,16 @@ const FormVisit = () => {
       `https://api.telegram.org/bot6281889755:AAHTEiRusyy7FnFSX7xEhY_Qa_n5yTINI_0/sendMessage?chat_id=-912380821&parse_mode=html&text=${msg}`,
       requestOptionsPush
     )
-      .then((response) => {
-        notifySuccess();
+      .then(() => {
         setName("");
         setPhone(null);
         setDate(null);
+        if (closeModal) {
+          closeModal();
+        }
+        notifySuccess();
       })
-      .catch((error) => {
+      .catch(() => {
         notifyError();
       });
   };
@@ -139,20 +146,8 @@ const FormVisit = () => {
             !name || (phone ? phone.toString().length !== 12 : true) || !date
           }
         >
-          ВІДПРАВИТИ
+          ВІДПРАВИТИas
         </button>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
       </form>
     </>
   );

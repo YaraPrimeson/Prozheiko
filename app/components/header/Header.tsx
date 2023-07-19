@@ -8,6 +8,7 @@ import logo from "../../assets/images/logo.webp";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import HeaderMob from "@/app/components/header/HeaderMob";
+import { ToastContainer } from "react-toastify";
 
 const TheHeader = () => {
   const pathname = usePathname();
@@ -84,7 +85,7 @@ const TheHeader = () => {
               >
                 <Link
                   className={`${style.link} ${style.link__about}`}
-                  href="/about-clinic"
+                  href={"/about-clinic"}
                 >
                   ПРО КЛІНІКУ
                 </Link>
@@ -95,13 +96,11 @@ const TheHeader = () => {
                   pathname === "/about-doctors"
                     ? `${style.link__about__wrapper} ${style.link__about__wrapper__active}`
                     : `${style.link__about__wrapper}`
-
-                  // style.link__about__wrapper
                 }
               >
                 <Link
                   className={`${style.link} ${style.link__about}`}
-                  href="/about-doctors"
+                  href={"/about-doctors"}
                 >
                   ЛІКАРІ
                 </Link>
@@ -114,7 +113,7 @@ const TheHeader = () => {
                 ? `${style.active} ${style.link}`
                 : style.link
             }
-            href="/services-and-prices"
+            href={"/services-and-prices"}
           >
             ПОСЛУГИ ТА ЦІНИ
           </Link>
@@ -124,7 +123,7 @@ const TheHeader = () => {
                 ? `${style.active} ${style.link}`
                 : style.link
             }
-            href="/blog"
+            href={"/blog"}
           >
             БЛОГ
           </Link>
@@ -135,7 +134,7 @@ const TheHeader = () => {
             className={style.img}
           />
           <Link
-            href="/contacts"
+            href={"/contacts"}
             className={
               pathname === "/contacts"
                 ? `${style.active} ${style.link}`
@@ -151,11 +150,23 @@ const TheHeader = () => {
             open={openModal}
             handleClose={() => setOpenModal(false)}
           >
-            <FormVisit />
+            <FormVisit closeModal={() => setOpenModal(false)} />
           </ModalContainer>
           <HeaderMob pathname={pathname ?? ""} />
         </header>
       ) : null}
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 };
