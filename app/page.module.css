@@ -1,3 +1,16 @@
+@import "./assets/font/stylesheet.css";
+
+@font-face {
+    font-family: "Cera Pro";
+    src: url("./assets/font/CeraPro-Regular.eot");
+    src: local("Cera Pro Regular"), local("CeraPro-Regular"),
+    url("./assets/font/CeraPro-Regular.eot?#iefix") format("embedded-opentype"),
+    url("./assets/font/CeraPro-Regular.woff2") format("woff2"),
+    url("./assets/font/CeraPro-Regular.woff") format("woff"),
+    url("./assets/font/CeraPro-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
 .page {
     max-width: 1180px;
     margin: 0 auto;
@@ -25,7 +38,7 @@
 }
 
 .service__info__subtitle {
-    font-family: 'Cera Pro', sans-serif;
+    font-family: Cera Pro, sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -212,11 +225,13 @@
 
     color: #000000;
 }
-.form__container{
+
+.form__container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .comments {
     border-top: 1px solid #000000;
     margin: 60px 0;

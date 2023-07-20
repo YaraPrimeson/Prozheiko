@@ -11,6 +11,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import style from "./form-visit.module.scss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { TextField } from "@mui/material";
 
 type FormVisitProps = {
   closeModal?: () => void;
@@ -146,7 +147,7 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
             !name || (phone ? phone.toString().length !== 12 : true) || !date
           }
         >
-          ВІДПРАВИТИas
+          ВІДПРАВИТИ
         </button>
       </form>
     </>
