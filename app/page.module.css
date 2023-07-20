@@ -1,16 +1,4 @@
-@import "./assets/font/stylesheet.css";
 
-@font-face {
-    font-family: "Cera Pro";
-    src: url("./assets/font/CeraPro-Regular.eot");
-    src: local("Cera Pro Regular"), local("CeraPro-Regular"),
-    url("./assets/font/CeraPro-Regular.eot?#iefix") format("embedded-opentype"),
-    url("./assets/font/CeraPro-Regular.woff2") format("woff2"),
-    url("./assets/font/CeraPro-Regular.woff") format("woff"),
-    url("./assets/font/CeraPro-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
 .page {
     max-width: 1180px;
     margin: 0 auto;
@@ -38,8 +26,6 @@
 }
 
 .service__info__subtitle {
-    font-family: Cera Pro, sans-serif;
-    font-style: normal;
     font-weight: 700;
     font-size: 25px;
     line-height: 31px;
@@ -59,7 +45,6 @@
 }
 
 .info__body__text {
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -90,7 +75,6 @@
 }
 
 .dental__care__title {
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
@@ -100,7 +84,6 @@
 }
 
 .dental__care__text {
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -113,7 +96,6 @@
     background: linear-gradient(271.18deg, #12979B 87.49%, rgba(62, 180, 184, 0.51) 99.44%);
     border-radius: 11px;
     border: none;
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -137,7 +119,6 @@
 }
 
 .about__title {
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
@@ -156,7 +137,6 @@
 .about__button {
     background: #12979B;
     border-radius: 10px;
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -206,7 +186,6 @@
 }
 
 .emergency__title {
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
@@ -217,7 +196,6 @@
 }
 
 .emergency__text {
-    font-family: 'Cera Pro', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;

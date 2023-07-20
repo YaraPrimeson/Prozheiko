@@ -18,7 +18,7 @@ const Page = () => {
         {arr.map((article, index) => {
           const isFirstTag = index === 0 || article.tag !== arr[index - 1].tag;
           return (
-            <>
+            <React.Fragment key={index}>
               {isFirstTag && (
                 <div>
                   <h3 className={style.tag__title}>{article.tag}</h3>
