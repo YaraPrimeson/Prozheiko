@@ -5,7 +5,7 @@ const ServicesCard = () => {
   return (
     <section className={style.services__card}>
       <div className={style.services__card__container}>
-        <p className={style.services__card__title}>Діагностика</p>
+        <p className={style.services__card__title}>Гарантії</p>
         <svg
           width="100"
           height="98"
@@ -63,7 +63,7 @@ const ServicesCard = () => {
         </svg>
       </div>
       <div className={style.services__card__container}>
-        <p className={style.services__card__title}>Лікування</p>
+        <p className={style.services__card__title}>Комплексний підхід</p>
         <svg
           width="90"
           height="94"
@@ -173,7 +173,7 @@ const ServicesCard = () => {
         </svg>
       </div>
       <div className={style.services__card__container}>
-        <p className={style.services__card__title}>Пломбування</p>
+        <p className={style.services__card__title}>Елайнери</p>
         <svg
           width="68"
           height="82"
@@ -227,7 +227,7 @@ const ServicesCard = () => {
         </svg>
       </div>
       <div className={style.services__card__container}>
-        <p className={style.services__card__title}>Гігієна та відбілювання</p>
+        <p className={style.services__card__title}>Відбілювання</p>
         <svg
           width="65"
           height="87"
@@ -265,7 +265,7 @@ const ServicesCard = () => {
         </svg>
       </div>
       <div className={style.services__card__container}>
-        <p className={style.services__card__title}>Брекет-системи</p>
+        <p className={style.services__card__title}>Брекети</p>
         <svg
           width="111"
           height="48"
@@ -331,7 +331,7 @@ const ServicesCard = () => {
         </svg>
       </div>
       <div className={style.services__card__container}>
-        <p className={style.services__card__title}>Відновлення естетики</p>
+        <p className={style.services__card__title}>Вініри</p>
         <svg
           width="111"
           height="53"

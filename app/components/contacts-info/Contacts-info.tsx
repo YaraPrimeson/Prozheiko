@@ -16,27 +16,6 @@ const ContactsInfo = () => {
         <h3 className={styles.contacts__title}>СТОМАТОЛОГІЧНА КЛІНІКА</h3>
         <h3 className={styles.contacts__subtitle}>PROZHEIKO DENTAL STUDIO</h3>
         <div className={styles.contact__link__container}>
-          <a className={styles.contact__link} href="tel:+38 (073) 38-38-532">
-            <svg
-              width="18"
-              height="17"
-              viewBox="0 0 18 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.7036 3.75C11.4361 3.89292 12.1094 4.25119 12.6371 4.77895C13.1649 5.30671 13.5232 5.97995 13.6661 6.7125M10.7036 0.75C12.2255 0.919077 13.6448 1.60063 14.7283 2.68276C15.8118 3.76488 16.4951 5.18326 16.6661 6.705M15.9161 12.69V14.94C15.9169 15.1489 15.8741 15.3556 15.7905 15.547C15.7068 15.7384 15.5841 15.9102 15.4301 16.0514C15.2762 16.1926 15.0945 16.3001 14.8966 16.367C14.6988 16.4339 14.4891 16.4588 14.2811 16.44C11.9732 16.1892 9.75634 15.4006 7.80859 14.1375C5.99646 12.986 4.46009 11.4496 3.30859 9.6375C2.04107 7.6809 1.25227 5.45325 1.00609 3.135C0.987345 2.9276 1.01199 2.71857 1.07846 2.52122C1.14493 2.32387 1.25177 2.14252 1.39216 1.98872C1.53256 1.83491 1.70344 1.71203 1.89393 1.62789C2.08442 1.54375 2.29034 1.5002 2.49859 1.5H4.74859C5.11257 1.49642 5.46543 1.62531 5.74141 1.86265C6.01739 2.09999 6.19765 2.42959 6.24859 2.79C6.34355 3.51005 6.51968 4.21705 6.77359 4.8975C6.8745 5.16594 6.89633 5.45769 6.83652 5.73816C6.7767 6.01863 6.63773 6.27608 6.43609 6.48L5.48359 7.4325C6.55125 9.31016 8.10593 10.8648 9.98359 11.9325L10.9361 10.98C11.14 10.7784 11.3975 10.6394 11.6779 10.5796C11.9584 10.5198 12.2501 10.5416 12.5186 10.6425C13.199 10.8964 13.906 11.0725 14.6261 11.1675C14.9904 11.2189 15.3231 11.4024 15.561 11.6831C15.7988 11.9638 15.9252 12.3222 15.9161 12.69Z"
-                stroke="#12979B"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <h3
-              className={`${globalStyles.hover__link} ${styles.contact__text}`}
-            >
-              +38 (073) 38-38-532
-            </h3>
-          </a>
           <a className={styles.contact__link} href="tel:+38 (068) 38-38-532">
             <svg
               width="18"
@@ -143,7 +122,8 @@ const ContactsInfo = () => {
         </div>
         <div className={styles.social__links__wrapper}>
           <a
-            href="@/src/app/contacts/page#"
+            href="https://www.facebook.com/prozheiko"
+            target="_blank"
             className={`${styles.social__link} ${styles.facebook}`}
           >
             <svg
@@ -159,7 +139,11 @@ const ContactsInfo = () => {
               />
             </svg>
           </a>
-          <a href="@/src/app/contacts/page#" className={styles.social__link}>
+          <a
+            href="https://www.instagram.com/prozheiko.dental.studio/"
+            target="_blank"
+            className={styles.social__link}
+          >
             <svg
               width="16"
               height="16"
@@ -173,7 +157,11 @@ const ContactsInfo = () => {
               />
             </svg>
           </a>
-          <a href="@/src/app/contacts/page#" className={styles.social__link}>
+          <a
+            href="https://www.youtube.com/@prozheikodentalstudio2504"
+            target="_blank"
+            className={styles.social__link}
+          >
             <svg
               width="15"
               height="10"

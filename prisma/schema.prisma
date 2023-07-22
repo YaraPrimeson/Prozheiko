@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Tag {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  tag String @unique
+}
+
+model Block {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String
+  value     String
+  Article   Article? @relation(fields: [articleId], references: [id])
+  articleId String?  @db.ObjectId
+  Service   Service? @relation(fields: [serviceId], references: [id])
+  serviceId String?  @db.ObjectId
+}
+
+model Article {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  tag     String
+  like    Int
+  title   String
+  dislike Int
+  text    String
+  list    String[]
+  blocks  Block[]
+}
+
+model Service {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  tag     String
+  like    Int
+  dislike Int
+  price   String
+  blocks  Block[]
+}

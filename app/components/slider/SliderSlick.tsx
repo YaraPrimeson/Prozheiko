@@ -31,7 +31,7 @@ const SliderSlick = () => {
     <>
       <Slider {...settings}>
         {items.map((image) => (
-          <div key={image.name}>
+          <div key={image.name} className={style.container}>
             <Image className={style.img} src={image.image} alt={image.name} />
           </div>
         ))}

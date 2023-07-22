@@ -24,7 +24,7 @@ const Page = () => {
         <ContactsInfo />
         <section className={style.doctors}>
           <h3 className={`${globalStyle.title} ${style.doctors__title}`}>
-            Наші лікарі
+            Наша команда
           </h3>
           <div className={style.doctors__container}>
             <div className={style.doctor__wrapper}>

@@ -35,7 +35,7 @@ const Page = () => {
                   <h1 className={style.title}>{article.title}</h1>
                 </div>
               </Link>
-            </>
+            </React.Fragment>
           );
         })}
       </section>
