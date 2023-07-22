@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./service.module.scss";
-import serviceArr from "@/app/services-and-prices/servicesArray";
+import serviceArr from "@/app/prices/servicesArray";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import Service from "@/app/assets/images/services.webp";
 import FormVisit from "@/app/components/form-visit/FormVisit";
@@ -32,15 +32,15 @@ const Page = ({ params }: any) => {
       <section className={style.service}>
         <Card item={item} />
       </section>
-      <section className={style.other}>
-        <h2 className={style.other__title}>Інші послуги</h2>
-        <div className={style.other__wrapper}>
-          <div>
-            <Image src="" alt="" />
-            <p>Сканування</p>
-          </div>
-        </div>
-      </section>
+      {/*<section className={style.other}>*/}
+      {/*  <h2 className={style.other__title}>Інші послуги</h2>*/}
+      {/*  <div className={style.other__wrapper}>*/}
+      {/*    <div>*/}
+      {/*      <Image src="" alt="" />*/}
+      {/*      <p>Сканування</p>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
       <section>
         <FormVisit />
       </section>

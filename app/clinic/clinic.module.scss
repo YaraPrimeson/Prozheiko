@@ -53,6 +53,7 @@
   height: 45px;
   margin-top: 50px;
 }
+
 .doctors__container {
   display: flex;
   flex-direction: row;
@@ -107,6 +108,12 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .container {
+    margin: 55px auto 0;
+  }
+  .banner {
+    display: none;
+  }
   .history__wrapper {
     flex-direction: column;
     gap: 20px;

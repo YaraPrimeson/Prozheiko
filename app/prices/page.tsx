@@ -2,7 +2,7 @@ import React from "react";
 import Services from "@/app/assets/images/services.webp";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import style from "./services.module.scss";
-import ServiceCard from "@/app/services-and-prices/service-card";
+import ServiceCard from "@/app/prices/service-card";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import TagList from "@/app/components/tag-list/TagList";
 import serviceArray from "./servicesArray";

@@ -359,6 +359,22 @@
 }
 
 @media screen and (max-width: 600px) {
+    .service__info__list {
+        padding: 20px 10px 20px 20px;
+        width: 100%;
+        min-width: auto;
+    }
+
+    .service__info__list:first-child {
+        min-width: 220px;
+    }
+
+    .service__info__subtitle {
+        font-size: 20px;
+        line-height: 22px;
+        white-space: pre;
+    }
+
     .about {
         margin: 36px auto;
     }
@@ -398,19 +414,16 @@
     }
 
     .service__info {
-        margin: 36px auto;
+        margin: 30px auto 15px;
     }
 
     .dental__care {
         max-width: 100%;
-        gap: 30px;
+        gap: 0;
     }
 
     .dental__care__img {
-        width: 100vw;
-        max-width: 400px;
-        height: auto;
-        max-height: 250px;
+        display: none;
     }
 
     .dental__care__text__wrapper {
@@ -460,12 +473,11 @@
 }
 
 @media screen and (max-width: 350px) {
-    .service__info__list {
-        width: 300px;
-        min-width: 300px;
-        padding: 20px 12px 20px 30px;
-    }
-
+    /*.service__info__list {*/
+    /*    width: 300px;*/
+    /*    min-width: 300px;*/
+    /*    padding: 20px 12px 20px 30px;*/
+    /*}*/
     .dental__care__button {
         font-size: 12px;
     }

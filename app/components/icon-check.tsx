@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../about-doctors/doctors.module.scss";
+import style from "@/app/doctors/doctors.module.scss";
 
 const IconCheck = () => {
   return (

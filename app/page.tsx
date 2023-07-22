@@ -140,7 +140,7 @@ export default function Home() {
                   >
                     +38 (068) 38-38-532
                   </a>
-                </div>{" "}
+                </div>
               </div>
             </li>
           </ul>
@@ -165,7 +165,7 @@ export default function Home() {
               пацієнтів! Ми пропонуємо комплекс послуг для лікування та
               покращення зовнішнього вигляду зубів у комфортній атмосфері!
             </p>
-            <Link href={"/services-and-prices"}>
+            <Link href={"/prices"}>
               <button className={style.dental__care__button}>
                 ДІАГНОСТИКА РОТОВОЇ ПОРОЖНИНИ
                 <svg
@@ -200,7 +200,7 @@ export default function Home() {
               університеті імені А. А. Богомольця та Військово-медичній Академії
               стажувався у найкращих українських та закордонних спеціалістів.
             </p>
-            <Link href="/about-clinic" className={style.about__clinic__link}>
+            <Link href="/clinic" className={style.about__clinic__link}>
               <button className={style.about__button}>
                 БІЛЬШЕ
                 <svg

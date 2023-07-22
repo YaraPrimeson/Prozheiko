@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import style from "./header.module.scss";
+import globalStyles from "../../styles/global.module.scss";
 import logo from "../../assets/images/logo.webp";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import FormVisit from "@/app/components/form-visit/FormVisit";
@@ -25,13 +26,16 @@ const TheHeader = () => {
     <>
       {pathname !== "/admin" ? (
         <header className={style.header}>
-          <Link
-            className={
-              pathname === "/" ? `${style.active} ${style.link}` : style.link
-            }
-            href="/"
-          >
-            ГОЛОВНА
+          <Link className={style.link} href="/">
+            <p
+              className={
+                pathname === "/"
+                  ? `${style.active}`
+                  : `${globalStyles.hover__link}`
+              }
+            >
+              ГОЛОВНА
+            </p>
           </Link>
           <div
             onMouseEnter={handleSelectOpen}
@@ -40,7 +44,7 @@ const TheHeader = () => {
           >
             <p
               className={
-                pathname === "/about-clinic" || pathname === "/about-doctors"
+                pathname === "/clinic" || pathname === "/doctors"
                   ? `${style.active} ${style.link}`
                   : style.link
               }
@@ -60,7 +64,7 @@ const TheHeader = () => {
               <path
                 d="M1 1L4 4L7 1"
                 stroke={
-                  pathname === "/about-clinic" || pathname === "/about-doctors"
+                  pathname === "/clinic" || pathname === "/doctors"
                     ? "#12979B"
                     : "#292929"
                 }
@@ -78,54 +82,72 @@ const TheHeader = () => {
               <li
                 onClick={handleSelectClose}
                 className={
-                  pathname === "/about-clinic"
+                  pathname === "/clinic"
                     ? `${style.link__about__wrapper} ${style.link__about__wrapper__active}`
                     : `${style.link__about__wrapper}`
                 }
               >
                 <Link
                   className={`${style.link} ${style.link__about}`}
-                  href={"/about-clinic"}
+                  href={"/clinic"}
                 >
-                  ПРО КЛІНІКУ
+                  <p
+                    className={
+                      pathname === "/clinic"
+                        ? ""
+                        : `${globalStyles.hover__link}`
+                    }
+                  >
+                    ПРО КЛІНІКУ
+                  </p>
                 </Link>
               </li>
               <li
                 onClick={handleSelectClose}
                 className={
-                  pathname === "/about-doctors"
+                  pathname === "/doctors"
                     ? `${style.link__about__wrapper} ${style.link__about__wrapper__active}`
                     : `${style.link__about__wrapper}`
                 }
               >
                 <Link
                   className={`${style.link} ${style.link__about}`}
-                  href={"/about-doctors"}
+                  href={"/doctors"}
                 >
-                  НАША КОМАНДА
+                  <p
+                    className={
+                      pathname === "/doctors"
+                        ? ""
+                        : `${globalStyles.hover__link}`
+                    }
+                  >
+                    НАША КОМАНДА
+                  </p>
                 </Link>
               </li>
             </ul>
           </div>
-          <Link
-            className={
-              pathname === "/services-and-prices"
-                ? `${style.active} ${style.link}`
-                : style.link
-            }
-            href={"/services-and-prices"}
-          >
-            ПОСЛУГИ ТА ЦІНИ
+          <Link className={style.link} href={"/prices"}>
+            <p
+              className={
+                pathname === "/prices"
+                  ? `${style.active}`
+                  : `${globalStyles.hover__link}`
+              }
+            >
+              ПОСЛУГИ ТА ЦІНИ
+            </p>
           </Link>
-          <Link
-            className={
-              pathname === "/blog"
-                ? `${style.active} ${style.link}`
-                : style.link
-            }
-            href={"/blog"}
-          >
-            БЛОГ
+          <Link className={style.link} href={"/blog"}>
+            <p
+              className={
+                pathname === "/blog"
+                  ? `${style.active}`
+                  : `${globalStyles.hover__link}`
+              }
+            >
+              БЛОГ
+            </p>
           </Link>
           <Image
             loading="lazy"
@@ -133,15 +155,16 @@ const TheHeader = () => {
             alt="prozheiko dental studio"
             className={style.img}
           />
-          <Link
-            href={"/contacts"}
-            className={
-              pathname === "/contacts"
-                ? `${style.active} ${style.link}`
-                : style.link
-            }
-          >
-            КОНТАКТИ
+          <Link href={"/contacts"} className={style.link}>
+            <p
+              className={
+                pathname === "/contacts"
+                  ? `${style.active}`
+                  : `${globalStyles.hover__link}`
+              }
+            >
+              КОНТАКТИ
+            </p>
           </Link>
           <button className={style.button} onClick={() => setOpenModal(true)}>
             ЗАПИСАТИСЬ НА ВІЗИТ

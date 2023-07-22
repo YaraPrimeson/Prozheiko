@@ -203,6 +203,7 @@ const Footer = () => {
             className={`${style.social__link} ${style.facebook}`}
           >
             <svg
+              style={{ marginTop: "auto" }}
               width="11"
               height="20"
               viewBox="0 0 11 20"
