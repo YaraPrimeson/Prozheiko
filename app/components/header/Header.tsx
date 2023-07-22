@@ -102,7 +102,7 @@ const TheHeader = () => {
                   className={`${style.link} ${style.link__about}`}
                   href={"/about-doctors"}
                 >
-                  ЛІКАРІ
+                  НАША КОМАНДА
                 </Link>
               </li>
             </ul>

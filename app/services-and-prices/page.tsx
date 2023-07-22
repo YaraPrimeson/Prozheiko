@@ -22,7 +22,7 @@ const Page = () => {
           const isFirstTag =
             index === 0 || item.tag !== serviceArray[index - 1].tag;
           return (
-            <>
+            <React.Fragment key={index}>
               {isFirstTag && (
                 <div>
                   <h3 className={style.tag__title}>{item.tag}</h3>
@@ -38,7 +38,7 @@ const Page = () => {
                 list={item.list}
                 id={item.id}
               />
-            </>
+            </React.Fragment>
           );
         })}
       </section>

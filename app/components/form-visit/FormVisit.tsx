@@ -124,17 +124,6 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
             ampm={false}
             className={style.input}
             label={"Побажання щодо часу/дати"}
-            // renderInput={(params) => (
-            //   <TextField
-            //     inputProps={{
-            //       placeholder: "hello",
-            //     }}
-            //     InputProps={{
-            //       placeholder: "hello",
-            //     }}
-            //     {...params}
-            //   />
-            // )}
             value={date}
             onChange={(newValue) => setDate(newValue)}
           />
@@ -146,7 +135,7 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
             !name || (phone ? phone.toString().length !== 12 : true) || !date
           }
         >
-          ВІДПРАВИТИas
+          ВІДПРАВИТИ
         </button>
       </form>
     </>
