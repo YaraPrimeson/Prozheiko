@@ -4,7 +4,6 @@
 }
 
 .title {
-  // font-family: 'Cera Pro', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 50px;
@@ -14,7 +13,6 @@
 }
 
 .text {
-  // font-family: 'Cera Pro', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -26,7 +24,6 @@
   background: #12979B;
   border-radius: 10px;
   border: none;
-  // font-family: 'Cera Pro', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -38,7 +35,7 @@
   justify-content: center;
 }
 
-h3.hover__link {
+p.hover__link {
   background-image: linear-gradient(to right, #12979b, #12979b 50%, #292929 50%);
   background-size: 200% 100%;
   background-position: -100%;

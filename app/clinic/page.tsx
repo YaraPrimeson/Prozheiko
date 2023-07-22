@@ -17,10 +17,12 @@ import Link from "next/link";
 const Page = () => {
   return (
     <>
-      <BannerContainer
-        image={banner}
-        altDescription={"банерна картинка з підписом (про клініку)"}
-      />
+      <div className={style.banner}>
+        <BannerContainer
+          image={banner}
+          altDescription={"банерна картинка з підписом (про клініку)"}
+        />
+      </div>
       <div className={style.container}>
         <section className={style.history}>
           <div className={style.history__wrapper}>
@@ -81,7 +83,7 @@ const Page = () => {
           </div>
         </section>
         <section className={style.doctors}>
-          <Link href={"/about-doctors"} className={style.doctors__link}>
+          <Link href={"/doctors"} className={style.doctors__link}>
             <h3
               className={`${globalStyles.hover__link} ${globalStyles.title} ${style.doctors__title}`}
             >

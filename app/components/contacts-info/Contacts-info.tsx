@@ -31,11 +31,11 @@ const ContactsInfo = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <h3
+            <p
               className={`${globalStyles.hover__link} ${styles.contact__text}`}
             >
               +38 (068) 38-38-532
-            </h3>
+            </p>
           </a>
           <a className={styles.contact__link} href="tel:+38 (044) 38-38-532">
             <svg
@@ -52,11 +52,11 @@ const ContactsInfo = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <h3
+            <p
               className={`${globalStyles.hover__link} ${styles.contact__text}`}
             >
               +38 (044) 38-38-532
-            </h3>
+            </p>
           </a>
           <a
             className={styles.contact__link}
@@ -82,11 +82,11 @@ const ContactsInfo = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <h3
+            <p
               className={`${globalStyles.hover__link} ${styles.contact__text}`}
             >
               clients@prozheiko.kiev.ua
-            </h3>
+            </p>
           </a>
           <a
             className={styles.contact__link}
@@ -113,11 +113,11 @@ const ContactsInfo = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <h3
+            <p
               className={`${globalStyles.hover__link} ${styles.contact__text}`}
             >
               Бульвар Дружби народів 6-Б
-            </h3>
+            </p>
           </a>
         </div>
         <div className={styles.social__links__wrapper}>
@@ -127,6 +127,7 @@ const ContactsInfo = () => {
             className={`${styles.social__link} ${styles.facebook}`}
           >
             <svg
+              style={{ marginTop: "auto" }}
               width="11"
               height="20"
               viewBox="0 0 11 20"

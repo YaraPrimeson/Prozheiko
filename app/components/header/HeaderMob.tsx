@@ -57,11 +57,11 @@ const HeaderMob: FC<HeaderMobProps> = ({ pathname }) => {
         <li className={style.link__wrapper}>
           <Link
             className={
-              pathname === "/about-clinic"
+              pathname === "/clinic"
                 ? `${style.active} ${style.link__mob}`
                 : style.link__mob
             }
-            href={"/about-clinic"}
+            href={"/clinic"}
           >
             Про клініку
           </Link>
@@ -69,23 +69,23 @@ const HeaderMob: FC<HeaderMobProps> = ({ pathname }) => {
         <li className={style.link__wrapper}>
           <Link
             className={
-              pathname === "/about-doctors"
+              pathname === "/doctors"
                 ? `${style.active} ${style.link__mob}`
                 : style.link__mob
             }
-            href={"/about-doctors"}
+            href={"/doctors"}
           >
-            Лікарі
+            Наша Команда
           </Link>
         </li>
         <li className={style.link__wrapper}>
           <Link
             className={
-              pathname === "/services-and-prices"
+              pathname === "/prices"
                 ? `${style.active} ${style.link__mob}`
                 : style.link__mob
             }
-            href={"/services-and-prices"}
+            href={"/prices"}
           >
             Послуги та ціни
           </Link>

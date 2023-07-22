@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import globalStyles from "@/app/styles/global.module.scss";
-import style from "@/app/about-clinic/clinic.module.scss";
+import style from "@/app/clinic/clinic.module.scss";
 import { ToastContainer } from "react-toastify";
 
 const ModalVisit = () => {
