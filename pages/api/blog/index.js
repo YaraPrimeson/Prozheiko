@@ -1,4 +1,9 @@
-import { createArticle, getArticles } from "../../../lib/blog";
+import {
+  createArticle,
+  deleteArticle,
+  editArticle,
+  getArticles,
+} from "../../../lib/blog";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
@@ -12,15 +17,32 @@ const handler = async (req, res) => {
 
   if (req.method === "POST") {
     try {
-      const article = req.body;
+      const article = JSON.parse(req.body);
       await createArticle(article);
       return res.status(200).json({ message: "created" });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
   }
-
-  res.setHeader("Allow", ["GET", "POST"]);
+  if (req.method === "PATCH") {
+    try {
+      const article = JSON.parse(req.body);
+      await editArticle(article);
+      return res.status(200).json({ message: "edited" });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+  if (req.method === "DELETE") {
+    const id = req.body;
+    try {
+      await deleteArticle(id);
+      return res.status(200).json({ message: "deleted" });
+    } catch (error) {
+      return res.status(500).end(); // Помилка сервера
+    }
+  }
+  res.setHeader("Allow", ["GET", "POST", "DELETE"]);
   res.status(425).end(`Method ${req.method} is not allowed.`);
 };
 

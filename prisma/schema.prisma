@@ -13,31 +13,27 @@ model Tag {
 }
 
 model Block {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  type      String
-  value     String
-  Article   Article? @relation(fields: [articleId], references: [id])
-  articleId String?  @db.ObjectId
-  Service   Service? @relation(fields: [serviceId], references: [id])
-  serviceId String?  @db.ObjectId
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  type  String
+  value Json
 }
 
 model Article {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  tag     String
-  like    Int
-  title   String
-  dislike Int
-  text    String
-  list    String[]
-  blocks  Block[]
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  tag      String
+  title    String
+  like     String
+  dislike  String
+  imageUrl String
+  blocks   Json
 }
 
 model Service {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
   tag     String
   like    Int
   dislike Int
   price   String
-  blocks  Block[]
+  list    String[]
+  blocks  Json
 }

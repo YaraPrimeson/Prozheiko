@@ -1,4 +1,4 @@
-import { createTag, getTags } from "../../../lib/tag";
+import { createTag, deleteTag, editTag, getTags } from "../../../lib/tag";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
@@ -12,12 +12,30 @@ const handler = async (req, res) => {
 
   if (req.method === "POST") {
     try {
-      const { tag } = req.body;
+      const tag = req.body;
       const { tags, error } = await createTag(tag);
       if (error) console.log("error", error);
-      return res.status(200).json({ tags });
+      return res.status(200).json({ message: "edited" });
     } catch (error) {
       return res.status(500).json({ error: error.message });
+    }
+  }
+  if (req.method === "PATCH") {
+    const tag = JSON.parse(req.body);
+    try {
+      await editTag(tag);
+      return res.status(200).json({ message: "deleted" });
+    } catch (error) {
+      return res.status(500).end(); // Помилка сервера
+    }
+  }
+  if (req.method === "DELETE") {
+    const id = req.body;
+    try {
+      await deleteTag(id);
+      return res.status(200).json({ message: "deleted" });
+    } catch (error) {
+      return res.status(500).end(); // Помилка сервера
     }
   }
 

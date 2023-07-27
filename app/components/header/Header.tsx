@@ -24,7 +24,10 @@ const TheHeader = () => {
 
   return (
     <>
-      {pathname !== "/admin" ? (
+      {pathname !== "/admin" &&
+      pathname !== "/admin/blog" &&
+      pathname !== "/admin/prices" &&
+      pathname !== "/admin/tags" ? (
         <header className={style.header}>
           <Link className={style.link} href="/">
             <p
