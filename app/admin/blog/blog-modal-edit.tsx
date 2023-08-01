@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
@@ -14,13 +14,15 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
   const [formData, setFormData] = useState(article);
   // const [blocks, setBlocks] = useState(article?.blocks);
   const [title, setTitle] = useState(article.title);
-  const [imageUrl, setImageUrl] = useState(
-    article?.imageUrl && article?.imageUrl
-  );
+  // const [imageUrl, setImageUrl] = useState(article?.imageUrl);
+  const [imageUrl, setImageUrl] = useState("");
   const [tag, setTag] = useState(article.tag);
   const [like, setLike] = useState(article.like);
   const [dislike, setDislike] = useState(article.dislike);
-
+  useEffect(() => {
+    if (!article) return;
+    setImageUrl(article?.imageUrl);
+  }, [article]);
   const toggleEditMode = () => {
     setOpenModal(true);
   };
