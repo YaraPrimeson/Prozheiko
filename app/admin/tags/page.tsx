@@ -8,7 +8,7 @@ import TagModalDelete from "@/app/admin/tags/tag-modal-delete";
 import Header from "@/app/admin/header";
 
 const Page = async () => {
-  const tags = await getTags();
+  const tags: any = await getTags();
   return (
     <>
       <Header />

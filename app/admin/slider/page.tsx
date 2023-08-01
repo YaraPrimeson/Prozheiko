@@ -9,7 +9,7 @@ import SliderModalDelete from "@/app/admin/slider/slider-modal-delete";
 import { Slider } from "@prisma/client";
 
 const Page = async () => {
-  const slider: Slider[] = await getSliders();
+  const slider: any = await getSliders();
   return (
     <>
       <Header />

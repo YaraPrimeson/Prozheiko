@@ -23,20 +23,24 @@ export async function generateMetadata({ params }: BlogArticleProps) {
 const BlogArticle = async ({ params }: any) => {
   const { id } = params;
   const article = await getArticle(id);
-  const articles = await getArticles(article.tag);
+  const articles: any = await getArticles(article && article.id);
   return (
     <>
       <BannerContainer image={Blog} altDescription={"Blog"} />
       <section className={style.blog}>
         <Card item={article} />
       </section>
-      {articles.filter((articleItem: Article) => articleItem.id !== article.id)
-        .length > 0 && (
+      {articles.filter(
+        (articleItem: Article) => articleItem.id !== (article && article.id)
+      ).length > 0 && (
         <section className={style.other}>
           <h2 className={style.other__title}>Цікаві статті</h2>
           <ul className={style.other__container}>
             {articles
-              .filter((articleItem: Article) => articleItem.id !== article.id)
+              .filter(
+                (articleItem: Article) =>
+                  articleItem.id !== (article && article.id)
+              )
               .map((article: Article) => (
                 <Link key={article.id} href={`/blog/${article.id}`}>
                   <li className={style.other__list}>

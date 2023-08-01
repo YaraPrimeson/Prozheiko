@@ -10,8 +10,8 @@ import ServiceDeleteModal from "@/app/admin/services/service-delete-modal";
 import ServiceCreateModal from "@/app/admin/services/service-create-modal";
 
 const Page = async () => {
-  const services: Service[] = await getServices();
-  const tags: Tag[] = await getTags();
+  const services: any = await getServices();
+  const tags: any = await getTags();
   return (
     <>
       <Header />
@@ -19,7 +19,7 @@ const Page = async () => {
         <ServiceCreateModal tags={tags} />
         <div className={style.container}>
           {services
-            .sort((a, b) => a.tag.localeCompare(b.tag))
+            .sort((a: any, b: any) => a.tag.localeCompare(b.tag))
             .map((service: Service, index: number) => {
               const isFirstTag =
                 index === 0 || service.tag !== services[index - 1].tag;

@@ -10,8 +10,8 @@ import BlogCreateModal from "@/app/admin/blog/blog-create-modal";
 import { Article } from "@prisma/client";
 
 const Page = async () => {
-  const blog: Article[] = await getArticles();
-  const tags = await getTags();
+  const blog: any = await getArticles();
+  const tags: any = await getTags();
   return (
     <>
       <Header />
@@ -19,7 +19,7 @@ const Page = async () => {
         <BlogCreateModal tags={tags} />
         <div className={style.container}>
           {blog
-            .sort((a, b) => a.tag.localeCompare(b.tag))
+            .sort((a: any, b: any) => a.tag.localeCompare(b.tag))
             .map((article: Article, index: number) => {
               const isFirstTag =
                 index === 0 || article.tag !== blog[index - 1].tag;
