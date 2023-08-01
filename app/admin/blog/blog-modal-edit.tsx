@@ -20,8 +20,9 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
   const [like, setLike] = useState(article.like);
   const [dislike, setDislike] = useState(article.dislike);
   useEffect(() => {
-    if (!article) return;
-    setImageUrl(article?.imageUrl);
+    if (article?.imageUrl) {
+      setImageUrl(article?.imageUrl);
+    }
   }, [article]);
   const toggleEditMode = () => {
     setOpenModal(true);
