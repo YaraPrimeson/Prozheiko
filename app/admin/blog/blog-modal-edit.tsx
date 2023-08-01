@@ -12,7 +12,7 @@ type BlogModalBlogProps = {
 const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
   const [openModal, setOpenModal] = useState(false);
   const [formData, setFormData] = useState(article);
-  const [blocks, setBlocks] = useState(article.blocks);
+  const [blocks, setBlocks] = useState<Article["blocks"]>(article.blocks);
   const [title, setTitle] = useState(article.title);
   const [imageUrl, setImageUrl] = useState(article.imageUrl);
   const [tag, setTag] = useState(article.tag);
