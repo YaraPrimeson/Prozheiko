@@ -16,8 +16,8 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
   const [title, setTitle] = useState(article.title);
   const [imageUrl, setImageUrl] = useState(article?.imageUrl ?? "");
   const [tag, setTag] = useState(article.tag);
-  const [like, setLike] = useState(article.like);
-  const [dislike, setDislike] = useState(article.dislike);
+  const [like, setLike] = useState<string>(article.like);
+  const [dislike, setDislike] = useState<string>(article.dislike);
 
   const toggleEditMode = () => {
     setOpenModal(true);
