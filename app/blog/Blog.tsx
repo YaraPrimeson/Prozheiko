@@ -20,9 +20,7 @@ export default function Blog() {
   function fetchArticles() {
     setLoadingArticles(true);
     return new Promise((resolve, reject) => {
-      fetch(
-        `http://localhost:3000/api/blog?tag=${encodeURIComponent(activeTag)}`
-      )
+      fetch(`/api/blog?tag=${encodeURIComponent(activeTag)}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -38,7 +36,7 @@ export default function Blog() {
   function fetchTags() {
     setLoadingTags(true);
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:3000/api/tags")
+      fetch("/api/tags")
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

@@ -16,11 +16,7 @@ const ServiceList = () => {
   function fetchArticles() {
     setLoadingServices(true);
     return new Promise((resolve, reject) => {
-      fetch(
-        `http://localhost:3000/api/services?tag=${encodeURIComponent(
-          activeTag
-        )}`
-      )
+      fetch(`/api/services?tag=${encodeURIComponent(activeTag)}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -36,7 +32,7 @@ const ServiceList = () => {
   function fetchTags() {
     setLoadingTags(true);
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:3000/api/tags")
+      fetch("/api/tags")
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

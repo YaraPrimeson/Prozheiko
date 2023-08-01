@@ -29,7 +29,7 @@ const SliderSlick = () => {
   function getSlides() {
     setLoadingSlides(true);
     return new Promise((resolve, reject) => {
-      fetch(`http://localhost:3000/api/slider`)
+      fetch(`/api/slider`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
