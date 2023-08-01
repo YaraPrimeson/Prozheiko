@@ -14,7 +14,9 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
   const [formData, setFormData] = useState(article);
   // const [blocks, setBlocks] = useState(article?.blocks);
   const [title, setTitle] = useState(article.title);
-  const [imageUrl, setImageUrl] = useState(article && article.imageUrl);
+  const [imageUrl, setImageUrl] = useState(
+    article?.imageUrl && article?.imageUrl
+  );
   const [tag, setTag] = useState(article.tag);
   const [like, setLike] = useState(article.like);
   const [dislike, setDislike] = useState(article.dislike);
