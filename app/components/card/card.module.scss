@@ -24,11 +24,6 @@
 }
 
 .title__container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 33px;
   width: 80%;
   margin: 60px auto 30px;
 }
@@ -96,4 +91,74 @@
   font-weight: 400;
   line-height: normal;
   margin-left: 20px;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+  .tag__line {
+    width: 240px;
+    margin-left: -40px;
+  }
+  .title__container {
+    margin: 30px auto;
+  }
+  .text__container {
+    margin: 40px 0 60px;
+  }
+  .title {
+    font-size: 45px;
+  }
+  .evaluation__title {
+    font-size: 45px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .text__container {
+    margin: 40px 0;
+  }
+  .evaluation__title {
+    font-size: 30px;
+  }
+
+  .icon {
+    width: 36px;
+    height: 37px;
+  }
+
+  .evaluation__count {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tag {
+    font-size: 40px;
+    margin-bottom: 6px;
+  }
+  .tag__line {
+    width: 180px;
+  }
+  .title__container {
+    width: 100%;
+  }
+  .title {
+    font-size: 35px;
+  }
+  .img {
+    max-height: 450px;
+    max-width: 420px;
+    object-fit: cover;
+  }
+  .text__container {
+    margin: 20px 0;
+  }
+  .subtitle {
+    margin: 15px 0;
+    font-size: 22px;
+  }
+  .list {
+    font-size: 18px;
+  }
 }

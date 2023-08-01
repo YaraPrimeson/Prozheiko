@@ -1,11 +1,10 @@
 import React from "react";
-import Header from "@/app/admin/header";
+import ImageUpload from "@/app/admin/upload/ImageUpload";
 
 const Page = () => {
   return (
     <div>
-      <Header />
-      prices page
+      <ImageUpload />
     </div>
   );
 };

@@ -8,7 +8,8 @@ import {
 const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
-      const blog = await getArticles();
+      const { tag } = req.query;
+      const blog = await getArticles(tag);
       return res.status(200).json({ blog });
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -27,8 +28,8 @@ const handler = async (req, res) => {
   if (req.method === "PATCH") {
     try {
       const article = JSON.parse(req.body);
-      await editArticle(article);
-      return res.status(200).json({ message: "edited" });
+      const updateArticle = await editArticle(article);
+      return res.status(200).json({ article: updateArticle });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

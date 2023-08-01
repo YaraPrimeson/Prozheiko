@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
@@ -9,7 +9,6 @@ import {
   Select,
   Box,
   SelectChangeEvent,
-  TextField,
 } from "@mui/material";
 import { Tag } from "@prisma/client";
 import BlockList from "@/app/admin/block-list";
@@ -19,8 +18,8 @@ type BlogCreateModalProps = {
 };
 
 export interface IBlock {
-  type: "paragraph" | "subtitle" | "list" | "img";
-  value: string | [];
+  type: "paragraph" | "subtitle" | "list" | "imageUrl";
+  value: string | string[];
 }
 
 const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
@@ -40,10 +39,10 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
     setBlock({ type: "paragraph", value: "" });
   };
   const addList = () => {
-    setBlock({ type: "list", value: [] });
+    setBlock({ type: "list", value: [""] });
   };
   const addImage = () => {
-    setBlock({ type: "img", value: "" });
+    setBlock({ type: "imageUrl", value: "" });
   };
 
   const onChangeBlockValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +50,25 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
       ...prev,
       ["value"]: e.target.value,
     }));
+  };
+  const onChangeBlockListValue = (
+    index: number,
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const updatedList = Array.isArray(block?.value) && [
+      ...(block?.value || []),
+    ];
+
+    if (!updatedList) return;
+    updatedList[index] = e.target.value;
+
+    setBlock((prevBlock: any) => {
+      if (!prevBlock) return null; // Safeguard in case prevBlock is null or undefined
+      return {
+        ...prevBlock,
+        value: updatedList,
+      };
+    });
   };
   const onDeleteCurrentBlock = () => {
     setBlock(null);
@@ -61,6 +79,22 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
     setBlocks((prev: IBlock[]) => [...prev, block]);
     setBlock(null);
   };
+
+  const addNewListToBlock = () => {
+    if (!block) return;
+    setBlock((prev: any) => ({ type: prev.type, value: [...prev.value, ""] }));
+  };
+  const deleteCurrentListItem = (indexValue: number) => {
+    setBlock((prevBlock: any) => {
+      return {
+        ...prevBlock,
+        value: prevBlock?.value?.filter(
+          (value: string, index: number) => index !== indexValue
+        ),
+      };
+    });
+  };
+
   const toggleEditMode = () => {
     setOpenModal(true);
   };
@@ -88,7 +122,6 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
     }
   }
 
-  console.log(blocks);
   return (
     <div>
       <div onClick={toggleEditMode} className={globalS.btn__create__container}>
@@ -118,7 +151,7 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
           </Box>
           <div className={style.input__container}>
             <div className={style.input__wrapper}>
-              <label htmlFor="title">title</label>
+              <label>Заголовок</label>
               <input
                 className={style.input}
                 onChange={(e) => setTitle(e.target.value)}
@@ -129,7 +162,7 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
               />
             </div>
             <div className={style.input__wrapper}>
-              <label htmlFor="image">image url</label>
+              <label>посилання на картинку</label>
               <input
                 className={style.input}
                 onChange={(e) => setImgUrl(e.target.value)}
@@ -141,7 +174,7 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
             </div>
 
             <div className={style.input__wrapper}>
-              <label htmlFor="like">like</label>
+              <label>like</label>
               <input
                 className={style.input}
                 type="number"
@@ -152,7 +185,7 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
               />
             </div>
             <div className={style.input__wrapper}>
-              <label htmlFor="dislike">dislike</label>
+              <label>dislike</label>
               <input
                 className={style.input}
                 type="number"
@@ -164,7 +197,6 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
             </div>
             {blocks &&
               blocks?.map((block, index) => {
-                console.log(block);
                 if (block.type === "list")
                   return <div key={index}>{block?.value}</div>;
                 else {
@@ -174,18 +206,37 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
             {block && (
               <BlockList
                 block={block}
+                deleteCurrentListItem={deleteCurrentListItem}
+                addNewListToBlock={addNewListToBlock}
                 addToBlocks={addToBlocks}
                 onChange={onChangeBlockValue}
+                onChangeBlockListValue={onChangeBlockListValue}
                 onDeleteCurrentBlock={onDeleteCurrentBlock}
               />
             )}
             {!block && (
-              <>
-                <button onClick={addTitle}>add subtitle</button>
-                <button onClick={addParagraph}>add paragraph</button>
-                <button onClick={addList}>add list</button>
-                <button onClick={addImage}>add img</button>
-              </>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  justifyContent: "start",
+                  gap: "20px",
+                }}
+              >
+                <button className={globalS.btn__create} onClick={addTitle}>
+                  додати Підзаголовок
+                </button>
+                <button className={globalS.btn__create} onClick={addParagraph}>
+                  додати Параграф
+                </button>
+                <button className={globalS.btn__create} onClick={addList}>
+                  додати Список
+                </button>
+                <button className={globalS.btn__create} onClick={addImage}>
+                  додати Посилання на картинку
+                </button>
+              </div>
             )}
           </div>
           <div className={style.btn__wrapper}>

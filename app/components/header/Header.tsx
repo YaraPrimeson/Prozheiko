@@ -26,7 +26,9 @@ const TheHeader = () => {
     <>
       {pathname !== "/admin" &&
       pathname !== "/admin/blog" &&
-      pathname !== "/admin/prices" &&
+      pathname !== "/admin/upload" &&
+      pathname !== "/admin/slider" &&
+      pathname !== "/admin/services" &&
       pathname !== "/admin/tags" ? (
         <header className={style.header}>
           <Link className={style.link} href="/">
@@ -130,10 +132,10 @@ const TheHeader = () => {
               </li>
             </ul>
           </div>
-          <Link className={style.link} href={"/prices"}>
+          <Link className={style.link} href={"/services"}>
             <p
               className={
-                pathname === "/prices"
+                pathname === "/services"
                   ? `${style.active}`
                   : `${globalStyles.hover__link}`
               }

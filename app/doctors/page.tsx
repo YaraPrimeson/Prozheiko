@@ -138,7 +138,7 @@ const Page = () => {
                   loading="lazy"
                   className={style.doctor__img}
                   src={IrynaProzheiko}
-                  alt={"Ірина Прожейко, АДМІНІСТРАТИВНИЙ ДИРЕКТОР"}
+                  alt={"Ірина Прожейко, ОПЕРАЦІЙНИЙ ДИРЕКТОР"}
                 />
                 <div className={style.opacity__text}>
                   <ul className={style.wrapper__opacity}>
@@ -157,9 +157,7 @@ const Page = () => {
                   </ul>
                 </div>
               </div>
-              <p className={style.doctor__position}>
-                АДМІНІСТРАТИВНИЙ ДИРЕКТОР
-              </p>
+              <p className={style.doctor__position}>ОПЕРАЦІЙНИЙ ДИРЕКТОР</p>
               <p className={style.doctor__name}>Ірина Прожейко</p>
             </div>
             <div className={style.doctor__wrapper}>

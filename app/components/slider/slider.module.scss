@@ -1,10 +1,15 @@
 .container {
   margin-top: 55px;
+  min-height: 500px;
+}
+
+.skeleton {
+  width: 100vw;
+  height: 500px !important;
 }
 
 .img {
   width: 100%;
-  height: 100%;
   max-height: 500px;
   object-fit: cover;
 }
@@ -13,14 +18,46 @@
   .img {
     max-height: 380px;
   }
+  .skeleton {
+    height: 380px !important;
+  }
 }
+
 
 @media screen and (max-width: 900px) {
   .container {
     margin-top: 46px;
+    min-height: 330px;
   }
   .img {
     max-height: 330px;
+  }
+  .skeleton {
+    height: 330px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    min-height: 260px;
+  }
+  .img {
+    max-height: 260px;
+  }
+  .skeleton {
+    height: 260px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    min-height: 230px;
+  }
+  .img {
+    max-height: 230px;
+  }
+  .skeleton {
+    height: 230px !important;
   }
 }
 

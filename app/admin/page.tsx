@@ -5,8 +5,8 @@ import { Suspense } from "react";
 const Page = async () => {
   return (
     <div>
-      <Suspense fallback={<div>loading</div>}>
-        <Header />
+      <Header />
+      <Suspense fallback={<div>loading ...</div>}>
         <div
           style={{
             margin: "100px auto",

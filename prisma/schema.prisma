@@ -12,10 +12,17 @@ model Tag {
   tag String @unique
 }
 
-model Block {
+model Admin {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
-  type  String
-  value Json
+  name  String
+  token String
+}
+
+model Slider {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl    String
+  description String
+  href        String
 }
 
 model Article {
@@ -29,11 +36,19 @@ model Article {
 }
 
 model Service {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  tag     String
-  like    Int
-  dislike Int
-  price   String
-  list    String[]
-  blocks  Json
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  tag      String
+  title    String
+  text     String
+  price    String
+  list     String[]
+  blocks   Json
+  imageUrl String
+}
+
+model Image {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  filename  String
+  filepath  String
+  createdAt DateTime @default(now())
 }

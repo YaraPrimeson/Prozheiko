@@ -39,7 +39,7 @@ const handler = async (req, res) => {
     }
   }
 
-  res.setHeader("Allow", ["GET", "POST"]);
+  res.setHeader("Allow", ["GET", "POST", "PATCH", "DELETE"]);
   res.status(425).end(`Method ${req.method} is not allowed.`);
 };
 

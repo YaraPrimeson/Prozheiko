@@ -11,8 +11,8 @@ const Page = async () => {
   const tags = await getTags();
   return (
     <>
-      <Suspense fallback={<div>loading</div>}>
-        <Header />
+      <Header />
+      <Suspense fallback={<div>loading ...</div>}>
         <div className={style.container}>
           <TagModalCreate />
           <div className={style.tags__container}>
