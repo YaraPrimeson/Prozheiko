@@ -1,12 +1,12 @@
 "use client";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
 import { Article } from "@prisma/client";
 
 type BlogModalBlogProps = {
-  article: Article;
+  article: Article & { imageUrl?: string };
 };
 
 const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
@@ -14,16 +14,11 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
   const [formData, setFormData] = useState(article);
   // const [blocks, setBlocks] = useState(article?.blocks);
   const [title, setTitle] = useState(article.title);
-  // const [imageUrl, setImageUrl] = useState(article?.imageUrl);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(article?.imageUrl ?? "");
   const [tag, setTag] = useState(article.tag);
   const [like, setLike] = useState(article.like);
   const [dislike, setDislike] = useState(article.dislike);
-  useEffect(() => {
-    if (article?.imageUrl) {
-      setImageUrl(article?.imageUrl);
-    }
-  }, [article]);
+
   const toggleEditMode = () => {
     setOpenModal(true);
   };
