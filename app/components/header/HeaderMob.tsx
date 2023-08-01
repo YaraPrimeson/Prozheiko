@@ -4,9 +4,12 @@ import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
 import style from "./header.module.scss";
+import globalS from "../../styles/global.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/assets/images/logo.webp";
+import ModalContainer from "@/app/components/modal/ModalContainer";
+import FormVisit from "@/app/components/form-visit/FormVisit";
 
 interface HeaderMobProps {
   pathname: string;
@@ -14,7 +17,7 @@ interface HeaderMobProps {
 
 const HeaderMob: FC<HeaderMobProps> = ({ pathname }) => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const toggleDrawer = (status: boolean) => {
     setOpenMenu(status);
   };
@@ -81,11 +84,11 @@ const HeaderMob: FC<HeaderMobProps> = ({ pathname }) => {
         <li className={style.link__wrapper}>
           <Link
             className={
-              pathname === "/prices"
+              pathname === "/services"
                 ? `${style.active} ${style.link__mob}`
                 : style.link__mob
             }
-            href={"/prices"}
+            href={"/services"}
           >
             Послуги та ціни
           </Link>
@@ -113,6 +116,20 @@ const HeaderMob: FC<HeaderMobProps> = ({ pathname }) => {
           >
             Контакти
           </Link>
+        </li>
+        <li className={style.link__wrapper__btn}>
+          <button
+            className={globalS.btn__create}
+            onClick={() => setOpenModal(true)}
+          >
+            ЗАПИСАТИСЬ НА ВІЗИТ
+          </button>
+          <ModalContainer
+            open={openModal}
+            handleClose={() => setOpenModal(false)}
+          >
+            <FormVisit closeModal={() => setOpenModal(false)} />
+          </ModalContainer>
         </li>
       </ul>
     </Box>

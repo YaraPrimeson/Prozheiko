@@ -131,9 +131,7 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
         <button
           type="submit"
           className={style.button}
-          disabled={
-            !name || (phone ? phone.toString().length !== 12 : true) || !date
-          }
+          disabled={!name || (phone ? phone.toString().length !== 12 : true)}
         >
           ВІДПРАВИТИ
         </button>

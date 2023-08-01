@@ -32,7 +32,7 @@ const Footer = () => {
             <li className={style.general__list}>
               <Link
                 className={`${globalStyle.hover__link} ${style.footer__text}`}
-                href="@/src/app/components/footer/Footer#"
+                href={"/services"}
               >
                 Консультація стоматолога
               </Link>
@@ -40,7 +40,7 @@ const Footer = () => {
             <li className={style.general__list}>
               <Link
                 className={`${globalStyle.hover__link} ${style.footer__text}`}
-                href="@/src/app/components/footer/Footer#"
+                href={"/services"}
               >
                 Лазерне відбілювання
               </Link>
@@ -48,7 +48,7 @@ const Footer = () => {
             <li className={style.general__list}>
               <Link
                 className={`${globalStyle.hover__link} ${style.footer__text}`}
-                href="@/src/app/components/footer/Footer#"
+                href={"/services"}
               >
                 Лікування карієсу
               </Link>
@@ -56,7 +56,7 @@ const Footer = () => {
             <li className={style.general__list}>
               <Link
                 className={`${globalStyle.hover__link} ${style.footer__text}`}
-                href="@/src/app/components/footer/Footer#"
+                href={"/services"}
               >
                 Ціни
               </Link>
@@ -64,7 +64,7 @@ const Footer = () => {
             <li className={style.general__list}>
               <Link
                 className={`${globalStyle.hover__link} ${style.footer__text}`}
-                href="@/src/app/components/footer/Footer#"
+                href="/clinic"
               >
                 Про клініку
               </Link>

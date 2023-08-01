@@ -6,9 +6,26 @@ import { usePathname } from "next/navigation";
 
 const Header = () => {
   const pathname = usePathname();
+  // const token = localStorage.getItem("prozheikoToken");
   return (
     <header className={style.header}>
       <ul className={style.wrapper}>
+        {/*<li className={style.list}>*/}
+        {/*  <Link*/}
+        {/*    className={style.link}*/}
+        {/*    href={pathname === "/admin" ? "admin/upload" : "/admin/upload"}*/}
+        {/*  >*/}
+        {/*    upload*/}
+        {/*  </Link>*/}
+        {/*</li>*/}
+        <li className={style.list}>
+          <Link
+            className={style.link}
+            href={pathname === "/admin" ? "admin/slider" : "/admin/slider"}
+          >
+            slider
+          </Link>
+        </li>
         <li className={style.list}>
           <Link
             className={style.link}
@@ -28,7 +45,7 @@ const Header = () => {
         <li className={style.list}>
           <Link
             className={style.link}
-            href={pathname === "/admin" ? "admin/prices" : "/admin/prices"}
+            href={pathname === "/admin" ? "admin/services" : "/admin/services"}
           >
             Services
           </Link>

@@ -1,14 +1,22 @@
 "use client";
-import React from "react";
-import Slider from "react-slick";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import style from "./slider.module.scss";
-import Slide1 from "../../assets/images/Slider.webp";
-import Slide2 from "../../assets/images/doctors.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import Link from "next/link";
+import { Skeleton } from "@mui/material";
 
+type sliderType = {
+  imageUrl: string;
+  description: string;
+  href: string;
+  id: string;
+};
 const SliderSlick = () => {
+  const [slides, setSlides] = useState<sliderType[]>([]);
+  const [loadingSlides, setLoadingSlides] = useState<boolean>(true);
+
   var settings = {
     dots: true,
     infinite: true,
@@ -17,22 +25,57 @@ const SliderSlick = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  const items = [
-    {
-      name: "Image 1",
-      image: Slide1,
-    },
-    {
-      name: "Image 2",
-      image: Slide2,
-    },
-  ];
+
+  function getSlides() {
+    setLoadingSlides(true);
+    return new Promise((resolve, reject) => {
+      fetch(`http://localhost:3000/api/slider`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => resolve(data))
+        .catch((error) => reject(error))
+        .finally(() => setLoadingSlides(false));
+    });
+  }
+
+  useEffect(() => {
+    getSlides()
+      .then((data: any) => {
+        setSlides(data.slide);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  if (loadingSlides) {
+    return (
+      <div className={style.container}>
+        <Skeleton
+          className={style.skeleton}
+          variant="rounded"
+          animation="wave"
+        />
+      </div>
+    );
+  }
+
   return (
     <>
       <Slider {...settings}>
-        {items.map((image) => (
-          <div key={image.name} className={style.container}>
-            <Image className={style.img} src={image.image} alt={image.name} />
+        {slides.map((slide) => (
+          <div key={slide.id} className={style.container}>
+            <Link href={slide.href}>
+              <img
+                className={style.img}
+                src={slide.imageUrl}
+                alt={slide.description}
+              />
+            </Link>
           </div>
         ))}
       </Slider>

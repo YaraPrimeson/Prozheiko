@@ -56,7 +56,7 @@ const ServiceCard = ({ img, title, text, price, list, id }: TServiceCard) => {
           </ul>
         )}
         <div className={style.btn__container}>
-          <Link href={`/services-and-prices/${id}`}>
+          <Link href={`/services/${id}`}>
             <button className={`${style.btn} ${global.button}`}>
               ДІЗНАТИСЬ БІЛЬШЕ
               <svg

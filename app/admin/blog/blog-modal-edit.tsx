@@ -71,9 +71,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
           <p className={globalS.title}>Редагування Статті</p>
           <div className={style.input__edit__container}>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label} htmlFor="tag">
-                tag
-              </label>
+              <label className={style.input__edit__label}>tag</label>
               <input
                 className={style.input}
                 type="text"
@@ -83,9 +81,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label} htmlFor="title">
-                title
-              </label>
+              <label className={style.input__edit__label}>title</label>
               <input
                 className={style.input}
                 type="text"
@@ -95,9 +91,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label} htmlFor="imageUrl">
-                imageUrl
-              </label>
+              <label className={style.input__edit__label}>imageUrl</label>
               <input
                 className={style.input}
                 type="text"
@@ -107,9 +101,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label} htmlFor="like">
-                like
-              </label>
+              <label className={style.input__edit__label}>like</label>
               <input
                 className={style.input}
                 type="text"
@@ -119,9 +111,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label} htmlFor="dislike">
-                dislike
-              </label>
+              <label className={style.input__edit__label}>dislike</label>
               <input
                 className={style.input}
                 type="text"

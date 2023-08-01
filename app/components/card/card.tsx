@@ -1,7 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import style from "./card.module.scss";
 import FormattedText from "@/app/components/FormattedText";
+import Estimate from "@/app/components/estimate/Estimate";
 
 const Card = ({ item }: any) => {
   return (
@@ -20,34 +20,35 @@ const Card = ({ item }: any) => {
           )}
         </div>
         <div>
-          <img src={item?.image} alt={item?.title} className={style.img} />
+          <img src={item?.imageUrl} alt={item?.title} className={style.img} />
           {/*<Image*/}
           {/*  loading="lazy"*/}
           {/*  className={style.img}*/}
           {/*  width={500}*/}
           {/*  height={500}*/}
-          {/*  src={item?.image ?? ""}*/}
+          {/*  src={item?.imageUrl ?? ""}*/}
           {/*  alt={item?.title ?? ""}*/}
           {/*/>*/}
         </div>
         <div className={style.text__container}>
-          {item?.blocks?.map((block: any) => {
+          {item?.blocks?.map((block: any, index: number) => {
             if (block.type === "subtitle") {
               return (
-                <h2 key={block._id} className={style.subtitle}>
+                <h2 key={index} className={style.subtitle}>
                   {block.value}
                 </h2>
               );
             } else if (block.type === "paragraph") {
+              return <FormattedText key={index} text={block.value} />;
+            } else if (block.type === "imageUrl") {
               return (
-                <FormattedText text={block.value} />
-                // <p key={block._id} className={style.text}>
-                //   {block.value}
-                // </p>
+                <div key={index}>
+                  <img src={block.value} alt={block.value} />
+                </div>
               );
             } else if (block.type === "list") {
               return (
-                <ul key={block._id}>
+                <ul key={index}>
                   {block.value.map((list: string, index: number) => (
                     <li key={index} className={style.list}>
                       {list}
@@ -56,10 +57,13 @@ const Card = ({ item }: any) => {
                 </ul>
               );
             }
-            return null; // handle other block types if needed
+            return null;
           })}
         </div>
       </div>
+      {item.like && (
+        <Estimate dislike={item.dislike} like={item.like} id={item.id} />
+      )}
     </>
   );
 };

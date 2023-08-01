@@ -2,11 +2,15 @@
 
 const nextConfig = {
   experimental: {
-    // serverActions: true,
     appDir: true,
   },
   images: {
-    domains: ["localhost"], // Додайте ваш домен
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 };
 

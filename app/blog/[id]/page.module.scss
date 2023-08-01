@@ -3,11 +3,143 @@
   margin: 50px auto;
 }
 
-.tag__container {
+.other {
 
 }
 
-.tag {
-
+.other__title {
+  color: #292929;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  width: 80%;
+  margin: 0 auto;
 }
 
+.other__container {
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  margin-top: 13px;
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  //justify-content: space-around;
+}
+
+.other__list {
+  background: #F6F6F6;
+  width: 100%;
+  min-width: 360px;
+  max-width: 360px;
+  height: 100%;
+  min-height: 320px;
+  transition: all 0.6s ease;
+
+  &:hover {
+    background: #12979B;
+
+    & .other__subtitle {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.other__img {
+  max-width: 360px;
+  width: 100%;
+  max-height: 200px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.other__subtitle {
+  color: #292929;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.form__container {
+  margin: 50px auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .blog {
+    padding: 0 40px;
+  }
+  .other__container {
+    padding: 35px;
+
+    //justify-content: start;
+  }
+  .other__title {
+    font-size: 40px;
+  }
+  .other__list {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 270px;
+  }
+  .other__subtitle {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .blog {
+    margin: 0 0 25px;
+  }
+  .other__title {
+    font-size: 30px;
+  }
+  .other__list {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 275px;
+  }
+  .other__img {
+    max-width: 250px;
+    max-height: 170px;
+  }
+  .other__subtitle {
+    font-size: 20px;
+    padding: 0 5px 5px 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .blog {
+    padding: 0 20px;
+  }
+  .other__container {
+    padding: 25px;
+  }
+  .other__list {
+    min-width: 130px;
+    max-width: 130px;
+    min-height: 200px;
+  }
+  .other__img {
+    max-width: 130px;
+    max-height: 130px;
+  }
+  .other__subtitle {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .other__container {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .other__subtitle {
+    font-size: 16px;
+  }
+}

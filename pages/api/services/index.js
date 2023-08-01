@@ -1,4 +1,9 @@
-import { createService, getServices } from "../../../lib/service";
+import {
+  createService,
+  deleteService,
+  editService,
+  getServices,
+} from "../../../lib/service";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
@@ -12,11 +17,29 @@ const handler = async (req, res) => {
 
   if (req.method === "POST") {
     try {
-      const article = req.body;
-      await createService(article);
+      const service = JSON.parse(req.body);
+      await createService(service);
       return res.status(200).json({ message: "created" });
     } catch (error) {
       return res.status(500).json({ error: error.message });
+    }
+  }
+  if (req.method === "PATCH") {
+    try {
+      const article = JSON.parse(req.body);
+      await editService(article);
+      return res.status(200).json({ message: "edited" });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+  if (req.method === "DELETE") {
+    const id = req.body;
+    try {
+      await deleteService(id);
+      return res.status(200).json({ message: "deleted" });
+    } catch (error) {
+      return res.status(500).end(); // Помилка сервера
     }
   }
 

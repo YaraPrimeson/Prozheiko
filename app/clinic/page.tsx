@@ -2,7 +2,7 @@ import React from "react";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import style from "./clinic.module.scss";
 import globalStyles from "../styles/global.module.scss";
-import banner from "../assets/images/clinic.webp";
+import banner from "../assets/images/clinic.png";
 import Image from "next/image";
 import doctors from "../assets/images/doctors-mini.webp";
 import philosophy from "../assets/images/philosophy-of-dentistry.webp";
