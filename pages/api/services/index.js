@@ -1,10 +1,10 @@
-import { createArticle, getArticles } from "../../../lib/blog";
+import { createService, getServices } from "../../../lib/service";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
-      const blog = await getArticles();
-      return res.status(200).json({ blog });
+      const services = await getServices();
+      return res.status(200).json({ services });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -13,7 +13,7 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       const article = req.body;
-      await createArticle(article);
+      await createService(article);
       return res.status(200).json({ message: "created" });
     } catch (error) {
       return res.status(500).json({ error: error.message });

@@ -48,6 +48,19 @@ p.hover__link {
   cursor: pointer;
 }
 
+h3.hover__link {
+  background-image: linear-gradient(to right, #12979b, #12979b 50%, #292929 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
 .hover__link {
   background-image: linear-gradient(to right, #12979b, #12979b 50%, #fff 50%);
   background-size: 200% 100%;
@@ -80,6 +93,99 @@ p.hover__link {
 .hover__link:hover::before {
   width: 100%;
 }
+
+.btn__create__container {
+  margin: 25px auto;
+  display: flex;
+}
+
+.btn__create {
+  width: 220px;
+  height: 45px;
+  border-radius: 10px;
+  background: #12979B;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: all .5s ease;
+
+  &:hover {
+    background: #0a5557;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      background: #12979B;
+    }
+  }
+}
+
+.btns__edit__wrapper {
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.edit__btn {
+  border-radius: 10px;
+  background: #06477e;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFF;
+  width: 200px;
+  border: none;
+  cursor: pointer;
+  height: 45px;
+  transition: all .5s ease;
+
+  &:hover {
+    background: rgb(4, 51, 91);
+  }
+}
+
+.delete__btn {
+  border-radius: 10px;
+  background: #64070b;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFF;
+  width: 200px;
+  border: none;
+  cursor: pointer;
+  height: 45px;
+
+  transition: all .5s ease;
+
+  &:hover {
+    background: rgb(63, 4, 7);
+  }
+}
+
+.cancel__btn {
+  border-radius: 10px;
+  background: #645107;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFF;
+  width: 200px;
+  border: none;
+  cursor: pointer;
+  height: 45px;
+
+  transition: all .5s ease;
+
+  &:hover {
+    background: #3d3104;
+  }
+}
+
 
 @media screen and (max-width: 1200px) {
   .title {

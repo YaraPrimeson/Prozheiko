@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import style from "./card.module.scss";
+import FormattedText from "@/app/components/FormattedText";
 
 const Card = ({ item }: any) => {
   return (
@@ -19,14 +20,15 @@ const Card = ({ item }: any) => {
           )}
         </div>
         <div>
-          <Image
-            loading="lazy"
-            className={style.img}
-            width={500}
-            height={500}
-            src={item?.img?.src ?? ""}
-            alt={item?.title ?? ""}
-          />
+          <img src={item?.image} alt={item?.title} className={style.img} />
+          {/*<Image*/}
+          {/*  loading="lazy"*/}
+          {/*  className={style.img}*/}
+          {/*  width={500}*/}
+          {/*  height={500}*/}
+          {/*  src={item?.image ?? ""}*/}
+          {/*  alt={item?.title ?? ""}*/}
+          {/*/>*/}
         </div>
         <div className={style.text__container}>
           {item?.blocks?.map((block: any) => {
@@ -38,9 +40,10 @@ const Card = ({ item }: any) => {
               );
             } else if (block.type === "paragraph") {
               return (
-                <p key={block._id} className={style.text}>
-                  {block.value}
-                </p>
+                <FormattedText text={block.value} />
+                // <p key={block._id} className={style.text}>
+                //   {block.value}
+                // </p>
               );
             } else if (block.type === "list") {
               return (
