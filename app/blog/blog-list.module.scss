@@ -1,6 +1,7 @@
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -68,6 +69,12 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 1000px) {
+  .tag__title__line {
+    margin-left: -50px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .list {
     gap: 30px;
@@ -87,6 +94,9 @@
   }
   .title {
     font-size: 25px;
+  }
+  .tag__title__line {
+    margin-left: -27px;
   }
 }
 

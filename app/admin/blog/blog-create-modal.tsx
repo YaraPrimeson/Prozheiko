@@ -115,6 +115,12 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
           dislike,
           blocks,
         }),
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+          "Content-Type": "application/json",
+        },
       });
       return location.reload();
     } catch (error) {

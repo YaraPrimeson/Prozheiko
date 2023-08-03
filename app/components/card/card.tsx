@@ -1,34 +1,44 @@
 import React from "react";
 import style from "./card.module.scss";
+import globalS from "../../styles/global.module.scss";
 import FormattedText from "@/app/components/FormattedText";
 import Estimate from "@/app/components/estimate/Estimate";
+import Image from "next/image";
 
 const Card = ({ item }: any) => {
   return (
     <>
       <div className={style.tag__container}>
-        <h2 className={style.tag}>{item?.tag}</h2>
+        <h2 className={`${style.tag} ${globalS.title}`}>{item?.tag}</h2>
         <span className={style.tag__line}></span>
       </div>
       <div className={style.service__wrapper}>
-        <div className={style.title__container}>
-          <h1 className={style.title}>{item?.title}</h1>
-          {item?.price && (
+        {item?.price ? (
+          <div className={style.price__wrapper}>
+            <div className={style.title__container}>
+              <h1 className={`${style.title} ${globalS.title}`}>
+                {item?.title}
+              </h1>
+            </div>
             <div className={style.price__container}>
               <p className={style.price}>{item?.price}</p>
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className={style.title__container}>
+            <h1 className={`${style.title} ${globalS.title}`}>{item?.title}</h1>
+          </div>
+        )}
         <div>
-          <img src={item?.imageUrl} alt={item?.title} className={style.img} />
-          {/*<Image*/}
-          {/*  loading="lazy"*/}
-          {/*  className={style.img}*/}
-          {/*  width={500}*/}
-          {/*  height={500}*/}
-          {/*  src={item?.imageUrl ?? ""}*/}
-          {/*  alt={item?.title ?? ""}*/}
-          {/*/>*/}
+          {/*<img src={item?.imageUrl} alt={item?.title} className={style.img} />*/}
+          <Image
+            loading="lazy"
+            className={style.img}
+            width={500}
+            height={400}
+            src={item?.imageUrl}
+            alt={item?.title}
+          />
         </div>
         <div className={style.text__container}>
           {item?.blocks?.map((block: any, index: number) => {

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: BlogArticleProps) {
 const BlogArticle = async ({ params }: any) => {
   const { id } = params;
   const article = await getArticle(id);
-  const articles: any = await getArticles(article && article.id);
+  const articles: any = await getArticles(article && article.tag);
   return (
     <>
       <BannerContainer image={Blog} altDescription={"Blog"} />

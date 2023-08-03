@@ -8,7 +8,8 @@ import {
 const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
-      const services = await getServices();
+      const { tag } = req.query;
+      const services = await getServices(tag);
       return res.status(200).json({ services });
     } catch (error) {
       return res.status(500).json({ error: error.message });

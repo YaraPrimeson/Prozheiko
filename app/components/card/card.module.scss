@@ -23,6 +23,12 @@
 
 }
 
+.price__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .title__container {
   width: 80%;
   margin: 60px auto 30px;
@@ -30,17 +36,12 @@
 
 .title {
   color: #292929;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
 }
 
 .price__container {
   border-radius: 10px;
   background: #12979B;
-  min-width: 170px;
-  min-height: 80px;
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +95,6 @@
 }
 
 
-
 @media screen and (max-width: 1200px) {
   .tag__line {
     width: 240px;
@@ -106,9 +106,7 @@
   .text__container {
     margin: 40px 0 60px;
   }
-  .title {
-    font-size: 45px;
-  }
+
   .evaluation__title {
     font-size: 45px;
   }
@@ -117,6 +115,13 @@
 @media screen and (max-width: 900px) {
   .text__container {
     margin: 40px 0;
+  }
+  .price {
+    font-size: 20px;
+  }
+  .img {
+    max-width: 580px;
+    max-height: 400px;
   }
   .evaluation__title {
     font-size: 30px;
@@ -142,9 +147,16 @@
   }
   .title__container {
     width: 100%;
+    margin: 30px auto 0;
   }
-  .title {
-    font-size: 35px;
+  .price__wrapper {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .price__container {
+    max-width: max-content;
+    margin-left: auto;
+    margin-bottom: 10px;
   }
   .img {
     max-height: 450px;
@@ -160,5 +172,24 @@
   }
   .list {
     font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .tag {
+    font-size: 35px;
+  }
+  .price__container {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #12979B;
+    background: transparent;
+  }
+  .price {
+    color: #12979B;
+  }
+  .img {
+    width: 100vw;
+    margin-left: -20px;
   }
 }

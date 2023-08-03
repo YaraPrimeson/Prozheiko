@@ -1,4 +1,5 @@
 import style from "./page.module.css";
+import globalS from "./styles/global.module.scss";
 import ServicesCard from "@/app/components/services-card/ServicesCard";
 import Image from "next/image";
 import dentalCare from "./assets/images/dental-care.png";
@@ -107,8 +108,10 @@ export default function Home() {
             />
           </div>
           <div className={style.dental__care__text__wrapper}>
-            <h3 className={style.dental__care__title}>Всі види</h3>
-            <h3 className={style.dental__care__title}>
+            <h3 className={`${globalS.title} ${style.dental__care__title}`}>
+              Всі види
+            </h3>
+            <h3 className={`${globalS.title} ${style.dental__care__title}`}>
               стоматологічної допомоги
             </h3>
             <p className={style.dental__care__text}>
@@ -143,7 +146,9 @@ export default function Home() {
         <ServicesCard />
         <section className={style.about}>
           <div className={style.about__text__container}>
-            <h3 className={style.about__title}>Про нас</h3>
+            <h3 className={`${globalS.title} ${style.about__title}`}>
+              Про нас
+            </h3>
             <p className={style.about__text}>
               Стоматологічна клініка Dental Studio Prozheiko працює під
               керівництвом Сергія Прожейко. У сфері стоматології він – більше 12
@@ -152,7 +157,7 @@ export default function Home() {
               університеті імені А. А. Богомольця та Військово-медичній Академії
               стажувався у найкращих українських та закордонних спеціалістів.
             </p>
-            <Link href="/clinic" className={style.about__clinic__link}>
+            <Link href={"/clinic"} className={style.about__clinic__link}>
               <button className={style.about__button}>
                 БІЛЬШЕ
                 <svg
@@ -190,71 +195,16 @@ export default function Home() {
             alt={"шлях клієнта"}
             className={style.emergency__image}
           />
-          {/*<img src={journey} alt="шлях клієнта" />*/}
-          {/*<img*/}
-          {/*  src={"./assets/images/customer-journey.png"}*/}
-          {/*  alt="шлях клієнта"*/}
-          {/*/>*/}
         </section>
-        {/*<section className={style.emergency}>*/}
-        {/*  <div className={style.emergency__wrapper}>*/}
-        {/*    <Image*/}
-        {/*      loading="lazy"*/}
-        {/*      src={emergencyDentalCare}*/}
-        {/*      className={style.emergency__image}*/}
-        {/*      alt="приклад фотографія 3D знімку щелепи"*/}
-        {/*    />*/}
-        {/*    <div className={style.emergency__text__wrapper}>*/}
-        {/*      <h3 className={style.emergency__title}>*/}
-        {/*        Швидка стоматологічна допомога*/}
-        {/*      </h3>*/}
-        {/*      <p className={style.emergency__text}>*/}
-        {/*        Приватна стоматологія Dental Studio Prozheiko, окрім*/}
-        {/*        стандартного переліку послуг, пропонує і екстрену допомогу. Як*/}
-        {/*        правило, потреба в ній виникає несподівано – момент не можна*/}
-        {/*        передбачити заздалегідь.*/}
-        {/*        <br />*/}
-        {/*        Найчастішими причинами звернення за екстреною стоматологічною*/}
-        {/*        допомогою є:*/}
-        {/*      </p>*/}
-        {/*      <p className={style.emergency__text}>*/}
-        {/*        1. Ускладнення через пародонтит, що загрожує виникненням*/}
-        {/*        абсцесу. Чим швидше ви звернулися до лікаря, тим краще – це*/}
-        {/*        допоможе зберегти зуб. Інакше його можна втратити.*/}
-        {/*      </p>*/}
-        {/*      <p className={style.emergency__text}>*/}
-        {/*        2. Вивих зуба – у цьому випадку опинитись у стоматологічному*/}
-        {/*        кріслі варто в першу ж годину. Тоді можна уникнути втрати зуба,*/}
-        {/*        він зможе прижитися знову.*/}
-        {/*      </p>*/}
-        {/*      <p className={style.emergency__text}>*/}
-        {/*        3. Прорізування зуба мудрості – найчастіше проблема виникає,*/}
-        {/*        коли зуб росте неправильно чи не може прорізатися повноцінно.*/}
-        {/*        Тоді потрібне негайне втручання, адже біль нікуди не подінеться,*/}
-        {/*        може виникнути запалення та поява гною.{" "}*/}
-        {/*      </p>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*  <p*/}
-        {/*    className={`${style.emergency__text} ${style.emergency__text__last}`}*/}
-        {/*  >*/}
-        {/*    4. Травма щелепи, відколовся зуб, випала пломба – у всіх цих*/}
-        {/*    випадках треба якнайшвидше звернутися до стоматолога.*/}
-        {/*    <br />*/}
-        {/*    Наша стоматологія (Київ) надає екстрену допомогу у всіх*/}
-        {/*    перерахованих вище випадках або таких, які потребують негайної*/}
-        {/*    консультації. Ми розуміємо, що подібні стани вимагають швидкого*/}
-        {/*    реагування і кваліфікованих дій спеціаліста. Прийом можливий у*/}
-        {/*    потрібний вам час: зателефонуйте нам, щоб обрати найближчі години!*/}
-        {/*  </p>*/}
-        {/*</section>*/}
         <section className={style.form__container}>
           <FormVisit />
         </section>
       </div>
       <section className={style.comments}>
         <div className={style.comments__wrapper}>
-          <h4 className={style.comments__title}>Наші клієнти пишуть</h4>
+          <h4 className={`${globalS.title} ${style.comments__title}`}>
+            Наші клієнти пишуть
+          </h4>
           <CommentContainer />
         </div>
       </section>

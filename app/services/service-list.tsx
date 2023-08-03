@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Service, Tag } from "@prisma/client";
 import TagList from "@/app/components/tag-list/TagList";
 import style from "@/app/services/services.module.scss";
+import globalS from "../styles/global.module.scss";
 import ServiceCard from "@/app/services/service-card";
 import { Skeleton } from "@mui/material";
 
@@ -87,33 +88,29 @@ const ServiceList = () => {
                 <Skeleton
                   variant="rounded"
                   animation="wave"
-                  sx={{ borderRadius: "10px" }}
-                  width={"40%"}
-                  height={400}
+                  className={style.skeleton__img}
                 />
                 <div className={style.wrapper}>
                   <Skeleton
+                    className={style.skeleton__title}
                     animation="wave"
                     variant="text"
-                    sx={{ fontSize: "10rem" }}
                   />
                   <Skeleton
                     animation="wave"
                     variant="text"
-                    sx={{ fontSize: "5rem" }}
+                    className={style.skeleton__text}
                   />
                   <div className={style.btn__container}>
                     <Skeleton
+                      className={style.skeleton__btn1}
                       variant="rounded"
                       animation="wave"
-                      width={240}
-                      height={45}
                     />
                     <Skeleton
+                      className={style.skeleton__btn2}
                       variant="rounded"
                       animation="wave"
-                      width={100}
-                      height={45}
                     />
                   </div>
                 </div>
@@ -128,7 +125,9 @@ const ServiceList = () => {
               <React.Fragment key={index}>
                 {isFirstTag && (
                   <div>
-                    <h3 className={style.tag__title}>{service.tag}</h3>
+                    <h3 className={`${style.tag__title} ${globalS.title}`}>
+                      {service.tag}
+                    </h3>
                     <span className={style.tag__title__line}></span>
                   </div>
                 )}

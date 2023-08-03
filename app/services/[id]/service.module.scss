@@ -2,6 +2,32 @@
   max-width: 1180px;
   margin: 70px auto;
 }
+
 .form__container {
   margin: 50px auto;
+}
+
+@media screen and (max-width: 1220px) {
+  .service {
+    padding: 0 40px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .service {
+    padding: 0 25px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .service {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .service {
+    padding: 0 15px;
+  }
 }

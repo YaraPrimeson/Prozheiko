@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 350px;
+  max-height: 370px;
   width: 100%;
   max-width: 580px;
   margin: 0 auto;
@@ -27,13 +27,21 @@
   margin-bottom: 30px;
 }
 
+.MuiInputBase-input {
+  font-size: 14px !important;
+}
+
+.MuiTextField-root::placeholder {
+  font-size: 14px;
+}
+
 .input {
   background: #F2F2F2;
   border-radius: 15px;
   border: none;
   margin-top: 20px;
   width: 100%;
-  padding: 10px 27px!important;
+  padding: 10px 27px !important;
   color: #292929;
   font-size: 14px;
   font-style: normal;
@@ -43,14 +51,27 @@
   & input {
     padding: 0;
     color: #292929;
+    font-size: 14px;
   }
 
   & label {
-    top: -6px;
-    left: 16px;
+    top: -4px;
+    left: 15px;
+    font-size: 14px;
     color: #8B8D92;
   }
 }
+
+//.MuiFormControl-root {
+//  & label {
+//    color: green !important;
+//  }
+//}
+//
+//.Mui-focused label {
+//  color: green !important;
+//}
+
 
 .input::placeholder {
   color: #8B8D92;
@@ -89,7 +110,7 @@
 @media screen and (max-width: 600px) {
   .form {
     width: 90%;
-    padding: 14px 18px 9px;
+    padding: 14px 18px;
   }
   .form__title {
     font-size: 23px;
@@ -107,7 +128,7 @@
 
 @media screen and (max-width: 420px) {
   .form {
-    padding: 14px 14px 9px;
+    padding: 14px;
   }
   .form__title {
     font-size: 20px;
