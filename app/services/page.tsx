@@ -4,6 +4,7 @@ import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import style from "./services.module.scss";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import ServiceList from "@/app/services/service-list";
+import Analytics from "@/app/Analytics";
 
 const Page = async () => {
   return (
@@ -16,6 +17,7 @@ const Page = async () => {
       <section className={style.form__wrapper}>
         <FormVisit />
       </section>
+      <Analytics />
     </>
   );
 };

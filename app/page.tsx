@@ -89,7 +89,7 @@ export default function Home() {
                   </p>
                   <a
                     className={style.info__body__text}
-                    href="tel:+38 (068) 38-38-532"
+                    href="tel:+380683838532"
                   >
                     +38 (068) 38-38-532
                   </a>

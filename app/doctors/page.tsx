@@ -12,10 +12,12 @@ import IrynaProzheiko from "@/app/assets/images/doctors/Iryna-Prozheiko.webp";
 import Anastasia from "@/app/assets/images/doctors/Anastasia.webp";
 import ContactsInfo from "@/app/components/contacts-info/Contacts-info";
 import IconCheck from "@/app/components/icon-check";
+import Analytics from "@/app/Analytics";
 
 const Page = () => {
   return (
     <>
+      <Analytics />
       <BannerContainer
         image={banner}
         altDescription={"банерна картинка з персоналом клініки"}

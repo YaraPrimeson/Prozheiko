@@ -16,7 +16,7 @@ const ContactsInfo = () => {
         <h3 className={styles.contacts__title}>СТОМАТОЛОГІЧНА КЛІНІКА</h3>
         <h3 className={styles.contacts__subtitle}>PROZHEIKO DENTAL STUDIO</h3>
         <div className={styles.contact__link__container}>
-          <a className={styles.contact__link} href="tel:+38 (068) 38-38-532">
+          <a className={styles.contact__link} href="tel:+380683838532">
             <svg
               width="18"
               height="17"
@@ -37,7 +37,7 @@ const ContactsInfo = () => {
               +38 (068) 38-38-532
             </p>
           </a>
-          <a className={styles.contact__link} href="tel:+38 (044) 38-38-532">
+          <a className={styles.contact__link} href="tel:+380443838532">
             <svg
               width="18"
               height="17"

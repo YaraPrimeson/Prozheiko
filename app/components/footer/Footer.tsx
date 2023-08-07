@@ -22,7 +22,7 @@ const Footer = () => {
           <p className={style.logo__subtitle}>Місце здорових посмішок</p>
           <a
             className={`${style.logo__phone} ${globalStyle.hover__link}`}
-            href="tel:+38 (068) 38-38-532"
+            href="tel:+380683838532"
           >
             +38 (068) 38-38-532
           </a>
@@ -90,7 +90,7 @@ const Footer = () => {
         <div className={`${style.contacts__container} ${style.footer__list}`}>
           <h6 className={style.info__title}>КОНТАКТИ</h6>
           <div className={style.contact__link__container}>
-            <a className={style.contact__link} href="tel:+38 (068) 38-38-532">
+            <a className={style.contact__link} href="tel:+380683838532">
               <svg
                 width="18"
                 height="17"
@@ -109,7 +109,7 @@ const Footer = () => {
                 +38 (068) 38-38-532
               </span>
             </a>
-            <a className={style.contact__link} href="tel:+38 (044) 38-38-532">
+            <a className={style.contact__link} href="tel:+380443838532">
               <svg
                 width="18"
                 height="17"

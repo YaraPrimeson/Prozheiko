@@ -5,6 +5,7 @@ import Service from "@/app/assets/images/services.webp";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import Card from "@/app/components/card/card";
 import { getService } from "@/lib/service";
+import Analytics from "@/app/Analytics";
 
 export async function generateMetadata({ params }: any) {
   const { id } = params;
@@ -26,6 +27,7 @@ const Page = async ({ params }: any) => {
       <section className={style.form__container}>
         <FormVisit />
       </section>
+      <Analytics />
     </>
   );
 };
