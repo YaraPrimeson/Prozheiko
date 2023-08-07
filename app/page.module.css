@@ -79,7 +79,6 @@
 
 .dental__care__title {
     color: #292929;
-
 }
 
 .dental__care__text {
@@ -186,10 +185,6 @@
 }
 
 .comments__title {
-    /*font-style: normal;*/
-    /*font-weight: 600;*/
-    /*font-size: 50px;*/
-    /*line-height: 60px;*/
     color: #292929;
     margin-bottom: 60px;
 }
@@ -262,11 +257,6 @@
         width: 96%;
         margin: 0 auto 40px;
         display: block;
-        /*float: none;*/
-        /*margin: 0 auto 40px;*/
-        /*width: 600px;*/
-        /*height: 400px;*/
-        /*object-fit: cover;*/
     }
 
     .comments__title {
@@ -298,6 +288,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .comments__title {
+        margin-bottom: 40px;
+    }
+
     .comments {
         margin: 50px 0;
         padding-top: 50px;
@@ -319,6 +313,25 @@
         font-size: 20px;
         line-height: 22px;
         white-space: pre;
+    }
+
+    .dental__care__text__wrapper {
+        text-align: inherit;
+    }
+
+    /*.dental__care__title {*/
+    /*    font-size: 24px;*/
+    /*}*/
+
+    .dental__care__text {
+        font-size: 17px;
+        margin: 10px auto 20px;
+    }
+
+    .dental__care__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .about {
@@ -366,12 +379,25 @@
     }
 
     .dental__care__text__wrapper {
-        padding: 0 10px;
+        width: 90%;
     }
 
-    .dental__care__text {
-        font-size: 20px;
+    .about {
+        width: 90%;
         margin: 25px auto;
+        gap: 20px;
+    }
+
+    .about__img__container {
+        width: 100%;
+    }
+
+    .about__text__container {
+        width: 100%;
+    }
+
+    .about__button {
+        margin-top: 20px;
     }
 
     .comments {
@@ -387,16 +413,10 @@
 
 
 @media screen and (max-width: 370px) {
-    .about__text__container {
-        width: 90%;
-    }
-
     .dental__care__button {
         width: 90%;
         font-size: 14px;
-
     }
-
 }
 
 @media screen and (max-width: 350px) {

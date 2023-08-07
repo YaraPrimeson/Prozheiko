@@ -14,6 +14,8 @@ const style = {
   p: "0",
   "&:active": { border: "none", outline: "none" },
   "&:focus-visible": { border: "none", outline: "none" },
+  "&:target": { border: "none", outline: "none" },
+  "&:visited": { border: "none", outline: "none" },
 };
 
 interface ModalContainerProps {

@@ -7,7 +7,7 @@ import BlogModalDelete from "@/app/admin/blog/blog-modal-delete";
 import BlogModalEdit from "@/app/admin/blog/blog-modal-edit";
 import { getTags } from "@/lib/tag";
 import BlogCreateModal from "@/app/admin/blog/blog-create-modal";
-import { Article, Tag } from "@prisma/client";
+import { Article } from "@prisma/client";
 
 const Page = async () => {
   const blog: any = await getArticles();

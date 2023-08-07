@@ -11,15 +11,35 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import style from "./form-visit.module.scss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 
 type FormVisitProps = {
   closeModal?: () => void;
 };
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 const FormVisit = ({ closeModal }: FormVisitProps) => {
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<number | null>(null);
   const [date, setDate] = useState<Dayjs | null>(null);
-
+  const [communication, setCommunication] = useState("");
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setName(value);
@@ -29,6 +49,9 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
     setPhone(numb as number);
   };
 
+  const handleChangeCommunication = (event: SelectChangeEvent) => {
+    setCommunication(event.target.value as string);
+  };
   const notifySuccess = () => {
     toast.success("Дякуємо, ми звʼяжемося в найближчий час", {
       position: "top-center",
@@ -128,6 +151,29 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
             onChange={(newValue) => setDate(newValue)}
           />
         </LocalizationProvider>
+        <FormControl fullWidth>
+          <InputLabel className={style.label} id="communication-label">
+            Спосіб звʼязку
+          </InputLabel>
+          <Select
+            value={communication}
+            onChange={handleChangeCommunication}
+            input={
+              <OutlinedInput
+                className={style.input}
+                placeholder={"Спосіб звʼязку"}
+              />
+            }
+            MenuProps={MenuProps}
+            inputProps={{
+              sx: { padding: "0" },
+            }}
+          >
+            <MenuItem value={"Передзвонити"}>Передзвонити</MenuItem>
+            <MenuItem value={"Viber"}>Viber</MenuItem>
+            <MenuItem value={"Телеграм"}>Телеграм</MenuItem>
+          </Select>
+        </FormControl>
         <button
           type="submit"
           className={style.button}

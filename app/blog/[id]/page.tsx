@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: BlogArticleProps) {
   const item = await getArticle(id);
   return {
     title: `Prozheiko | ${item?.title}`,
+    // description: item?.title
   };
 }
 

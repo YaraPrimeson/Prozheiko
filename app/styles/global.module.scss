@@ -9,7 +9,6 @@
   font-size: 50px;
   line-height: 120%;
   color: #292929;
-
 }
 
 .text {
@@ -66,7 +65,8 @@ h3.hover__link {
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
-  padding: 5px 0;
+  width: max-content;
+  padding: 5px 2px;
   position: relative;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -186,6 +186,63 @@ h3.hover__link {
   }
 }
 
+.notfound__container {
+  position: relative;
+  height: 60vh;
+}
+
+.notfound__container .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 520px;
+  width: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.notfound .notfound404 {
+  position: relative;
+  height: 200px;
+  margin: 0 auto 20px;
+  z-index: -1;
+}
+
+.notfound .notfound404 h1 {
+  font-size: 236px;
+  font-weight: 200;
+  margin: 0;
+  color: #211b19;
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound .notfound404 h2 {
+  font-size: 28px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #211b19;
+  background: #fff;
+  padding: 10px 5px;
+  margin: auto;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 
 @media screen and (max-width: 1200px) {
   .title {
@@ -206,7 +263,7 @@ h3.hover__link {
     line-height: 22px;
   }
   .title {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 110%;
   }
 }

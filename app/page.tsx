@@ -120,7 +120,7 @@ export default function Home() {
               пацієнтів! Ми пропонуємо комплекс послуг для лікування та
               покращення зовнішнього вигляду зубів у комфортній атмосфері!
             </p>
-            <Link href={"/services"}>
+            <Link href={"/services"} className={style.dental__care__link}>
               <button className={style.dental__care__button}>
                 ДІАГНОСТИКА РОТОВОЇ ПОРОЖНИНИ
                 <svg
