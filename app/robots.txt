@@ -6,3 +6,6 @@ Allow: /blog
 Allow: /clinic
 Allow: /doctors
 Allow: /contacts
+User-agent: *
+Sitemap: https://prozheiko.kiev.ua/sitemap.xml
+Host: https://prozheiko.kiev.ua

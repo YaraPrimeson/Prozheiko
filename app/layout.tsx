@@ -38,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk" className={CeraPro.className}>
-      <Head>
+      <head>
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
         <meta
           name="rights"
@@ -53,11 +53,11 @@ export default function RootLayout({
           content="стоматологія київ, стоматологічна клініка київ, стоматології києва"
         />
         <meta name="robots" content="index,follow" />
-      </Head>
+      </head>
       <body>
-        <Suspense>
-          <Analytics />
-        </Suspense>
+        {/*<Suspense>*/}
+        <Analytics />
+        {/*</Suspense>*/}
         <TheHeader />
         <main style={{ flex: " 1 1 auto" }}>{children}</main>
         <Footer />
