@@ -41,7 +41,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  width: fit-content;
+  //width: fit-content;
+  width: max-content;
 }
 
 .contact__text {

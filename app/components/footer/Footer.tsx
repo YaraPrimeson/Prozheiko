@@ -64,7 +64,7 @@ const Footer = () => {
             <li className={style.general__list}>
               <Link
                 className={`${globalStyle.hover__link} ${style.footer__text}`}
-                href="/clinic"
+                href={"/clinic"}
               >
                 Про клініку
               </Link>
