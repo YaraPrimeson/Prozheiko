@@ -84,6 +84,7 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
       "<b>Ім`я</b>: " + name,
       "<b>Номер</b>: " + phone,
       "<b>Дата</b>: " + formattedDate,
+      "<b>Спосіб звʼязку</b>: " + communication,
     ];
     let msg = "";
     fields.forEach((field) => {
