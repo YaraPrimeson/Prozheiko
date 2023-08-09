@@ -4,7 +4,6 @@ import style from "./footer.module.scss";
 import globalStyle from "../../styles/global.module.scss";
 import Image from "next/image";
 import logo from "../../assets/images/Logo_white.webp";
-import { width } from "@mui/system";
 
 const Footer = () => {
   return (
@@ -24,7 +23,7 @@ const Footer = () => {
             className={`${style.logo__phone} ${globalStyle.hover__link}`}
             href="tel:+380683838532"
           >
-            +38 (068) 38-38-532
+            <span style={{ width: "100%" }}>+38 (068) 38-38-532</span>
           </a>
         </div>
         <div className={style.footer__list}>
@@ -105,7 +104,10 @@ const Footer = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className={globalStyle.hover__link}>
+              <span
+                style={{ width: "100%" }}
+                className={globalStyle.hover__link}
+              >
                 +38 (068) 38-38-532
               </span>
             </a>

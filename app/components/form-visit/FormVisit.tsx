@@ -40,10 +40,12 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
   const [phone, setPhone] = useState<number | null>(null);
   const [date, setDate] = useState<Dayjs | null>(null);
   const [communication, setCommunication] = useState("");
+
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setName(value);
   };
+
   const handleChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
     let numb = Number(e?.target?.value.replace(/\D/g, "").replace(/^7/, "8"));
     setPhone(numb as number);
@@ -52,6 +54,7 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
   const handleChangeCommunication = (event: SelectChangeEvent) => {
     setCommunication(event.target.value as string);
   };
+
   const notifySuccess = () => {
     toast.success("Дякуємо, ми звʼяжемося в найближчий час", {
       position: "top-center",
