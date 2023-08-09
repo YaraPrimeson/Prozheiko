@@ -5,12 +5,12 @@ import contactImg from "../assets/images/contacts.webp";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import ContactsInfo from "@/app/components/contacts-info/Contacts-info";
-import Analytics from "@/app/Analytics";
+// import Analytics from "@/app/Analytics";
 
 const Page = () => {
   return (
     <>
-      <Analytics />
+      {/*<Analytics />*/}
       <BannerContainer image={contactImg} altDescription={"contactImg"} />
       <div className={globalStyles.wrapper}>
         <ContactsInfo />

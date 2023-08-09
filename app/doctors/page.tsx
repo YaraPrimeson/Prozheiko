@@ -17,7 +17,7 @@ import Analytics from "@/app/Analytics";
 const Page = () => {
   return (
     <>
-      <Analytics />
+      {/*<Analytics />*/}
       <BannerContainer
         image={banner}
         altDescription={"банерна картинка з персоналом клініки"}
