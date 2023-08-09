@@ -53,11 +53,9 @@ export default function RootLayout({
           content="стоматологія київ, стоматологічна клініка київ, стоматології києва"
         />
         <meta name="robots" content="index,follow" />
+        <Analytics />
       </head>
       <body>
-        {/*<Suspense>*/}
-        <Analytics />
-        {/*</Suspense>*/}
         <TheHeader />
         <main style={{ flex: " 1 1 auto" }}>{children}</main>
         <Footer />
