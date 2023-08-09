@@ -4,12 +4,6 @@ import TheHeader from "@/app/components/header/Header";
 import Footer from "@/app/components/footer/Footer";
 import localFont from "next/font/local";
 import AllowCookies from "@/app/components/allow-cookies/allow-cookies";
-import Script from "next/script";
-import Head from "next/head";
-
-// export const metadata = {
-//   title: "Стоматологія в Києві | Prozheiko Dental Studio 🦷",
-// };
 
 const CeraPro = localFont({
   src: [
@@ -38,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk" className={CeraPro.className}>
-      <Head>
+      <head>
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
         {/*<meta*/}
         {/*  name="rights"*/}
@@ -63,7 +57,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-5KMKTR2G');`,
           }}
         />
-      </Head>
+      </head>
       <body>
         <noscript
           dangerouslySetInnerHTML={{
