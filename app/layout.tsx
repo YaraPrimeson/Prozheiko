@@ -5,9 +5,9 @@ import Footer from "@/app/components/footer/Footer";
 import localFont from "next/font/local";
 import AllowCookies from "@/app/components/allow-cookies/allow-cookies";
 
-export const metadata = {
-  title: "Стоматологія в Києві | Prozheiko Dental Studio 🦷",
-};
+// export const metadata = {
+//   title: "Стоматологія в Києві | Prozheiko Dental Studio 🦷",
+// };
 
 const CeraPro = localFont({
   src: [
@@ -37,6 +37,15 @@ export default function RootLayout({
   return (
     <html lang="uk" className={CeraPro.className}>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5KMKTR2G');`,
+          }}
+        />
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
         <meta
           name="rights"
@@ -51,15 +60,7 @@ export default function RootLayout({
           content="стоматологія київ, стоматологічна клініка київ, стоматології києва"
         />
         <meta name="robots" content="index,follow" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5KMKTR2G');`,
-          }}
-        />
+        <title>Стоматологія в Києві | Prozheiko Dental Studio 🦷</title>
       </head>
       <body>
         <noscript
