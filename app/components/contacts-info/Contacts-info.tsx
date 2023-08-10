@@ -32,7 +32,7 @@ const ContactsInfo = () => {
               />
             </svg>
             <p
-              style={{ display: "inline-block", width: "100%" }}
+              style={{ display: "block", width: "100%" }}
               className={`${globalStyles.hover__link} ${styles.contact__text}`}
             >
               +38 (068) 38-38-532
@@ -54,7 +54,7 @@ const ContactsInfo = () => {
               />
             </svg>
             <p
-              style={{ display: "inline-block", width: "100%" }}
+              style={{ display: "block", width: "100%" }}
               className={`${globalStyles.hover__link} ${styles.contact__text}`}
             >
               +38 (044) 38-38-532

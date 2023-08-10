@@ -7,7 +7,6 @@ import Card from "@/app/components/card/card";
 import { getArticle, getArticles } from "@/lib/blog";
 import { Article } from "@prisma/client";
 import Link from "next/link";
-// import Analytics from "@/app/Analytics";
 
 type BlogArticleProps = {
   params: { id: string };
@@ -28,7 +27,6 @@ const BlogArticle = async ({ params }: any) => {
   const articles: any = await getArticles(article && article.tag);
   return (
     <>
-      {/*<Analytics />*/}
       <BannerContainer image={Blog} altDescription={"Blog"} />
       <section className={style.blog}>
         <Card item={article} />
