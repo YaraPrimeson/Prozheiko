@@ -23,7 +23,14 @@ const Footer = () => {
             className={`${style.logo__phone} ${globalStyle.hover__link}`}
             href="tel:+380683838532"
           >
-            <span style={{ display: "block", width: "100%" }}>
+            <span
+              style={{
+                color: "#FFFFFF",
+                display: "block",
+                width: "100%",
+                paddingLeft: "3px",
+              }}
+            >
               +38 (068) 38-38-532
             </span>
           </a>

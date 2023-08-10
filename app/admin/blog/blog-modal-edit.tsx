@@ -7,9 +7,15 @@ import { Article } from "@prisma/client";
 
 type BlogModalBlogProps = {
   article: Article & { imageUrl?: string };
+  fetchArticles: () => Promise<any>;
+  setArticles: (data: any) => void;
 };
 
-const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
+const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
+  article,
+  fetchArticles,
+  setArticles,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const [formData, setFormData] = useState(article);
   // const [blocks, setBlocks] = useState(article?.blocks);
@@ -55,8 +61,12 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({ article }) => {
       await fetch(`/api/blog`, {
         method: "PATCH",
         body: JSON.stringify(article),
+      }).finally(() => {
+        fetchArticles().then((data: any) => {
+          setArticles(data.blog);
+        });
       });
-      location.reload();
+      setOpenModal(false);
     } catch (error) {
       console.log(error);
     }

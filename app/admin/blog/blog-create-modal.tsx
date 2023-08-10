@@ -15,6 +15,8 @@ import BlockList from "@/app/admin/block-list";
 
 type BlogCreateModalProps = {
   tags: Tag[];
+  fetchArticles: () => Promise<any>;
+  setArticles: (data: any) => void;
 };
 
 export interface IBlock {
@@ -22,7 +24,11 @@ export interface IBlock {
   value: string | string[];
 }
 
-const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
+const BlogCreateModal = ({
+  tags,
+  fetchArticles,
+  setArticles,
+}: BlogCreateModalProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [chooseTag, setChooseTag] = useState<string>("");
   const [title, setTitle] = useState("");
@@ -121,8 +127,19 @@ const BlogCreateModal = ({ tags }: BlogCreateModalProps) => {
           Expires: "0",
           "Content-Type": "application/json",
         },
+      }).finally(() => {
+        fetchArticles().then((data: any) => {
+          setArticles(data.blog);
+        });
       });
-      return location.reload();
+      setOpenModal(false);
+      setChooseTag("");
+      setTitle("");
+      setImgUrl("");
+      setLike("");
+      setDislike("");
+      setBlocks([]);
+      setBlock(null);
     } catch (error) {
       return console.log(error);
     }

@@ -6,9 +6,15 @@ import style from "./blog.module.scss";
 
 type BlogModalDeleteProps = {
   id: string;
+  fetchArticles: () => Promise<any>;
+  setArticles: (data: any) => void;
 };
 
-const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({ id }) => {
+const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({
+  id,
+  fetchArticles,
+  setArticles,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const toggleDeleteMode = () => {
     setOpenModal(true);
@@ -18,8 +24,12 @@ const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({ id }) => {
       await fetch(`/api/blog`, {
         method: "DELETE",
         body: id,
+      }).finally(() => {
+        fetchArticles().then((data: any) => {
+          setArticles(data.blog);
+        });
       });
-      location.reload();
+      setOpenModal(false);
     } catch (error) {
       console.log(error);
     }

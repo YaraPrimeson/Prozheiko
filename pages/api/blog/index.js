@@ -18,7 +18,8 @@ const handler = async (req, res) => {
 
   if (req.method === "POST") {
     try {
-      const article = JSON.parse(req.body);
+      // const article = JSON.parse(req.body);
+      const article = req.body;
       await createArticle(article);
       return res.status(200).json({ message: "created" });
     } catch (error) {
