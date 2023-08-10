@@ -25,8 +25,7 @@ const Footer = () => {
           >
             <span
               style={{
-                color: "#FFFFFF",
-                display: "block",
+                display: "inline-block",
                 width: "100%",
                 paddingRight: "5px",
               }}
