@@ -7,8 +7,14 @@ import style from "./tag.module.scss";
 
 type TagModalBlogProps = {
   tag: Tag;
+  fetchTags: () => Promise<any>;
+  setTags: (data: any) => void;
 };
-const TagModalEdit: React.FC<TagModalBlogProps> = ({ tag }) => {
+const TagModalEdit: React.FC<TagModalBlogProps> = ({
+  tag,
+  fetchTags,
+  setTags,
+}) => {
   const [openEdit, setOpenEdit] = useState<boolean>(false);
   const [tagText, setTagText] = useState<string>(tag?.tag);
 
@@ -25,8 +31,16 @@ const TagModalEdit: React.FC<TagModalBlogProps> = ({ tag }) => {
       await fetch(`/api/tags`, {
         method: "PATCH",
         body: JSON.stringify({ tag: tagText, id: tag.id }),
+      }).then(() => {
+        fetchTags()
+          .then((data: any) => {
+            setTags(data.tags);
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
       });
-      location.reload();
+      setOpenEdit(false);
     } catch (error) {
       console.log(error);
     }

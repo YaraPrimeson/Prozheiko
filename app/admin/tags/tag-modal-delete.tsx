@@ -6,28 +6,48 @@ import style from "./tag.module.scss";
 
 type TagModalDeleteProps = {
   id: string;
+  fetchTags: () => Promise<any>;
+  setTags: (data: any) => void;
 };
 
-const TagModalDelete: React.FC<TagModalDeleteProps> = ({ id }) => {
-  const [openEdit, setOpenEdit] = useState<boolean>(false);
+const TagModalDelete: React.FC<TagModalDeleteProps> = ({
+  id,
+  fetchTags,
+  setTags,
+}) => {
+  const [openDelete, setOpenDelete] = useState<boolean>(false);
 
   const deleteTag = async () => {
     try {
       await fetch(`/api/tags`, {
         method: "DELETE",
         body: id,
+      }).then(() => {
+        fetchTags()
+          .then((data: any) => {
+            setTags(data.tags);
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
       });
-      location.reload();
+      setOpenDelete(false);
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <div>
-      <button onClick={() => setOpenEdit(true)} className={globalS.delete__btn}>
+      <button
+        onClick={() => setOpenDelete(true)}
+        className={globalS.delete__btn}
+      >
         Видалити
       </button>
-      <ModalContainer open={openEdit} handleClose={() => setOpenEdit(false)}>
+      <ModalContainer
+        open={openDelete}
+        handleClose={() => setOpenDelete(false)}
+      >
         <div className={style.modal__container}>
           <p className={globalS.title}>Видалення тега?</p>
           <div className={style.btn__wrapper}>
@@ -36,7 +56,7 @@ const TagModalDelete: React.FC<TagModalDeleteProps> = ({ id }) => {
             </button>
             <button
               className={globalS.cancel__btn}
-              onClick={() => setOpenEdit(false)}
+              onClick={() => setOpenDelete(false)}
             >
               Відмінити
             </button>

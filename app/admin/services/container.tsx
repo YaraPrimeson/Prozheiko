@@ -1,22 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogCreateModal from "@/app/admin/blog/blog-create-modal";
+import ServiceCreateModal from "@/app/admin/services/service-create-modal";
 import style from "@/app/admin/blog/blog.module.scss";
-import { Article, Tag } from "@prisma/client";
 import globalS from "@/app/styles/global.module.scss";
-import BlogModalEdit from "@/app/admin/blog/blog-modal-edit";
-import BlogModalDelete from "@/app/admin/blog/blog-modal-delete";
+import { Service, Tag } from "@prisma/client";
+import ServiceEditModal from "@/app/admin/services/service-edit-modal";
+import ServiceDeleteModal from "@/app/admin/services/service-delete-modal";
 
 const Container = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loadingArticles, setLoadingArticles] = useState<boolean>(true);
+  const [services, setServices] = useState<Service[]>([]);
+  const [loadingServices, setLoadingServices] = useState<boolean>(true);
   const [tags, setTags] = useState<Tag[]>([]);
   const [loadingTags, setLoadingTags] = useState<boolean>(true);
 
-  function fetchArticles() {
-    setLoadingArticles(true);
+  function fetchServices() {
+    setLoadingServices(true);
     return new Promise((resolve, reject) => {
-      fetch(`/api/blog`)
+      fetch(`/api/services`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -25,7 +25,7 @@ const Container = () => {
         })
         .then((data) => resolve(data))
         .catch((error) => reject(error))
-        .finally(() => setLoadingArticles(false));
+        .finally(() => setLoadingServices(false));
     });
   }
 
@@ -46,6 +46,13 @@ const Container = () => {
   }
 
   useEffect(() => {
+    fetchServices()
+      .then((data: any) => {
+        setServices(data.services);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
     fetchTags()
       .then((data: any) => {
         setTags(data.tags);
@@ -53,53 +60,46 @@ const Container = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-    fetchArticles()
-      .then((data: any) => {
-        setArticles(data.blog);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
   }, []);
 
   return (
-    <>
-      <BlogCreateModal
+    <div>
+      <ServiceCreateModal
+        fetchServices={fetchServices}
+        setServices={setServices}
         tags={tags}
-        fetchArticles={fetchArticles}
-        setArticles={setArticles}
       />
       <div className={style.container}>
-        {articles
+        {services
           .sort((a: any, b: any) => a.tag.localeCompare(b.tag))
-          .map((article: Article, index: number) => {
+          .map((service: Service, index: number) => {
             const isFirstTag =
-              index === 0 || article.tag !== articles[index - 1].tag;
+              index === 0 || service.tag !== services[index - 1].tag;
             return (
               <React.Fragment key={index}>
                 {isFirstTag && (
                   <div>
-                    <h3 className={style.tag__title}>{article.tag}</h3>
+                    <h3 className={style.tag__title}>{service.tag}</h3>
                     <span className={style.tag__title__line}></span>
                   </div>
                 )}
-                <div key={article.id} className={style.wrapper}>
+                <div key={service.id} className={style.wrapper}>
                   <img
                     className={style.img}
-                    src={article.imageUrl}
-                    alt={article.title}
+                    src={service.imageUrl}
+                    alt={service.title}
                   />
-                  <h1 className={style.title}>{article.title}</h1>
+                  <h1 className={style.title}>{service?.title}</h1>
                   <div className={globalS.btns__edit__wrapper}>
-                    <BlogModalEdit
-                      fetchArticles={fetchArticles}
-                      setArticles={setArticles}
-                      article={article}
+                    <ServiceEditModal
+                      fetchServices={fetchServices}
+                      setServices={setServices}
+                      service={service}
                     />
-                    <BlogModalDelete
-                      fetchArticles={fetchArticles}
-                      setArticles={setArticles}
-                      id={article.id}
+                    <ServiceDeleteModal
+                      fetchServices={fetchServices}
+                      setServices={setServices}
+                      id={service.id}
                     />
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const Container = () => {
             );
           })}
       </div>
-    </>
+    </div>
   );
 };
 

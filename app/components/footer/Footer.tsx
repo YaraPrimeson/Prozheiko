@@ -27,8 +27,8 @@ const Footer = () => {
               style={{
                 color: "#FFFFFF",
                 display: "block",
-                width: "110%",
-                paddingRight: "3px",
+                width: "100%",
+                paddingRight: "5px",
               }}
             >
               +38 (068) 38-38-532

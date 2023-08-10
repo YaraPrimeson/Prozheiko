@@ -28,14 +28,14 @@ const CheckAccess = ({ children }: any) => {
   useEffect(() => {}, []);
   return (
     <div>
-      <Stack sx={{}}>
-        <TextField
-          value={token}
-          placeholder="password"
-          onChange={(e) => setToken(e.target.value)}
-        />
-        <Button onClick={getAdmin}>login</Button>
-      </Stack>
+      {/*<Stack sx={{}}>*/}
+      {/*  <TextField*/}
+      {/*    value={token}*/}
+      {/*    placeholder="password"*/}
+      {/*    onChange={(e) => setToken(e.target.value)}*/}
+      {/*  />*/}
+      {/*  <Button onClick={getAdmin}>login</Button>*/}
+      {/*</Stack>*/}
       {children}
     </div>
   );

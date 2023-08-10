@@ -4,7 +4,15 @@ import globalS from "@/app/styles/global.module.scss";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import style from "@/app/admin/blog/blog.module.scss";
 
-const SliderModalCreate = () => {
+interface SliderModalCreateProps {
+  fetchSlider: () => Promise<any>;
+  setSlider: (data: any) => void;
+}
+
+const SliderModalCreate = ({
+  fetchSlider,
+  setSlider,
+}: SliderModalCreateProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [description, setDescription] = useState("");
   const [href, setHref] = useState("");
@@ -23,8 +31,15 @@ const SliderModalCreate = () => {
           href,
           imageUrl,
         }),
+      }).finally(() => {
+        fetchSlider().then((data: any) => {
+          setSlider(data.slide);
+        });
       });
-      return location.reload();
+      setOpenModal(false);
+      setDescription("");
+      setHref("");
+      setImageUrl("");
     } catch (error) {
       return console.log(error);
     }

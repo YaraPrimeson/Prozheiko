@@ -16,8 +16,14 @@ import BlockList from "@/app/admin/block-list";
 
 type ServiceCreateModalProps = {
   tags: Tag[];
+  fetchServices: () => Promise<any>;
+  setServices: (data: any) => void;
 };
-const ServiceCreateModal = ({ tags }: ServiceCreateModalProps) => {
+const ServiceCreateModal = ({
+  tags,
+  fetchServices,
+  setServices,
+}: ServiceCreateModalProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [chooseTag, setChooseTag] = useState<string>("");
   const [title, setTitle] = useState("");
@@ -123,8 +129,18 @@ const ServiceCreateModal = ({ tags }: ServiceCreateModalProps) => {
           imageUrl: imgUrl,
           blocks,
         }),
+      }).finally(() => {
+        fetchServices().then((data: any) => {
+          setServices(data.services);
+        });
       });
-      return location.reload();
+      setOpenModal(false);
+      setChooseTag("");
+      setTitle("");
+      setImgUrl("");
+      setPrice("");
+      setBlocks([]);
+      setBlock(null);
     } catch (error) {
       return console.log(error);
     }

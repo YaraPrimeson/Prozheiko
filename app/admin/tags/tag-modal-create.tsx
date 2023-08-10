@@ -4,15 +4,20 @@ import ModalContainer from "@/app/components/modal/ModalContainer";
 import style from "./tag.module.scss";
 import globalS from "../../styles/global.module.scss";
 
-const TagModalCreate = () => {
-  const [openEdit, setOpenEdit] = useState<boolean>(false);
+interface TagModalCreateProps {
+  fetchTags: () => Promise<any>;
+  setTags: (data: any) => void;
+}
+
+const TagModalCreate = ({ setTags, fetchTags }: TagModalCreateProps) => {
+  const [openCreate, setOpenCreate] = useState<boolean>(false);
   const [tag, setTag] = useState<string>("");
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setTag(value);
   };
   const onCloseModal = () => {
-    setOpenEdit(false);
+    setOpenCreate(false);
     setTag("");
   };
 
@@ -21,8 +26,17 @@ const TagModalCreate = () => {
       await fetch(`/api/tags`, {
         method: "POST",
         body: tag,
+      }).then(() => {
+        fetchTags()
+          .then((data: any) => {
+            setTags(data.tags);
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
       });
-      return location.reload();
+      setOpenCreate(false);
+      setTag("");
     } catch (error) {
       return console.log(error);
     }
@@ -33,12 +47,15 @@ const TagModalCreate = () => {
       <div className={globalS.btn__create__container}>
         <button
           className={globalS.btn__create}
-          onClick={() => setOpenEdit(true)}
+          onClick={() => setOpenCreate(true)}
         >
           create tag
         </button>
       </div>
-      <ModalContainer open={openEdit} handleClose={() => setOpenEdit(false)}>
+      <ModalContainer
+        open={openCreate}
+        handleClose={() => setOpenCreate(false)}
+      >
         <div className={style.modal__container}>
           <p className={globalS.title}>Створити новий тег</p>
           <input

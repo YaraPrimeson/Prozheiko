@@ -7,8 +7,14 @@ import ModalContainer from "@/app/components/modal/ModalContainer";
 
 type SliderModalEdit = {
   slide: Slider;
+  fetchSlider: () => Promise<any>;
+  setSlider: (data: any) => void;
 };
-const SliderModalEdit: FC<SliderModalEdit> = ({ slide }) => {
+const SliderModalEdit: FC<SliderModalEdit> = ({
+  slide,
+  fetchSlider,
+  setSlider,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const [href, setHref] = useState(slide.href);
   const [imageUrl, setImageUrl] = useState(slide.imageUrl);
@@ -22,8 +28,12 @@ const SliderModalEdit: FC<SliderModalEdit> = ({ slide }) => {
       await fetch(`/api/slider`, {
         method: "PATCH",
         body: JSON.stringify({ href, imageUrl, description, id: slide.id }),
+      }).finally(() => {
+        fetchSlider().then((data: any) => {
+          setSlider(data.slide);
+        });
       });
-      location.reload();
+      setOpenModal(false);
     } catch (error) {
       console.log(error);
     }

@@ -6,8 +6,14 @@ import style from "@/app/admin/blog/blog.module.scss";
 
 type SliderModalDeleteProps = {
   id: string;
+  fetchSlider: () => Promise<any>;
+  setSlider: (data: any) => void;
 };
-const SliderModalDelete: FC<SliderModalDeleteProps> = ({ id }) => {
+const SliderModalDelete: FC<SliderModalDeleteProps> = ({
+  id,
+  fetchSlider,
+  setSlider,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const toggleDeleteMode = () => {
     setOpenModal(true);
@@ -17,8 +23,11 @@ const SliderModalDelete: FC<SliderModalDeleteProps> = ({ id }) => {
       await fetch(`/api/slider`, {
         method: "DELETE",
         body: id,
+      }).finally(() => {
+        fetchSlider().then((data: any) => {
+          setSlider(data.slide);
+        });
       });
-      location.reload();
     } catch (error) {
       console.log(error);
     }

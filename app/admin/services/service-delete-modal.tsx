@@ -6,9 +6,15 @@ import style from "../blog/blog.module.scss";
 
 type ServiceModalDeleteProps = {
   id: string;
+  fetchServices: () => Promise<any>;
+  setServices: (data: any) => void;
 };
 
-const ServiceDeleteModal: React.FC<ServiceModalDeleteProps> = ({ id }) => {
+const ServiceDeleteModal: React.FC<ServiceModalDeleteProps> = ({
+  id,
+  fetchServices,
+  setServices,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const toggleDeleteMode = () => {
     setOpenModal(true);
@@ -18,8 +24,12 @@ const ServiceDeleteModal: React.FC<ServiceModalDeleteProps> = ({ id }) => {
       await fetch(`/api/services`, {
         method: "DELETE",
         body: id,
+      }).finally(() => {
+        fetchServices().then((data: any) => {
+          setServices(data.services);
+        });
       });
-      location.reload();
+      setOpenModal(false);
     } catch (error) {
       console.log(error);
     }

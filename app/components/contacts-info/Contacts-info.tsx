@@ -32,7 +32,7 @@ const ContactsInfo = () => {
               />
             </svg>
             <p
-              style={{ display: "block", width: "100%" }}
+              style={{ display: "block", width: "100%", paddingRight: "4px" }}
               className={`${globalStyles.hover__link} ${styles.contact__text}`}
             >
               +38 (068) 38-38-532
