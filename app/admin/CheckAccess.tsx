@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Stack, TextField } from "@mui/material";
 import Button from "@mui/material/Button";
+import { boolean } from "zod";
 
 const CheckAccess = ({ children }: any) => {
   const [token, setToken] = useState("");
+  const [access, setAccess] = useState(boolean);
 
   async function getAdmin() {
     try {
@@ -15,12 +17,15 @@ const CheckAccess = ({ children }: any) => {
         }
       );
       console.log(data);
+      // localStorage.setItem("access", token);
+      // setToken("");
       return data;
     } catch (error) {
       return console.log(error);
     }
   }
 
+  useEffect(() => {}, []);
   return (
     <div>
       <Stack sx={{}}>
