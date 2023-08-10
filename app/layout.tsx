@@ -4,6 +4,8 @@ import TheHeader from "@/app/components/header/Header";
 import Footer from "@/app/components/footer/Footer";
 import localFont from "next/font/local";
 import AllowCookies from "@/app/components/allow-cookies/allow-cookies";
+import Script from "next/script";
+import Head from "next/head";
 
 const CeraPro = localFont({
   src: [
