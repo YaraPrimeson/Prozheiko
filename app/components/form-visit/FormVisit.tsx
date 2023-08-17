@@ -80,15 +80,19 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
     });
   const Send = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const chat_id = "-505440378";
+    const chat_id = "-1001915475151";
     const parse_mode = "html";
     const formattedDate = dayjs(date).locale("uk").format("D MMMM YYYY HH:mm");
-    let fields = [
-      "<b>Ім`я</b>: " + name,
-      "<b>Номер</b>: " + phone,
-      "<b>Дата</b>: " + formattedDate,
-      "<b>Спосіб звʼязку</b>: " + communication,
-    ];
+    let fields = ["<b>Ім`я</b>: " + name, "<b>Номер</b>: " + phone];
+
+    if (formattedDate !== "Invalid Date") {
+      fields.push("<b>Дата</b>: " + formattedDate);
+    }
+
+    if (communication) {
+      fields.push("<b>Спосіб звʼязку</b>: " + communication);
+    }
+
     let msg = "";
     fields.forEach((field) => {
       msg += field + "\n";
@@ -105,22 +109,27 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
         parse_mode: parse_mode,
       }),
     };
-    fetch(
-      `https://api.telegram.org/bot6281889755:AAHTEiRusyy7FnFSX7xEhY_Qa_n5yTINI_0/sendMessage?chat_id=-912380821&parse_mode=html&text=${msg}`,
-      requestOptionsPush
-    )
-      .then(() => {
-        setName("");
-        setPhone(null);
-        setDate(null);
-        if (closeModal) {
-          closeModal();
-        }
-        notifySuccess();
-      })
-      .catch(() => {
-        notifyError();
-      });
+    try {
+      fetch(
+        `https://api.telegram.org/bot6281889755:AAHTEiRusyy7FnFSX7xEhY_Qa_n5yTINI_0/sendMessage?chat_id=-1001915475151&parse_mode=html&text=${msg}`,
+        requestOptionsPush
+      )
+        .then(() => {
+          setName("");
+          setPhone(null);
+          setDate(null);
+          setCommunication("");
+          if (closeModal) {
+            closeModal();
+          }
+          notifySuccess();
+        })
+        .catch((e) => {
+          notifyError();
+        });
+    } catch (e) {
+      notifyError();
+    }
   };
   return (
     <>

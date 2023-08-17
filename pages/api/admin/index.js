@@ -5,8 +5,12 @@ const handler = async (req, res) => {
     try {
       const { token } = req.query;
       const admin = await getAdmin(token);
-      console.log(admin);
-      return res.status(200).json({ admin });
+
+      if (admin.token.toString() !== token.toString()) {
+        return res.status(403).json({ message: "Forbidden" });
+      }
+
+      return res.status(200).json({ message: "admin" });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

@@ -5,12 +5,7 @@ import globalS from "../styles/global.module.scss";
 import Link from "next/link";
 import { Article, Tag } from "@prisma/client";
 import TagList from "@/app/components/tag-list/TagList";
-import { Metadata } from "next";
 import { Skeleton } from "@mui/material";
-
-export const metadata: Metadata = {
-  title: "Blog | Prozheiko",
-};
 
 export default function Blog() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -118,6 +113,8 @@ export default function Blog() {
               </div>
             ))}
           </>
+        ) : !articles.length ? (
+          <div>articles not found</div>
         ) : (
           articles
             ?.sort((a, b) => a.tag.localeCompare(b.tag))

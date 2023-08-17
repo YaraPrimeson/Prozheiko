@@ -154,12 +154,14 @@ const TheHeader = () => {
               БЛОГ
             </p>
           </Link>
-          <Image
-            loading="lazy"
-            src={logo}
-            alt="prozheiko dental studio"
-            className={style.img}
-          />
+          <Link href={"/"}>
+            <Image
+              loading="lazy"
+              src={logo}
+              alt="prozheiko dental studio"
+              className={style.img}
+            />
+          </Link>
           <Link href={"/contacts"} className={style.link}>
             <p
               className={

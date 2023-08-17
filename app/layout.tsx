@@ -5,7 +5,6 @@ import Footer from "@/app/components/footer/Footer";
 import localFont from "next/font/local";
 import AllowCookies from "@/app/components/allow-cookies/allow-cookies";
 import Script from "next/script";
-import Head from "next/head";
 
 const CeraPro = localFont({
   src: [
@@ -36,10 +35,6 @@ export default function RootLayout({
     <html lang="uk" className={CeraPro.className}>
       <head>
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
-        {/*<meta*/}
-        {/*  name="rights"*/}
-        {/*  content="https://plus.google.com/110393813791348615997/"*/}
-        {/*/>*/}
         <meta
           name="description"
           content="Стоматологія Prozheiko ➤ Стоматологічні послуги європейського рівня ✓ Сучасне обладнання ✓ Доступні ціни ✓ Досвідчені лікарі ➤ Детальніше за ☎ (044) 38-38-532"
@@ -59,6 +54,16 @@ export default function RootLayout({
         {/*    })(window,document,'script','dataLayer','GTM-5KMKTR2G');`,*/}
         {/*  }}*/}
         {/*/>*/}
+
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5KMKTR2G');
+        `}
+        </Script>
       </head>
       <body>
         <noscript

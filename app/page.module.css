@@ -22,6 +22,7 @@
     width: 380px;
     min-width: 380px;
     padding: 26px 15px 26px 36px;
+    margin: 0 3px;
 }
 
 .service__info__list__pointer {
@@ -322,7 +323,6 @@
     /*.dental__care__title {*/
     /*    font-size: 24px;*/
     /*}*/
-
     .dental__care__text {
         font-size: 17px;
         margin: 10px auto 20px;
