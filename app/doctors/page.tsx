@@ -10,14 +10,13 @@ import Artur from "@/app/assets/images/doctors/Artur.webp";
 import Iryna from "@/app/assets/images/doctors/Iryna.webp";
 import IrynaProzheiko from "@/app/assets/images/doctors/Iryna-Prozheiko.webp";
 import Anastasia from "@/app/assets/images/doctors/Anastasia.webp";
+import IrynaAdmin from "@/app/assets/images/doctors/Iryna-admin.webp";
 import ContactsInfo from "@/app/components/contacts-info/Contacts-info";
 import IconCheck from "@/app/components/icon-check";
-import Analytics from "@/app/Analytics";
 
 const Page = () => {
   return (
     <>
-      {/*<Analytics />*/}
       <BannerContainer
         image={banner}
         altDescription={"банерна картинка з персоналом клініки"}
@@ -169,6 +168,34 @@ const Page = () => {
                   className={style.doctor__img}
                   src={Anastasia}
                   alt={"Анастасія Лопуга,АДМІНІСТРАТОР"}
+                />
+                <div className={style.opacity__text}>
+                  <ul className={style.wrapper__opacity}>
+                    <li className={style.list__opacity}>
+                      <IconCheck />
+                      Прийом пацієнтів та планування записів
+                    </li>
+                    <li className={style.list__opacity}>
+                      <IconCheck />
+                      Управління медичною документацією
+                    </li>
+                    <li className={style.list__opacity}>
+                      <IconCheck />
+                      Забезпечення зручності пацієнтів
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <p className={style.doctor__position}>АДМІНІСТРАТОР</p>
+              <p className={style.doctor__name}>Ірина Кучеренко</p>
+            </div>
+            <div className={style.doctor__wrapper}>
+              <div className={style.hover__wrapper}>
+                <Image
+                  loading="lazy"
+                  className={style.doctor__img}
+                  src={IrynaAdmin}
+                  alt={"Ірина Кучеренко,АДМІНІСТРАТОР"}
                 />
                 <div className={style.opacity__text}>
                   <ul className={style.wrapper__opacity}>

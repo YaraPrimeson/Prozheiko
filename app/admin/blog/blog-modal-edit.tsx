@@ -73,7 +73,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
   };
   return (
     <div>
-      <button onClick={toggleEditMode} className={globalS.edit__btn}>
+      <button onClick={toggleEditMode} disabled className={globalS.edit__btn}>
         Edit
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>

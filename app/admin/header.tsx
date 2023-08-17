@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 
 const Header = () => {
   const pathname = usePathname();
-  // const token = localStorage.getItem("prozheikoToken");
   return (
     <header className={style.header}>
       <ul className={style.wrapper}>

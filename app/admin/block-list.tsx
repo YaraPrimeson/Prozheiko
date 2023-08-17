@@ -37,32 +37,7 @@ const BlockList: FC<BlockListProps> = ({
               value={block?.value as string}
               onChange={onChange}
             />
-            <button
-              className={globalS.btn__create}
-              disabled={!block?.value}
-              onClick={addToBlocks}
-            >
-              add To Blog
-            </button>
-            <button
-              className={globalS.cancel__btn}
-              onClick={onDeleteCurrentBlock}
-            >
-              cancel
-            </button>
-          </>
-        ) : block?.type === "paragraph" ? (
-          <>
-            <TextField
-              multiline
-              sx={{ whiteSpace: "pre-wrap" }}
-              minRows={2}
-              className={style.input}
-              placeholder={"Параграф"}
-              value={block?.value as string}
-              onChange={onChange}
-            />
-            <div>
+            <div className={style.btn__create__wrapper}>
               <button
                 className={globalS.btn__create}
                 disabled={!block?.value}
@@ -78,6 +53,35 @@ const BlockList: FC<BlockListProps> = ({
               </button>
             </div>
           </>
+        ) : block?.type === "paragraph" ? (
+          <>
+            <TextField
+              multiline
+              sx={{ whiteSpace: "pre-wrap" }}
+              minRows={2}
+              className={style.input}
+              placeholder={"Параграф"}
+              value={block?.value as string}
+              onChange={onChange}
+            />
+            <div>
+              <div className={style.btn__create__wrapper}>
+                <button
+                  className={globalS.btn__create}
+                  disabled={!block?.value}
+                  onClick={addToBlocks}
+                >
+                  add To Blog
+                </button>
+                <button
+                  className={globalS.cancel__btn}
+                  onClick={onDeleteCurrentBlock}
+                >
+                  cancel
+                </button>
+              </div>
+            </div>
+          </>
         ) : block?.type === "imageUrl" ? (
           <>
             <TextField
@@ -88,19 +92,21 @@ const BlockList: FC<BlockListProps> = ({
               onChange={onChange}
             />
             <div>
-              <button
-                className={globalS.btn__create}
-                disabled={!block?.value}
-                onClick={addToBlocks}
-              >
-                add To Blog
-              </button>
-              <button
-                className={globalS.cancel__btn}
-                onClick={onDeleteCurrentBlock}
-              >
-                cancel
-              </button>
+              <div className={style.btn__create__wrapper}>
+                <button
+                  className={globalS.btn__create}
+                  disabled={!block?.value}
+                  onClick={addToBlocks}
+                >
+                  add To Blog
+                </button>
+                <button
+                  className={globalS.cancel__btn}
+                  onClick={onDeleteCurrentBlock}
+                >
+                  cancel
+                </button>
+              </div>
             </div>
           </>
         ) : (

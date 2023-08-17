@@ -59,37 +59,37 @@ const CheckAccess = ({ children }: any) => {
   }, []);
   return (
     <div>
-      {/*{access ? (*/}
-      {/*  { children }*/}
-      {/*) : (*/}
-      <Stack
-        alignItems="center"
-        justifyContent="center"
-        gap="20px"
-        sx={{ width: "50%", padding: "10px", margin: "100px auto" }}
-      >
-        <p>Введіть пароль</p>
-        <TextField
-          fullWidth
-          sx={{ border: "1px solid", borderRadius: "12px" }}
-          value={token}
-          placeholder="password"
-          onChange={(e) => setToken(e.target.value)}
-        />
-        <Button
-          fullWidth
-          variant="contained"
-          sx={{
-            backgroundColor: "#009b98",
-            borderRadius: "12px",
-            "&:hover": { backgroundColor: "rgba(0,155,152,0.89)" },
-          }}
-          onClick={checkAdmin}
+      {access ? (
+        <>{children}</>
+      ) : (
+        <Stack
+          alignItems="center"
+          justifyContent="center"
+          gap="20px"
+          sx={{ width: "50%", padding: "10px", margin: "100px auto" }}
         >
-          login
-        </Button>
-      </Stack>
-      {/*)}*/}
+          <p>Введіть пароль</p>
+          <TextField
+            fullWidth
+            sx={{ border: "1px solid", borderRadius: "12px" }}
+            value={token}
+            placeholder="password"
+            onChange={(e) => setToken(e.target.value)}
+          />
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{
+              backgroundColor: "#009b98",
+              borderRadius: "12px",
+              "&:hover": { backgroundColor: "rgba(0,155,152,0.89)" },
+            }}
+            onClick={checkAdmin}
+          >
+            login
+          </Button>
+        </Stack>
+      )}
     </div>
   );
 };

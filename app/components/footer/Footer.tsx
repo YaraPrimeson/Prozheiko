@@ -27,6 +27,7 @@ const Footer = () => {
             <span
               className={globalStyle.hover__link}
               style={{
+                paddingRight: "4px",
                 width: "100%",
               }}
             >

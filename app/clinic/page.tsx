@@ -13,12 +13,10 @@ import Iryna from "../assets/images/doctors/Iryna.webp";
 import CommentContainer from "@/app/components/comment/CommentContainer";
 import ModalVisit from "@/app/components/modal/modal-visit";
 import Link from "next/link";
-// import Analytics from "@/app/Analytics";
 
 const Page = () => {
   return (
     <>
-      {/*<Analytics />*/}
       <div className={style.banner}>
         <BannerContainer
           image={banner}
