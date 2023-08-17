@@ -54,38 +54,36 @@ export default function RootLayout({
         {/*    })(window,document,'script','dataLayer','GTM-5KMKTR2G');`,*/}
         {/*  }}*/}
         {/*/>*/}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=GTM-5KMKTR2G" />
-
-        <Script id="google-analytics">
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'GTM-5KMKTR2G');
-        `}
-        </Script>
-        {/*<Script id="google-tag-manager" strategy="afterInteractive">*/}
+        {/*<Script src="https://www.googletagmanager.com/gtag/js?id=GTM-5KMKTR2G" />*/}
+        {/*<Script id="google-analytics">*/}
         {/*  {`*/}
-        {/*(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':*/}
-        {/*    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],*/}
-        {/*    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=*/}
-        {/*    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);*/}
-        {/*    })(window,document,'script','dataLayer','GTM-5KMKTR2G');*/}
+        {/*  window.dataLayer = window.dataLayer || [];*/}
+        {/*  function gtag(){dataLayer.push(arguments);}*/}
+        {/*  gtag('js', new Date());*/}
+        {/*  gtag('config', 'GTM-5KMKTR2G');*/}
         {/*`}*/}
         {/*</Script>*/}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5KMKTR2G');
+        `}
+        </Script>
       </head>
       <body>
+        <TheHeader />
+        <main style={{ flex: " 1 1 auto" }}>{children}</main>
+        <Footer />
+        <AllowCookies />
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KMKTR2G"
             height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
-        <TheHeader />
-        <main style={{ flex: " 1 1 auto" }}>{children}</main>
-        <Footer />
-        <AllowCookies />
       </body>
     </html>
   );
