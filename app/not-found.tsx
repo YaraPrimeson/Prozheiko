@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./styles/global.module.scss";
+import Redirect from "@/app/components/Redirect404/redirect";
 
 const NotFound = () => {
   return (
@@ -10,6 +11,7 @@ const NotFound = () => {
           <h2>{`404 - СТОРІНКУ НЕ ЗНАЙДЕНО`}</h2>
         </div>
       </div>
+      <Redirect />
     </div>
   );
 };
