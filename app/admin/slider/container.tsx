@@ -6,6 +6,8 @@ import { Slider } from "@prisma/client";
 import globalS from "@/app/styles/global.module.scss";
 import SliderModalEdit from "@/app/admin/slider/slider-modal-edit";
 import SliderModalDelete from "@/app/admin/slider/slider-modal-delete";
+import sliderStyle from "@/app/admin/slider/slider.module.scss";
+import Image from "next/image";
 
 const Container = () => {
   const [slider, setSlider] = useState<Slider[]>([]);
@@ -44,9 +46,9 @@ const Container = () => {
         {slider?.map((slide: Slider, index: number) => {
           return (
             <React.Fragment key={index}>
-              <div key={slide.id} className={style.wrapper}>
+              <div key={slide.id} className={sliderStyle.wrapper}>
                 <img
-                  className={style.img}
+                  className={sliderStyle.img}
                   src={slide.imageUrl}
                   alt={slide.href}
                 />

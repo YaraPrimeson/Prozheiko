@@ -19,15 +19,11 @@ const Footer = () => {
             loading="lazy"
           />
           <p className={style.logo__subtitle}>Місце здорових посмішок</p>
-          <a
-            // className={`${style.logo__phone} ${globalStyle.hover__link}`}
-            className={style.logo__phone}
-            href="tel:+380683838532"
-          >
+          <a className={style.logo__phone} href="tel:+380683838532">
             <span
               className={globalStyle.hover__link}
               style={{
-                paddingRight: "4px",
+                paddingRight: "8px",
                 width: "100%",
               }}
             >

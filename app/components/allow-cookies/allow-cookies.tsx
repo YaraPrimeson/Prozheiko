@@ -9,9 +9,9 @@ const AllowCookies = () => {
     localStorage.setItem("prozheiko.kiev.ua", "true");
     setLsAllowCookies(localStorage.getItem("prozheiko.kiev.ua"));
   };
-
   useEffect(() => {
     setLsAllowCookies(localStorage.getItem("prozheiko.kiev.ua"));
+    document.cookie = "cookieName=value; SameSite=None; Secure";
   }, []);
   if (lsAllowCookies) {
     return;

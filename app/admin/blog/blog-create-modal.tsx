@@ -148,7 +148,7 @@ const BlogCreateModal = ({
   return (
     <div>
       <div onClick={toggleEditMode} className={globalS.btn__create__container}>
-        <button className={globalS.btn__create}>Create article</button>
+        <button className={globalS.btn__create}>Створити нову статтю</button>
       </div>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>

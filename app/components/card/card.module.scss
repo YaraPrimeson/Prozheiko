@@ -49,9 +49,10 @@
 
 .price {
   color: #FFF;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 500;
   line-height: 105%;
+  white-space: nowrap;
 }
 
 .img {
@@ -147,7 +148,7 @@
   }
   .title__container {
     width: 100%;
-    margin: 30px auto 0;
+    margin: 30px auto 10px;
   }
   .price__wrapper {
     flex-direction: column;

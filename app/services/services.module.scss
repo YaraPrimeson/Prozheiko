@@ -93,6 +93,7 @@
   font-size: 20px;
   font-weight: 400;
   line-height: 105%;
+  white-space: nowrap;
 }
 
 .form__wrapper {
@@ -232,17 +233,26 @@
   .list {
     width: 48%;
   }
-
+  .btn {
+    font-size: 14px !important;
+    line-height: 18px !important;
+    width: 180px;
+    height: 45px;
+  }
+  .price {
+    height: 45px;
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 450px) {
-
   .title {
     font-size: 30px !important;
   }
   .btn__container {
     gap: 5px;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 

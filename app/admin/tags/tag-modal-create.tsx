@@ -49,7 +49,7 @@ const TagModalCreate = ({ setTags, fetchTags }: TagModalCreateProps) => {
           className={globalS.btn__create}
           onClick={() => setOpenCreate(true)}
         >
-          create tag
+          Створити новий тег
         </button>
       </div>
       <ModalContainer

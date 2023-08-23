@@ -91,11 +91,11 @@ const Container = () => {
                   />
                   <h1 className={style.title}>{article.title}</h1>
                   <div className={globalS.btns__edit__wrapper}>
-                    <BlogModalEdit
-                      fetchArticles={fetchArticles}
-                      setArticles={setArticles}
-                      article={article}
-                    />
+                    {/*<BlogModalEdit*/}
+                    {/*  fetchArticles={fetchArticles}*/}
+                    {/*  setArticles={setArticles}*/}
+                    {/*  article={article}*/}
+                    {/*/>*/}
                     <BlogModalDelete
                       fetchArticles={fetchArticles}
                       setArticles={setArticles}

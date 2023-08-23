@@ -18,7 +18,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [formData, setFormData] = useState(article);
-  // const [blocks, setBlocks] = useState(article?.blocks);
+  const [blocks, setBlocks] = useState(article?.blocks);
   const [title, setTitle] = useState(article.title);
   const [imageUrl, setImageUrl] = useState(article?.imageUrl ?? "");
   const [tag, setTag] = useState(article.tag);
@@ -73,15 +73,15 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
   };
   return (
     <div>
-      <button onClick={toggleEditMode} disabled className={globalS.edit__btn}>
-        Edit
+      <button onClick={toggleEditMode} className={globalS.edit__btn}>
+        Редагувати
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
           <p className={globalS.title}>Редагування Статті</p>
           <div className={style.input__edit__container}>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>tag</label>
+              <label className={style.input__edit__label}>Тег</label>
               <input
                 className={style.input}
                 type="text"
@@ -91,7 +91,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>title</label>
+              <label className={style.input__edit__label}>Заголовок</label>
               <input
                 className={style.input}
                 type="text"
@@ -101,7 +101,9 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>imageUrl</label>
+              <label className={style.input__edit__label}>
+                посилання на картинку
+              </label>
               <input
                 className={style.input}
                 type="text"
@@ -133,8 +135,17 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
             {Array.isArray(article?.blocks) &&
               article?.blocks?.map((block: any, index) => {
                 return (
-                  <div key={index}>
-                    <label>{block.type}</label>
+                  <div className={style.block__wrapper} key={index}>
+                    <label className={style.block__label}>
+                      <>
+                        {() => {
+                          switch (block.type) {
+                            case "paragraph":
+                              return "test";
+                          }
+                        }}
+                      </>
+                    </label>
                     {Array.isArray(block.value) ? (
                       <div style={{ display: "flex", flexDirection: "column" }}>
                         {block?.value.map((list: any) => {

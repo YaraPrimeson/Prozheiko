@@ -37,20 +37,20 @@ const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({
   return (
     <div>
       <button onClick={toggleDeleteMode} className={globalS.delete__btn}>
-        Delete
+        Видалити
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
           <p className={globalS.title}>Видалити Статтю?</p>
           <div className={style.btn__wrapper}>
             <button className={globalS.delete__btn} onClick={deleteArticle}>
-              Delete
+              Видалити
             </button>
             <button
               className={globalS.cancel__btn}
               onClick={() => setOpenModal(false)}
             >
-              Cancel
+              Відмінити видалення
             </button>
           </div>
         </div>

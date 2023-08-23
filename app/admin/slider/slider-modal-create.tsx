@@ -22,6 +22,13 @@ const SliderModalCreate = ({
     setOpenModal(true);
   };
 
+  const onCloseModal = () => {
+    setOpenModal(false);
+    setDescription("");
+    setHref("");
+    setImageUrl("");
+  };
+
   async function createNewArticle() {
     try {
       await fetch(`/api/slider`, {
@@ -48,7 +55,7 @@ const SliderModalCreate = ({
   return (
     <div>
       <div onClick={toggleEditMode} className={globalS.btn__create__container}>
-        <button className={globalS.btn__create}>Create slide</button>
+        <button className={globalS.btn__create}>Створити новий слайд</button>
       </div>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
@@ -66,7 +73,7 @@ const SliderModalCreate = ({
               />
             </div>
             <div className={style.input__wrapper}>
-              <label>посилання </label>
+              <label>посилання</label>
               <input
                 className={style.input}
                 onChange={(e) => setHref(e.target.value)}
@@ -76,7 +83,6 @@ const SliderModalCreate = ({
                 placeholder="add href"
               />
             </div>
-
             <div className={style.input__wrapper}>
               <label>imageUrl</label>
               <input
@@ -91,13 +97,10 @@ const SliderModalCreate = ({
           </div>
           <div className={style.btn__wrapper}>
             <button onClick={createNewArticle} className={globalS.btn__create}>
-              Create
+              Створити
             </button>
-            <button
-              onClick={() => setOpenModal(false)}
-              className={globalS.cancel__btn}
-            >
-              Cancel
+            <button onClick={onCloseModal} className={globalS.cancel__btn}>
+              Відмінити
             </button>
           </div>
         </div>

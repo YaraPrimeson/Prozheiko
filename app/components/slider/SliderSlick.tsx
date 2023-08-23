@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Link from "next/link";
 import { Skeleton } from "@mui/material";
+import Image from "next/image";
 
 type sliderType = {
   imageUrl: string;
@@ -70,10 +71,17 @@ const SliderSlick = () => {
         {slides.map((slide) => (
           <div key={slide.id} className={style.container}>
             <Link href={slide.href}>
-              <img
+              {/*<img*/}
+              {/*  className={style.img}*/}
+              {/*  src={slide.imageUrl}*/}
+              {/*  alt={slide.description}*/}
+              {/*/>*/}
+              <Image
                 className={style.img}
                 src={slide.imageUrl}
                 alt={slide.description}
+                width={500}
+                height={300}
               />
             </Link>
           </div>

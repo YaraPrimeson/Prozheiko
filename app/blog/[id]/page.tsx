@@ -7,6 +7,7 @@ import Card from "@/app/components/card/card";
 import { getArticle, getArticles } from "@/lib/blog";
 import { Article } from "@prisma/client";
 import Link from "next/link";
+import Image from "next/image";
 
 type BlogArticleProps = {
   params: { id: string };
@@ -45,12 +46,21 @@ const BlogArticle = async ({ params }: any) => {
               .map((article: Article) => (
                 <Link key={article.id} href={`/blog/${article.id}`}>
                   <li className={style.other__list}>
-                    <img
+                    <Image
                       className={style.other__img}
                       src={article.imageUrl}
-                      alt=""
+                      alt={article.title}
+                      width={360}
+                      height={200}
                     />
-                    <h1 className={style.other__subtitle}>{article.title}</h1>
+                    {/*<img*/}
+                    {/*  className={style.other__img}*/}
+                    {/*  src={article.imageUrl}*/}
+                    {/*  alt=""*/}
+                    {/*/>*/}
+                    <div className={style.other__subtitle__container}>
+                      <h1 className={style.other__subtitle}>{article.title}</h1>
+                    </div>
                   </li>
                 </Link>
               ))}

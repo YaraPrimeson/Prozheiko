@@ -41,7 +41,7 @@ const SliderModalEdit: FC<SliderModalEdit> = ({
   return (
     <div>
       <button onClick={toggleEditMode} className={globalS.edit__btn}>
-        Edit
+        Редагувати
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>

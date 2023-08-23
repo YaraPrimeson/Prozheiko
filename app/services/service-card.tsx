@@ -2,6 +2,7 @@ import React from "react";
 import style from "./services.module.scss";
 import global from "../styles/global.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 type TServiceCard = {
   title: string;
@@ -14,7 +15,14 @@ type TServiceCard = {
 const ServiceCard = ({ img, title, text, price, list, id }: TServiceCard) => {
   return (
     <div className={style.card}>
-      <img className={style.img} src={img} alt={title} />
+      <Image
+        className={style.img}
+        src={img}
+        alt={title}
+        width={335}
+        height={350}
+      />
+      {/*<img className={style.img} src={img} alt={title} />*/}
       <div className={style.wrapper}>
         <h2 className={`${style.title} ${global.title}`}>{title}</h2>
         <p className={style.text}>{text}</p>
