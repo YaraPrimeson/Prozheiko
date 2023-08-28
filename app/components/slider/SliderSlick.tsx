@@ -7,6 +7,8 @@ import Slider from "react-slick";
 import Link from "next/link";
 import { Skeleton } from "@mui/material";
 import Image from "next/image";
+// import Slider1 from "../../assets/images/slider/Slider.webp";
+// import Slider2 from "../../assets/images/slider/slider2.webp";
 
 type sliderType = {
   imageUrl: string;
@@ -15,6 +17,20 @@ type sliderType = {
   id: string;
 };
 const SliderSlick = () => {
+  // const slides = [
+  //   {
+  //     description: "місце здорових усмішок!",
+  //     href: "https://prozheiko.kiev.ua/",
+  //     id: "64c7ed01b58a5b4223e35a82",
+  //     imageUrl: Slider1,
+  //   },
+  //   {
+  //     description: "місце здорових усмішок!",
+  //     href: "https://prozheiko.kiev.ua/",
+  //     id: "64c7ed01b58a5b4223e35a82",
+  //     imageUrl: Slider2,
+  //   },
+  // ];
   const [slides, setSlides] = useState<sliderType[]>([]);
   const [loadingSlides, setLoadingSlides] = useState<boolean>(true);
 
@@ -75,8 +91,8 @@ const SliderSlick = () => {
                 className={style.img}
                 src={slide.imageUrl}
                 alt={slide.description}
-                width={500}
-                height={300}
+                width={1400}
+                height={500}
               />
             </Link>
           </div>
