@@ -6,6 +6,7 @@ import { Article, Tag } from "@prisma/client";
 import globalS from "@/app/styles/global.module.scss";
 import BlogModalEdit from "@/app/admin/blog/blog-modal-edit";
 import BlogModalDelete from "@/app/admin/blog/blog-modal-delete";
+import Image from "next/image";
 
 const Container = () => {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -84,18 +85,20 @@ const Container = () => {
                   </div>
                 )}
                 <div key={article.id} className={style.wrapper}>
-                  <img
+                  <Image
                     className={style.img}
                     src={article.imageUrl}
                     alt={article.title}
+                    width={360}
+                    height={200}
                   />
                   <h1 className={style.title}>{article.title}</h1>
                   <div className={globalS.btns__edit__wrapper}>
-                    {/*<BlogModalEdit*/}
-                    {/*  fetchArticles={fetchArticles}*/}
-                    {/*  setArticles={setArticles}*/}
-                    {/*  article={article}*/}
-                    {/*/>*/}
+                    <BlogModalEdit
+                      fetchArticles={fetchArticles}
+                      setArticles={setArticles}
+                      article={article}
+                    />
                     <BlogModalDelete
                       fetchArticles={fetchArticles}
                       setArticles={setArticles}

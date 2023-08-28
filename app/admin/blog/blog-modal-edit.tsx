@@ -4,6 +4,7 @@ import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
 import { Article } from "@prisma/client";
+import { TextField } from "@mui/material";
 
 type BlogModalBlogProps = {
   article: Article & { imageUrl?: string };
@@ -18,7 +19,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [formData, setFormData] = useState(article);
-  const [blocks, setBlocks] = useState(article?.blocks);
+  const [blocks, setBlocks] = useState<any>(article?.blocks ?? []);
   const [title, setTitle] = useState(article.title);
   const [imageUrl, setImageUrl] = useState(article?.imageUrl ?? "");
   const [tag, setTag] = useState(article.tag);
@@ -56,6 +57,17 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
       [key]: value,
     }));
   };
+
+  const updateBlock = (
+    index: number,
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const newValue = event.target.value;
+    const updatedBlocks = [...blocks] ?? []; // Create a copy of the array
+    updatedBlocks[index] = { type: updatedBlocks[index].type, value: newValue }; // Update the specific block
+    setBlocks(updatedBlocks); // Update the state
+  };
+
   const editArticle = async () => {
     try {
       await fetch(`/api/blog`, {
@@ -132,8 +144,8 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                 onChange={(e) => onChange(e)}
               />
             </div>
-            {Array.isArray(article?.blocks) &&
-              article?.blocks?.map((block: any, index) => {
+            {Array.isArray(blocks) &&
+              blocks?.map((block: any, index) => {
                 return (
                   <div className={style.block__wrapper} key={index}>
                     <label className={style.block__label}>
@@ -147,12 +159,19 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                       </>
                     </label>
                     {Array.isArray(block.value) ? (
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        {block?.value.map((list: any) => {
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          width: "90%",
+                        }}
+                      >
+                        {block?.value.map((list: string, index: number) => {
                           return (
                             <input
                               className={style.input}
-                              key={list}
+                              key={index}
+                              style={{ width: "100%" }}
                               type="text"
                               value={list}
                               onChange={(e) =>
@@ -163,19 +182,16 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                         })}
                       </div>
                     ) : (
-                      <input
-                        className={style.input}
-                        type="text"
-                        value={block.value}
-                        onChange={(e) =>
-                          handleChange(
-                            index,
-                            e.target.type === "number"
-                              ? parseInt(e.target.value)
-                              : e.target.value
-                          )
-                        }
-                      />
+                      <div style={{ marginTop: "20px", width: "100%" }}>
+                        <TextField
+                          multiline
+                          sx={{ whiteSpace: "pre-wrap" }}
+                          minRows={2}
+                          className={style.input}
+                          value={block?.value as string}
+                          onChange={(e) => updateBlock(index, e)}
+                        />
+                      </div>
                     )}
                   </div>
                 );

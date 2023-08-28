@@ -53,11 +53,6 @@ const BlogArticle = async ({ params }: any) => {
                       width={360}
                       height={200}
                     />
-                    {/*<img*/}
-                    {/*  className={style.other__img}*/}
-                    {/*  src={article.imageUrl}*/}
-                    {/*  alt=""*/}
-                    {/*/>*/}
                     <div className={style.other__subtitle__container}>
                       <h1 className={style.other__subtitle}>{article.title}</h1>
                     </div>

@@ -71,11 +71,6 @@ const SliderSlick = () => {
         {slides.map((slide) => (
           <div key={slide.id} className={style.container}>
             <Link href={slide.href}>
-              {/*<img*/}
-              {/*  className={style.img}*/}
-              {/*  src={slide.imageUrl}*/}
-              {/*  alt={slide.description}*/}
-              {/*/>*/}
               <Image
                 className={style.img}
                 src={slide.imageUrl}
