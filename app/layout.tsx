@@ -44,9 +44,16 @@ export default function RootLayout({
           content="стоматологія київ, стоматологічна клініка київ, стоматології києва"
         />
         <meta name="robots" content="noindex, follow" />
-        <link rel="canonical" href="https://prozheiko.kiev.ua/404" />
+        {/*<link rel="canonical" href="https://prozheiko.kiev.ua/404" />*/}
         <title>Стоматологія в Києві | Prozheiko Dental Studio 🦷</title>
+        {/*<!-- Google Tag Manager -->*/}
         <script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-5KMKTR2G"
+        ></script>
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -54,7 +61,8 @@ export default function RootLayout({
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-5KMKTR2G');`,
           }}
-        />
+        ></Script>
+        {/*<!-- End Google Tag Manager -->*/}
         {/*<Script id="google-tag-manager" strategy="afterInteractive">*/}
         {/*  {`*/}
         {/*(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':*/}
