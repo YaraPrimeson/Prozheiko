@@ -187,7 +187,7 @@ const Page = () => {
                 </div>
               </div>
               <p className={style.doctor__position}>АДМІНІСТРАТОР</p>
-              <p className={style.doctor__name}>Ірина Кучеренко</p>
+              <p className={style.doctor__name}>Анастасія Лопуга </p>
             </div>
             <div className={style.doctor__wrapper}>
               <div className={style.hover__wrapper}>
@@ -215,7 +215,7 @@ const Page = () => {
                 </div>
               </div>
               <p className={style.doctor__position}>АДМІНІСТРАТОР</p>
-              <p className={style.doctor__name}>Анастасія Лопуга</p>
+              <p className={style.doctor__name}>Ірина Кучеренко</p>
             </div>
           </div>
         </section>
