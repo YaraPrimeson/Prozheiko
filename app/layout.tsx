@@ -43,14 +43,10 @@ export default function RootLayout({
           name="keywords"
           content="стоматологія київ, стоматологічна клініка київ, стоматології києва"
         />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
         {/*<link rel="canonical" href="https://prozheiko.kiev.ua/404" />*/}
         <title>Стоматологія в Києві | Prozheiko Dental Studio 🦷</title>
         {/*<!-- Google Tag Manager -->*/}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-5KMKTR2G"
-        ></script>
         <Script
           id="gtm"
           strategy="afterInteractive"
