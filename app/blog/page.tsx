@@ -5,6 +5,15 @@ import BlogBanner from "../assets/images/blog.webp";
 import style from "./blog-list.module.scss";
 import Blog from "@/app/blog/Blog";
 
+export async function generateMetadata() {
+  return {
+    metadataBase: new URL("https://prozheiko.kiev.ua/blog"),
+    alternates: {
+      canonical: "https://prozheiko.kiev.ua/blog",
+    },
+  };
+}
+
 export default function Page() {
   return (
     <>

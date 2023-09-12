@@ -14,6 +14,15 @@ import CommentContainer from "@/app/components/comment/CommentContainer";
 import ModalVisit from "@/app/components/modal/modal-visit";
 import Link from "next/link";
 
+export async function generateMetadata() {
+  return {
+    metadataBase: new URL("https://prozheiko.kiev.ua/clinic"),
+    alternates: {
+      canonical: "https://prozheiko.kiev.ua/clinic",
+    },
+  };
+}
+
 const Page = () => {
   return (
     <>

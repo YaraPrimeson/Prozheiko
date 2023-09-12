@@ -14,6 +14,15 @@ import IrynaAdmin from "@/app/assets/images/doctors/Iryna-admin.webp";
 import ContactsInfo from "@/app/components/contacts-info/Contacts-info";
 import IconCheck from "@/app/components/icon-check";
 
+export async function generateMetadata() {
+  return {
+    metadataBase: new URL("https://prozheiko.kiev.ua/doctors"),
+    alternates: {
+      canonical: "https://prozheiko.kiev.ua/doctors",
+    },
+  };
+}
+
 const Page = () => {
   return (
     <>

@@ -3,21 +3,23 @@ import style from "@/app/styles/global.module.scss";
 import Redirect from "@/app/components/Redirect404/redirect";
 import Link from "next/link";
 
-export async function generateMetadata() {
-  return {
-    title: "Помилка 404",
-    description: "такої сторінки не існує",
-    metadataBase: new URL("https://prozheiko.kiev.ua/404"),
-    robots: {
-      index: false,
-      follow: true,
-      nocache: false,
-    },
-    alternates: {
-      canonical: "https://prozheiko.kiev.ua/404",
-    },
-  };
-}
+// export async function generateMetadata() {
+//   return {
+//     title: "Помилка 404",
+//     description: "такої сторінки не існує",
+//     metadataBase: new URL("https://prozheiko.kiev.ua/404"),
+//     robots: {
+//       index: false,
+//       follow: true,
+//       nocache: false,
+//     },
+//     title: "Помилка 404",
+//     description: "такої сторінки не існує",
+//     alternates: {
+//       canonical: "https://prozheiko.kiev.ua/404",
+//     },
+//   };
+// }
 
 const NotFound = () => {
   return (

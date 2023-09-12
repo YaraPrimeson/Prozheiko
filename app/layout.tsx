@@ -26,6 +26,23 @@ const CeraPro = localFont({
   ],
 });
 
+export async function generateMetadata() {
+  return {
+    metadataBase: new URL("https://prozheiko.kiev.ua"),
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+    },
+    title: "Стоматологія в Києві | Prozheiko Dental Studio 🦷",
+    description:
+      "Стоматологія Prozheiko ➤ Стоматологічні послуги європейського рівня ✓ Сучасне обладнання ✓ Доступні ціни ✓ Досвідчені лікарі ➤ Детальніше за ☎ (044) 38-38-532",
+    alternates: {
+      canonical: "https://prozheiko.kiev.ua",
+    },
+  };
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -34,19 +51,6 @@ export default function RootLayout({
   return (
     <html lang="uk" className={CeraPro.className}>
       <head>
-        <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
-        <meta
-          name="description"
-          content="Стоматологія Prozheiko ➤ Стоматологічні послуги європейського рівня ✓ Сучасне обладнання ✓ Доступні ціни ✓ Досвідчені лікарі ➤ Детальніше за ☎ (044) 38-38-532"
-        />
-        <meta
-          name="keywords"
-          content="стоматологія київ, стоматологічна клініка київ, стоматології києва"
-        />
-        <meta name="robots" content="index, follow" />
-        {/*<link rel="canonical" href="https://prozheiko.kiev.ua/404" />*/}
-        <title>Стоматологія в Києві | Prozheiko Dental Studio 🦷</title>
-        {/*<!-- Google Tag Manager -->*/}
         <Script
           id="gtm"
           strategy="afterInteractive"
@@ -58,6 +62,20 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-5KMKTR2G');`,
           }}
         ></Script>
+        <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
+        {/*<meta*/}
+        {/*  name="description"*/}
+        {/*  content="Стоматологія Prozheiko ➤ Стоматологічні послуги європейського рівня ✓ Сучасне обладнання ✓ Доступні ціни ✓ Досвідчені лікарі ➤ Детальніше за ☎ (044) 38-38-532"*/}
+        {/*/>*/}
+        <meta
+          name="keywords"
+          content="стоматологія київ, стоматологічна клініка київ, стоматології києва"
+        />
+        {/*<meta name="robots" content="index, follow" />*/}
+
+        {/*<title>Стоматологія в Києві | Prozheiko Dental Studio 🦷</title>*/}
+        {/*<!-- Google Tag Manager -->*/}
+
         {/*<!-- End Google Tag Manager -->*/}
         {/*<Script id="google-tag-manager" strategy="afterInteractive">*/}
         {/*  {`*/}

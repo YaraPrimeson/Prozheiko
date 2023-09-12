@@ -6,6 +6,15 @@ import FormVisit from "@/app/components/form-visit/FormVisit";
 import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import ContactsInfo from "@/app/components/contacts-info/Contacts-info";
 
+export async function generateMetadata() {
+  return {
+    metadataBase: new URL("https://prozheiko.kiev.ua/contacts"),
+    alternates: {
+      canonical: "https://prozheiko.kiev.ua/contacts",
+    },
+  };
+}
+
 const Page = () => {
   return (
     <>

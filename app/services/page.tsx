@@ -5,6 +5,15 @@ import style from "./services.module.scss";
 import FormVisit from "@/app/components/form-visit/FormVisit";
 import ServiceList from "@/app/services/service-list";
 
+export async function generateMetadata() {
+  return {
+    metadataBase: new URL("https://prozheiko.kiev.ua/services"),
+    alternates: {
+      canonical: "https://prozheiko.kiev.ua/services",
+    },
+  };
+}
+
 const Page = async () => {
   return (
     <>
