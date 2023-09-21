@@ -10,6 +10,7 @@ export async function generateMetadata() {
     },
     title: "Помилка 404",
     description: "такої сторінки не існує",
+    keywords: "сторінку не знайдено",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/404",
     },

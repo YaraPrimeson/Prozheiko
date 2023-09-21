@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Service, Tag } from "@prisma/client";
 import TagList from "@/app/components/tag-list/TagList";
 import style from "@/app/services/services.module.scss";
@@ -13,6 +13,15 @@ const ServiceList = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [loadingTags, setLoadingTags] = useState<boolean>(true);
   const [activeTag, setActiveTag] = useState("Показати всі");
+
+  const filteredServices = useMemo(
+    () => services?.sort((a, b) => a.tag.localeCompare(b.tag)),
+    [services]
+  );
+
+  const chooseTag = (tag: string) => {
+    setActiveTag(tag);
+  };
 
   function fetchArticles() {
     setLoadingServices(true);
@@ -45,10 +54,6 @@ const ServiceList = () => {
         .finally(() => setLoadingTags(false));
     });
   }
-
-  const chooseTag = (tag: string) => {
-    setActiveTag(tag);
-  };
 
   useEffect(() => {
     fetchTags()
@@ -118,7 +123,7 @@ const ServiceList = () => {
             ))}
           </div>
         ) : (
-          services?.map((service, index) => {
+          filteredServices?.map((service, index) => {
             const isFirstTag =
               index === 0 || service.tag !== services[index - 1].tag;
             return (
@@ -138,7 +143,7 @@ const ServiceList = () => {
                   img={service.imageUrl}
                   price={service.price}
                   list={service.list}
-                  id={service.id}
+                  urlName={service.urlName}
                 />
               </React.Fragment>
             );

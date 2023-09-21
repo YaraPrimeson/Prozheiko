@@ -119,7 +119,7 @@ export default function Blog() {
             ))}
           </>
         ) : (
-          filteredArticles.map((article, index) => {
+          filteredArticles?.map((article, index) => {
             const isFirstTag =
               index === 0 || article.tag !== articles[index - 1].tag;
             return (
@@ -130,7 +130,7 @@ export default function Blog() {
                     <span className={style.tag__title__line}></span>
                   </div>
                 )}
-                <Link key={article.id} href={`/blog/${article.id}`}>
+                <Link key={article.id} href={`/blog/${article.urlName}`}>
                   <div className={style.wrapper}>
                     <Image
                       className={style.img}
@@ -140,12 +140,6 @@ export default function Blog() {
                       width={360}
                       height={200}
                     />
-                    {/*<img*/}
-                    {/*  className={style.img}*/}
-                    {/*  src={article.imageUrl}*/}
-                    {/*  alt={article.title}*/}
-                    {/*  loading="lazy"*/}
-                    {/*/>*/}
                     <h1 className={style.title}>{article.title}</h1>
                   </div>
                 </Link>

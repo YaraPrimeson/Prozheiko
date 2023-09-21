@@ -8,6 +8,9 @@ import Blog from "@/app/blog/Blog";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/blog"),
+    // title: service?.title,
+    // description: item?.seoDescription,
+    // keywords: item?.seoKeywords,
     alternates: {
       canonical: "https://prozheiko.kiev.ua/blog",
     },

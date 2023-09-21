@@ -8,6 +8,9 @@ import ServiceList from "@/app/services/service-list";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/services"),
+    // title: service?.title,
+    // description: item?.seoDescription,
+    // keywords: item?.seoKeywords,
     alternates: {
       canonical: "https://prozheiko.kiev.ua/services",
     },

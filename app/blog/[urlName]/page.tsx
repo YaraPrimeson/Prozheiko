@@ -9,22 +9,26 @@ import { Article } from "@prisma/client";
 import Link from "next/link";
 import Image from "next/image";
 
-type BlogArticleProps = {
-  params: { id: string };
+type BlogArticleParamsProps = {
+  params: { urlName: string };
 };
 
-export async function generateMetadata({ params }: BlogArticleProps) {
-  const { id } = params;
-  const item = await getArticle(id);
+export async function generateMetadata({ params }: BlogArticleParamsProps) {
+  const { urlName } = params;
+  const item = await getArticle(urlName);
   return {
     title: `Prozheiko | ${item?.title}`,
-    // description: item?.title
+    // description: item?.seoDescription,
+    // keywords: item?.seoKeywords,
+    alternates: {
+      canonical: `https://prozheiko.kiev.ua/blog/${item?.urlName}`,
+    },
   };
 }
 
-const BlogArticle = async ({ params }: any) => {
-  const { id } = params;
-  const article = await getArticle(id);
+const BlogArticle = async ({ params }: BlogArticleParamsProps) => {
+  const { urlName } = params;
+  const article = await getArticle(urlName);
   const articles: any = await getArticles(article && article.tag);
   return (
     <>
@@ -44,7 +48,7 @@ const BlogArticle = async ({ params }: any) => {
                   articleItem.id !== (article && article.id)
               )
               .map((article: Article) => (
-                <Link key={article.id} href={`/blog/${article.id}`}>
+                <Link key={article.id} href={`/blog/${article.urlName}`}>
                   <li className={style.other__list}>
                     <Image
                       className={style.other__img}
