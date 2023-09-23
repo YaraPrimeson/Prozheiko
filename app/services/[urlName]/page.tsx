@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: ServiceArticleParamsProps) {
     // description: item?.seoDescription,
     // keywords: item?.seoKeywords,
     alternates: {
-      canonical: `https://prozheiko.kiev.ua/service/${service?.urlName}`,
+      canonical: `https://prozheiko.kiev.ua/services/${service?.urlName}`,
     },
   };
 }
