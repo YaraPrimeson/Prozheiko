@@ -8,9 +8,11 @@ import ServiceList from "@/app/services/service-list";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/services"),
-    // title: service?.title,
-    // description: item?.seoDescription,
-    // keywords: item?.seoKeywords,
+    title: "Ціна на стоматологічні послуги у Prozheiko Dental Studio 🦷",
+    description:
+      "Доступне лікування зубів для кожного. У нашій клініці ви можете отримати консультацію, лікування будь-якої складності та діагностику. Ціни на стоматологічні послуги доступні, а матеріали – високої якості.",
+    keywords:
+      "Ціни на стоматологічні послуги, чистка зубів, консультація стоматолога, лікування карієсу",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/services",
     },

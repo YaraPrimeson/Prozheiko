@@ -6,6 +6,8 @@ const Page = () => {
   return (
     <div className={style.notfound__container}>
       <div className={style.notfound}>
+        {/*<h1>Помилка, сторінку не знайдено</h1>*/}
+        {/*<h2>Помилка 404, перейдіть на головну сторінку</h2>*/}
         <div className={style.notfound404}>
           <h1>Oops!</h1>
           <h2>{`404 - СТОРІНКУ НЕ ЗНАЙДЕНО`}</h2>

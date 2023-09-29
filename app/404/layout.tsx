@@ -8,9 +8,12 @@ export async function generateMetadata() {
       follow: true,
       nocache: false,
     },
-    title: "Помилка 404",
-    description: "такої сторінки не існує",
-    keywords: "сторінку не знайдено",
+    title: "Помилка, сторінку не знайдено",
+    description:
+      "Помилка 404 – сторінку не знайдено.\n" +
+      "\n" +
+      "Щоб записатися до лікаря чи дізнатися більше про послуги, перейдіть на головну сторінку.\n",
+    keywords: "помилка, сторінку не знайдено, 404",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/404",
     },

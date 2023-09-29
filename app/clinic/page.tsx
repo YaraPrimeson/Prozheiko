@@ -17,6 +17,13 @@ import Link from "next/link";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/clinic"),
+
+    title: "Стоматологічна допомога у Києві",
+    description:
+      "Стоматологія Prozheiko \n" +
+      "Сучасна стоматологічна клініка на бульварі Дружби народів. Фахівці з досвідом понад 12 років. Записатися онлайн до стоматолога або детальніше за ☎ (044) 38-38-532",
+    keywords:
+      "стоматологія Київ, стоматологічна клініка, лікування зубів, запис до стоматолога онлайн,",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/clinic",
     },

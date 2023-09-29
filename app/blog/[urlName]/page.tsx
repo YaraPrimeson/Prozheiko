@@ -17,9 +17,9 @@ export async function generateMetadata({ params }: BlogArticleParamsProps) {
   const { urlName } = params;
   const item = await getArticle(urlName);
   return {
-    title: `Prozheiko | ${item?.title}`,
-    // description: item?.seoDescription,
-    // keywords: item?.seoKeywords,
+    title: item?.title,
+    description: item?.seoDescription,
+    keywords: item?.seoKeywords,
     alternates: {
       canonical: `https://prozheiko.kiev.ua/blog/${item?.urlName}`,
     },

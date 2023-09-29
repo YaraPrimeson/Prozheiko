@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: ServiceArticleParamsProps) {
   const service = await getService(urlName);
   return {
     title: service?.title,
-    // description: item?.seoDescription,
-    // keywords: item?.seoKeywords,
+    description: service?.seoDescription,
+    keywords: service?.seoKeywords,
     alternates: {
       canonical: `https://prozheiko.kiev.ua/services/${service?.urlName}`,
     },

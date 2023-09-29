@@ -17,6 +17,11 @@ import IconCheck from "@/app/components/icon-check";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/doctors"),
+    title: "Стоматологи з досвідом Київ",
+    description:
+      "Довірте свою посмішку професіоналам. Стоматолог, пародонтолог,ортодонт у клініці Prozheiko мають великий досвід роботи та підхід до кожного пацієнта. Записатися онлайн.",
+    keywords:
+      "стоматолог Київ, пародонтолог Київ,ортодонт Київ, записатися онлайн",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/doctors",
     },

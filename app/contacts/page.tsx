@@ -9,6 +9,11 @@ import ContactsInfo from "@/app/components/contacts-info/Contacts-info";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/contacts"),
+    title: "Запис до стоматолога у Prozheiko Dental Studio 🦷",
+    description:
+      "Записатися до стоматолога у Prozheiko Dental Studio можна онлайн або за номером телефону. Детальніше за ☎ (044) 38-38-532 Заплануйте свій візит на зручний час.",
+    keywords:
+      "записатися до стоматолога, стоматолог запис Київ, записатися до стоматолога у Києві",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/contacts",
     },
