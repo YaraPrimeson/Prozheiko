@@ -13,20 +13,20 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       const tag = req.body;
-      const { tags, error } = await createTag(tag);
+      const { error } = await createTag(tag);
       if (error) console.log("error", error);
-      return res.status(200).json({ message: "edited" });
+      return res.status(200).json({ message: "created" });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).end();
     }
   }
   if (req.method === "PATCH") {
     const tag = JSON.parse(req.body);
     try {
       await editTag(tag);
-      return res.status(200).json({ message: "deleted" });
+      return res.status(200).json({ message: "edited" });
     } catch (error) {
-      return res.status(500).end(); // Помилка сервера
+      return res.status(500).end();
     }
   }
   if (req.method === "DELETE") {
@@ -35,7 +35,7 @@ const handler = async (req, res) => {
       await deleteTag(id);
       return res.status(200).json({ message: "deleted" });
     } catch (error) {
-      return res.status(500).end(); // Помилка сервера
+      return res.status(500).end();
     }
   }
 

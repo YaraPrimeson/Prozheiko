@@ -72,8 +72,8 @@ const Container = () => {
       />
       <div className={style.container}>
         {articles
-          .sort((a: any, b: any) => a.tag.localeCompare(b.tag))
-          .map((article: Article, index: number) => {
+          ?.sort((a: any, b: any) => a.tag.localeCompare(b.tag))
+          ?.map((article: Article, index: number) => {
             const isFirstTag =
               index === 0 || article.tag !== articles[index - 1].tag;
             return (

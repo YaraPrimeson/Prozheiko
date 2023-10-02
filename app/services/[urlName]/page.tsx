@@ -21,6 +21,9 @@ export async function generateMetadata({ params }: ServiceArticleParamsProps) {
     alternates: {
       canonical: `https://prozheiko.kiev.ua/services/${service?.urlName}`,
     },
+    openGraph: {
+      images: service?.imageUrl,
+    },
   };
 }
 

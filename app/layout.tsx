@@ -42,6 +42,9 @@ export async function generateMetadata() {
     alternates: {
       canonical: "https://prozheiko.kiev.ua",
     },
+    openGraph: {
+      images: `https://res.cloudinary.com/djdymweyx/image/upload/v1693198380/Slider_aemhca.webp`,
+    },
   };
 }
 

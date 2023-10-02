@@ -31,10 +31,13 @@ const BlogCreateModal = ({
 }: BlogCreateModalProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [chooseTag, setChooseTag] = useState<string>("");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [urlName, setUrlName] = useState<string>("");
+  const [seoTitle, setSeoTitle] = useState<string>("");
+  const [seoDescription, setSeoDescription] = useState<string>("");
+  const [seoKeywords, setSeoKeywords] = useState<string>("");
   const [imgUrl, setImgUrl] = useState("");
   const [like, setLike] = useState("");
-  const [dislike, setDislike] = useState("");
   const [blocks, setBlocks] = useState<IBlock[]>([]);
   const [block, setBlock] = useState<IBlock | null>(null);
 
@@ -117,8 +120,12 @@ const BlogCreateModal = ({
           tag: chooseTag,
           title,
           imageUrl: imgUrl,
+          urlName,
+          seoTitle,
+          seoDescription,
+          seoKeywords,
           like,
-          dislike,
+          dislike: "0",
           blocks,
         }),
         headers: {
@@ -135,9 +142,12 @@ const BlogCreateModal = ({
       setOpenModal(false);
       setChooseTag("");
       setTitle("");
+      setUrlName("");
+      setSeoTitle("");
+      setSeoDescription("");
+      setSeoKeywords("");
       setImgUrl("");
       setLike("");
-      setDislike("");
       setBlocks([]);
       setBlock(null);
     } catch (error) {
@@ -181,7 +191,52 @@ const BlogCreateModal = ({
                 type="text"
                 value={title}
                 name="title"
-                placeholder="add title"
+                placeholder="Заголовок"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>
+                URL, назва статті для пошуку(писати в єдиному регістрі та без
+                пробілу)
+              </label>
+              <input
+                className={style.input}
+                onChange={(e) => setUrlName(e.target.value.trim())}
+                type="text"
+                value={urlName}
+                name="urlName"
+                placeholder="URL"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>SEO заголовок</label>
+              <input
+                className={style.input}
+                onChange={(e) => setSeoTitle(e.target.value)}
+                type="text"
+                value={seoTitle}
+                name="seoTitle"
+                placeholder="SEO title"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>SEO опис</label>
+              <textarea
+                className={style.input}
+                onChange={(e) => setSeoDescription(e.target.value)}
+                value={seoDescription}
+                name="seoDescription"
+                placeholder="SEO опис"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>SEO ключові слова</label>
+              <textarea
+                className={style.input}
+                onChange={(e) => setSeoKeywords(e.target.value)}
+                value={seoKeywords}
+                name="seoKeywords"
+                placeholder="SEO ключові слова"
               />
             </div>
             <div className={style.input__wrapper}>
@@ -192,10 +247,9 @@ const BlogCreateModal = ({
                 type="text"
                 value={imgUrl}
                 name="image"
-                placeholder="add image url"
+                placeholder="Додати посилання на картинку"
               />
             </div>
-
             <div className={style.input__wrapper}>
               <label>like</label>
               <input
@@ -204,24 +258,17 @@ const BlogCreateModal = ({
                 onChange={(e) => setLike(e.target.value)}
                 value={like}
                 name="like"
-                placeholder="add count like"
-              />
-            </div>
-            <div className={style.input__wrapper}>
-              <label>dislike</label>
-              <input
-                className={style.input}
-                type="number"
-                onChange={(e) => setDislike(e.target.value)}
-                value={dislike}
-                name="dislike"
-                placeholder="add count dislike"
+                placeholder="Додати кількість лайків"
               />
             </div>
             {blocks &&
               blocks?.map((block, index) => {
                 if (block.type === "list")
-                  return <div key={index}>{block?.value}</div>;
+                  return (
+                    <div key={index}>
+                      <p>{block?.value}</p>
+                    </div>
+                  );
                 else {
                   return <div key={index}>{block?.value}</div>;
                 }
@@ -242,35 +289,48 @@ const BlogCreateModal = ({
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  flexWrap: "wrap",
+                  // flexWrap: "wrap",
                   justifyContent: "start",
                   gap: "20px",
+                  marginTop: "20px",
                 }}
               >
-                <button className={globalS.btn__create} onClick={addTitle}>
-                  додати Підзаголовок
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addTitle}
+                >
+                  Додати підзаголовок
                 </button>
-                <button className={globalS.btn__create} onClick={addParagraph}>
-                  додати Параграф
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addParagraph}
+                >
+                  Додати параграф
                 </button>
-                <button className={globalS.btn__create} onClick={addList}>
-                  додати Список
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addList}
+                >
+                  Додати список
                 </button>
-                <button className={globalS.btn__create} onClick={addImage}>
-                  додати Посилання на картинку
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addImage}
+                >
+                  Додати посилання на картинку
                 </button>
               </div>
             )}
           </div>
           <div className={style.btn__wrapper}>
             <button onClick={createNewArticle} className={globalS.btn__create}>
-              Create
+              Створити
             </button>
             <button
               onClick={() => setOpenModal(false)}
               className={globalS.cancel__btn}
             >
-              Cancel
+              Cкасувати
             </button>
           </div>
         </div>

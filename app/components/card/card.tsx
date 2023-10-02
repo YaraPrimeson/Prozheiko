@@ -53,7 +53,15 @@ const Card = ({ item }: any) => {
             } else if (block.type === "imageUrl") {
               return (
                 <div key={index}>
-                  <img src={block.value} alt={block.value} />
+                  <Image
+                    style={{ margin: "10px auto" }}
+                    loading="lazy"
+                    className={style.article__img}
+                    width={500}
+                    height={400}
+                    src={block.value}
+                    alt={item.title}
+                  />
                 </div>
               );
             } else if (block.type === "list") {

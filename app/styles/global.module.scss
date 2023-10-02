@@ -126,6 +126,34 @@ h3.hover__link {
   }
 }
 
+.admin__btn__create {
+  max-width: 220px;
+  width: 100%;
+  height: 45px;
+  border-radius: 10px;
+  background: #12979B;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: all .5s ease;
+
+  &:hover {
+    background: #0a5557;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      background: #12979B;
+    }
+  }
+}
+
 .btns__edit__wrapper {
   padding: 0 30px;
   display: flex;

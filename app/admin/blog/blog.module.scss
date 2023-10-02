@@ -80,7 +80,8 @@
 .input__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .input {
@@ -88,6 +89,30 @@
   border-radius: 15px;
   border: none;
   margin-top: 15px;
+  width: 100%;
+  padding: 10px 27px !important;
+  color: #292929;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  & input {
+    padding: 0;
+    color: #292929;
+  }
+
+  & label {
+    top: -6px;
+    left: 16px;
+    color: #8B8D92;
+  }
+}
+
+.admin__input {
+  background: #F2F2F2;
+  border-radius: 15px;
+  border: none;
   width: 100%;
   padding: 10px 27px !important;
   color: #292929;

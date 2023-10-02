@@ -37,20 +37,25 @@ const ServiceDeleteModal: React.FC<ServiceModalDeleteProps> = ({
   return (
     <div>
       <button onClick={toggleDeleteMode} className={globalS.delete__btn}>
-        Delete
+        Видалити
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
-          <p className={globalS.title}>Видалити Статтю?</p>
+          <p className={globalS.title} style={{ textAlign: "center" }}>
+            Видалити послугу?
+          </p>
+          <p className={globalS.text} style={{ textAlign: "center" }}>
+            Ця дія безповоротна, надалі неможливо буде відновити послугу
+          </p>
           <div className={style.btn__wrapper}>
             <button className={globalS.delete__btn} onClick={deleteArticle}>
-              Delete
+              Видалити
             </button>
             <button
               className={globalS.cancel__btn}
               onClick={() => setOpenModal(false)}
             >
-              Cancel
+              Скасувати
             </button>
           </div>
         </div>

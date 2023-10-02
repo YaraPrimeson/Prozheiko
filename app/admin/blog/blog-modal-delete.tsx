@@ -41,7 +41,12 @@ const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
-          <p className={globalS.title}>Видалити Статтю?</p>
+          <p className={globalS.title} style={{ textAlign: "center" }}>
+            Видалити статтю?
+          </p>
+          <p className={globalS.text} style={{ textAlign: "center" }}>
+            Ця дія безповоротна, надалі неможливо буде відновити статтю
+          </p>
           <div className={style.btn__wrapper}>
             <button className={globalS.delete__btn} onClick={deleteArticle}>
               Видалити
@@ -50,7 +55,7 @@ const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({
               className={globalS.cancel__btn}
               onClick={() => setOpenModal(false)}
             >
-              Відмінити видалення
+              Скасувати
             </button>
           </div>
         </div>

@@ -2,7 +2,8 @@ import React, { ChangeEvent, FC } from "react";
 import { IBlock } from "@/app/admin/blog/blog-create-modal";
 import style from "@/app/admin/blog/blog.module.scss";
 import globalS from "@/app/styles/global.module.scss";
-import { TextField } from "@mui/material";
+import { IconButton, Stack, TextField } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 type BlockListProps = {
   block: IBlock;
@@ -43,13 +44,13 @@ const BlockList: FC<BlockListProps> = ({
                 disabled={!block?.value}
                 onClick={addToBlocks}
               >
-                add To Blog
+                Додати в Blog
               </button>
               <button
                 className={globalS.cancel__btn}
                 onClick={onDeleteCurrentBlock}
               >
-                cancel
+                Скасувати
               </button>
             </div>
           </>
@@ -77,7 +78,7 @@ const BlockList: FC<BlockListProps> = ({
                   className={globalS.cancel__btn}
                   onClick={onDeleteCurrentBlock}
                 >
-                  cancel
+                  Скасувати
                 </button>
               </div>
             </div>
@@ -98,13 +99,13 @@ const BlockList: FC<BlockListProps> = ({
                   disabled={!block?.value}
                   onClick={addToBlocks}
                 >
-                  add To Blog
+                  Додати в блог
                 </button>
                 <button
                   className={globalS.cancel__btn}
                   onClick={onDeleteCurrentBlock}
                 >
-                  cancel
+                  Скасувати
                 </button>
               </div>
             </div>
@@ -114,22 +115,26 @@ const BlockList: FC<BlockListProps> = ({
             {Array.isArray(block?.value) &&
               block?.value?.map((list: string, index: number) => {
                 return (
-                  <React.Fragment key={index}>
+                  <Stack
+                    key={index}
+                    flexDirection="row"
+                    gap="5px"
+                    alignItems="center"
+                  >
                     <input
-                      className={style.input}
+                      className={style.admin__input}
                       placeholder={"list"}
                       value={list as string}
                       onChange={(e) => onChangeBlockListValue(index, e)}
                     />
-                    <div style={{ margin: "20px 0" }}>
-                      <button
-                        className={globalS.delete__btn}
-                        onClick={() => deleteCurrentListItem(index)}
-                      >
-                        delete this list
-                      </button>
-                    </div>
-                  </React.Fragment>
+                    <IconButton onClick={() => deleteCurrentListItem(index)}>
+                      <DeleteIcon
+                        sx={{
+                          color: "rgb(255, 31, 110)",
+                        }}
+                      />
+                    </IconButton>
+                  </Stack>
                 );
               })}
             <div
@@ -146,21 +151,21 @@ const BlockList: FC<BlockListProps> = ({
                 onClick={addToBlocks}
                 style={{ margin: "0" }}
               >
-                add To Block
+                Додати в Block
               </button>
               <button
                 style={{ margin: "0" }}
                 className={globalS.btn__create}
                 onClick={addNewListToBlock}
               >
-                add new list item
+                Створити новий список
               </button>
               <button
                 style={{ margin: "0" }}
                 className={globalS.cancel__btn}
                 onClick={onDeleteCurrentBlock}
               >
-                cancel
+                Скасувати
               </button>
             </div>
           </>

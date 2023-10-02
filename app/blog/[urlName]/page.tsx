@@ -15,13 +15,16 @@ type BlogArticleParamsProps = {
 
 export async function generateMetadata({ params }: BlogArticleParamsProps) {
   const { urlName } = params;
-  const item = await getArticle(urlName);
+  const article = await getArticle(urlName);
   return {
-    title: item?.title,
-    description: item?.seoDescription,
-    keywords: item?.seoKeywords,
+    title: article?.title,
+    description: article?.seoDescription,
+    keywords: article?.seoKeywords,
     alternates: {
-      canonical: `https://prozheiko.kiev.ua/blog/${item?.urlName}`,
+      canonical: `https://prozheiko.kiev.ua/blog/${article?.urlName}`,
+    },
+    openGraph: {
+      images: article?.imageUrl,
     },
   };
 }

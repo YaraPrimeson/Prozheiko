@@ -18,6 +18,9 @@ export async function generateMetadata() {
     alternates: {
       canonical: "https://prozheiko.kiev.ua/blog",
     },
+    // openGraph: {
+    //   images: "/blog.webp",
+    // },
   };
 }
 

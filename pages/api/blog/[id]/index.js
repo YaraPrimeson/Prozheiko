@@ -16,7 +16,6 @@ const handler = async (req, res) => {
       const data = req.body;
       const article = await updateArticle(id, data);
       return res.status(200).json({ article });
-      return res.status(200).json("ok");
     } catch (error) {
       return res.status(500).json({ error: "error.message" });
     }
