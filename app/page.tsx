@@ -12,6 +12,7 @@ import SliderSlick from "@/app/components/slider/SliderSlick";
 import ModalAppointment from "@/app/components/modal-appointment/modalAppointment";
 
 export default function Home() {
+  // "@mui/icons-material": "^5.14.11",
   return (
     <>
       <SliderSlick />

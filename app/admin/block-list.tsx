@@ -3,7 +3,7 @@ import { IBlock } from "@/app/admin/blog/blog-create-modal";
 import style from "@/app/admin/blog/blog.module.scss";
 import globalS from "@/app/styles/global.module.scss";
 import { IconButton, Stack, TextField } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+// import DeleteIcon from "@mui/icons-material/Delete";
 
 type BlockListProps = {
   block: IBlock;
@@ -127,13 +127,16 @@ const BlockList: FC<BlockListProps> = ({
                       value={list as string}
                       onChange={(e) => onChangeBlockListValue(index, e)}
                     />
-                    <IconButton onClick={() => deleteCurrentListItem(index)}>
-                      <DeleteIcon
-                        sx={{
-                          color: "rgb(255, 31, 110)",
-                        }}
-                      />
-                    </IconButton>
+                    {/*<IconButton onClick={() => deleteCurrentListItem(index)}>*/}
+                    <button onClick={() => deleteCurrentListItem(index)}>
+                      delete
+                    </button>
+                    {/*<DeleteIcon*/}
+                    {/*  sx={{*/}
+                    {/*    color: "rgb(255, 31, 110)",*/}
+                    {/*  }}*/}
+                    {/*/>*/}
+                    {/*</IconButton>*/}
                   </Stack>
                 );
               })}
