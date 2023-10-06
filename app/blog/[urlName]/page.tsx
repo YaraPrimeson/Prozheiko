@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: BlogArticleParamsProps) {
   const { urlName } = params;
   const article = await getArticle(urlName);
   return {
-    title: article?.title,
+    title: article?.seoTitle,
     description: article?.seoDescription,
     keywords: article?.seoKeywords,
     alternates: {

@@ -30,6 +30,7 @@ const handler = async (req, res) => {
       const article = JSON.parse(req.body);
       const updateArticle = await editArticle(article);
       return res.status(200).json({ article: updateArticle });
+      // return res.status(200).json({ article: article });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

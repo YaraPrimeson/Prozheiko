@@ -17,6 +17,9 @@ export default function Home() {
     <>
       <SliderSlick />
       <div className={style.page}>
+        <h1 className={`${style.title__wrapper} ${globalS.seo__title}`}>
+          Вас вітає стоматологічна клініка Prozheiko Dental Studio&nbsp;:)
+        </h1>
         <section className={style.service__info}>
           <ul className={style.service__info__wrapper}>
             <li className={style.service__info__list}>
@@ -109,12 +112,11 @@ export default function Home() {
             />
           </div>
           <div className={style.dental__care__text__wrapper}>
-            <h3 className={`${globalS.title} ${style.dental__care__title}`}>
-              Всі види
-            </h3>
-            <h3 className={`${globalS.title} ${style.dental__care__title}`}>
-              стоматологічної допомоги
-            </h3>
+            <h2
+              className={`${globalS.seo__subtitle} ${style.dental__care__title}`}
+            >
+              Стоматологія в самому серці Києва
+            </h2>
             <p className={style.dental__care__text}>
               Стоматологія Dental Studio Prozheiko працює у місті Київ з 2013
               року. За такий тривалий час свої посмішки нам довірило безліч
@@ -147,9 +149,9 @@ export default function Home() {
         <ServicesCard />
         <section className={style.about}>
           <div className={style.about__text__container}>
-            <h3 className={`${globalS.title} ${style.about__title}`}>
-              Про нас
-            </h3>
+            <h2 className={`${globalS.seo__subtitle} ${style.about__title}`}>
+              Про клініку Прожейко
+            </h2>
             <p className={style.about__text}>
               Стоматологічна клініка Dental Studio Prozheiko працює під
               керівництвом Сергія Прожейко. У сфері стоматології він – більше 12

@@ -177,19 +177,7 @@
   .philosophy {
     margin: 40px auto;
   }
-  .doctors__title {
-    position: relative;
-  }
 
-  .doctors__title::after {
-    content: "";
-    position: absolute;
-    top: 53px;
-    left: -20px;
-    width: 190px;
-    height: 5px;
-    background: #12979B;
-  }
   .comments {
     margin: 60px 0;
   }
@@ -221,10 +209,6 @@
     max-width: 377px;
     width: 100%;
     margin: 30px auto 0;
-  }
-  .doctors__title::after {
-    top: 35px;
-    width: 120px;
   }
 }
 

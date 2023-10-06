@@ -17,13 +17,17 @@ import IconCheck from "@/app/components/icon-check";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/doctors"),
-    title: "Стоматологи з досвідом Київ",
+    title: "Професійні Стоматологи Києва | Prozheiko Dental Studio 🦷",
     description:
-      "Довірте свою посмішку професіоналам. Стоматолог, пародонтолог,ортодонт у клініці Prozheiko мають великий досвід роботи та підхід до кожного пацієнта. Записатися онлайн.",
+      "Досвідчені стоматологи клініки Прожейко надають послуги Європейського рівня та проходять постійне підвищення кваліфікації. Записуйтесь онлайн",
     keywords:
-      "стоматолог Київ, пародонтолог Київ,ортодонт Київ, записатися онлайн",
+      "стоматологи києва, стоматолог київ, стоматолог, київ стоматологи",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/doctors",
+    },
+    openGraph: {
+      images:
+        "https://res.cloudinary.com/djdymweyx/image/upload/v1693198657/Slider_zgsfjg.png",
     },
   };
 }
@@ -35,12 +39,19 @@ const Page = () => {
         image={banner}
         altDescription={"банерна картинка з персоналом клініки"}
       />
+      <div className={style.title__container}>
+        <h1 className={globalStyle.seo__title}>
+          Досвідчені стоматологи Києва до Ваших послуг
+        </h1>
+      </div>
       <div className={globalStyle.wrapper}>
         <ContactsInfo />
         <section className={style.doctors}>
-          <h3 className={`${globalStyle.title} ${style.doctors__title}`}>
-            Наша команда
-          </h3>
+          <h2
+            className={`${globalStyle.seo__subtitle} ${style.doctors__title}`}
+          >
+            Команда нашої стоматології
+          </h2>
           <div className={style.doctors__container}>
             <div className={style.doctor__wrapper}>
               <div className={style.hover__wrapper}>
@@ -231,6 +242,11 @@ const Page = () => {
               <p className={style.doctor__position}>АДМІНІСТРАТОР</p>
               <p className={style.doctor__name}>Ірина Кучеренко</p>
             </div>
+          </div>
+          <div className={style.subtitle__container}>
+            <h2 className={globalStyle.seo__subtitle}>
+              Команда стоматологічних професіоналів
+            </h2>
           </div>
         </section>
       </div>

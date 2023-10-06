@@ -1,7 +1,0 @@
-RewriteEngine On
-
-RewriteCond %{HTTP_HOST} ^www\.prozheiko\.com\.ua$ [NC]
-RewriteRule ^(.*)$ https://https.prozheiko.com.ua/$1 [L,R=301]
-
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

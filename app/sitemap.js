@@ -5,12 +5,13 @@ const URL = "https://prozheiko.kiev.ua";
 
 export default async function sitemapXml() {
   const articles = await getArticles("Показати всі");
-  const articlesMap = articles.map(({ urlName, updatedAt }) => ({
+  const articlesMap = articles?.map(({ urlName, updatedAt }) => ({
     url: `${URL}/blog/${urlName}`,
     lastModified: updatedAt,
   }));
-  const services = await getServices("Показати всі");
-  const servicesMap = services.map(({ urlName, updatedAt }) => ({
+
+  const services = (await getServices("Показати всі")) || [];
+  const servicesMap = services?.map(({ urlName, updatedAt }) => ({
     url: `${URL}/services/${urlName}`,
     lastModified: updatedAt,
   }));

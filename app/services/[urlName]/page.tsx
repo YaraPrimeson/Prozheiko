@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: ServiceArticleParamsProps) {
 
   const service = await getService(urlName);
   return {
-    title: service?.title,
+    title: service?.seoTitle,
     description: service?.seoDescription,
     keywords: service?.seoKeywords,
     alternates: {

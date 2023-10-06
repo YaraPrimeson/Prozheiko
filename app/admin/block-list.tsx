@@ -44,7 +44,7 @@ const BlockList: FC<BlockListProps> = ({
                 disabled={!block?.value}
                 onClick={addToBlocks}
               >
-                Додати в Blog
+                Додати в статтю
               </button>
               <button
                 className={globalS.cancel__btn}
@@ -72,7 +72,7 @@ const BlockList: FC<BlockListProps> = ({
                   disabled={!block?.value}
                   onClick={addToBlocks}
                 >
-                  add To Blog
+                  Додати в статтю
                 </button>
                 <button
                   className={globalS.cancel__btn}
@@ -99,7 +99,7 @@ const BlockList: FC<BlockListProps> = ({
                   disabled={!block?.value}
                   onClick={addToBlocks}
                 >
-                  Додати в блог
+                  Додати в статтю
                 </button>
                 <button
                   className={globalS.cancel__btn}

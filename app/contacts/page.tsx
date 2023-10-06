@@ -9,13 +9,17 @@ import ContactsInfo from "@/app/components/contacts-info/Contacts-info";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/contacts"),
-    title: "Запис до стоматолога у Prozheiko Dental Studio 🦷",
+    title: "Стоматологія в Києві, Дружби Народів | Prozheiko Dental Studio 🦷",
     description:
-      "Записатися до стоматолога у Prozheiko Dental Studio можна онлайн або за номером телефону. Детальніше за ☎ (044) 38-38-532 Заплануйте свій візит на зручний час.",
+      "Стоматологічна клініка в Києві, на Дружби Народів, 6Б. Телефони  ☎ (044) 38-38-532 ➤  ☎ (068) 38-38-532. Працюємо з понеділка по суботу. Записуйтесь онлайн",
     keywords:
-      "записатися до стоматолога, стоматолог запис Київ, записатися до стоматолога у Києві",
+      "стоматологія київ, стоматологія дружби народів, стоматологія центр, стоматологічна клініка київ",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/contacts",
+    },
+    openGraph: {
+      images:
+        "https://res.cloudinary.com/djdymweyx/image/upload/v1693198657/Slider_zgsfjg.png",
     },
   };
 }
@@ -25,7 +29,17 @@ const Page = () => {
     <>
       <BannerContainer image={contactImg} altDescription={"contactImg"} />
       <div className={globalStyles.wrapper}>
+        <div className={styles.title__container}>
+          <h1 className={globalStyles.seo__title}>
+            Контакти Стоматології Прожейко
+          </h1>
+        </div>
         <ContactsInfo />
+        <div className={styles.subtitle__container}>
+          <h2 className={globalStyles.seo__title}>
+            Наша Стоматологія на карті
+          </h2>
+        </div>
         <section className={styles.contacts}>
           <div style={{ width: "100%" }}>
             <iframe

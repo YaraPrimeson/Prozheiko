@@ -6,15 +6,7 @@ const Redirect = () => {
   const pathname = usePathname();
   const router = useRouter();
   useEffect(() => {
-    if (pathname === "/kontakty.html") {
-      router.replace("/contacts");
-    } else if (pathname === "/o-klinike.html") {
-      router.replace("/clinic");
-    } else if (pathname === "/otzyvy-1.html") {
-      router.replace("/");
-    } else if (pathname === "/akcii.html") {
-      router.replace("/");
-    } else if (pathname !== "/404") {
+    if (pathname !== "/404") {
       router.replace("/404");
     }
   });

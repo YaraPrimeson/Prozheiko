@@ -4,23 +4,23 @@ import BannerContainer from "@/app/components/banner-container/BannerContainer";
 import BlogBanner from "../assets/images/blog.webp";
 import style from "./blog-list.module.scss";
 import Blog from "@/app/blog/Blog";
+import globalStyle from "@/app/styles/global.module.scss";
 
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/blog"),
-    title: "Блог стоматології Prozheiko Dental Studio 🦷",
+    title: "Блог про лікування та діагностику зубів | Prozheiko 🦷",
     description:
-      "У цьому розділі ми розповідаємо про послуги клініки та ділимося порадами з догляду за ротовою порожниною та зубами.\n" +
-      "\n" +
-      "Тут ви знайдете усе про стоматологію: лікування карієсу, протезування, ортодонтія та інші матеріали.\n",
+      "Все про стоматологію та стоматологічні послуги. Поради спеціалістів, критика, лайфхаки та застереження. Читайте на сайті клініки Прожейко",
     keywords:
-      "стоматологія, лікування карієсу, догляд за зубами, протезування, ортодонтія, усе про стоматологію",
+      "стоматологія, статті по стоматології, блог стоматолога, види стоматології",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/blog",
     },
-    // openGraph: {
-    //   images: "/blog.webp",
-    // },
+    openGraph: {
+      images:
+        "https://res.cloudinary.com/djdymweyx/image/upload/v1693198657/Slider_zgsfjg.png",
+    },
   };
 }
 
@@ -28,7 +28,17 @@ export default function Page() {
   return (
     <>
       <BannerContainer image={BlogBanner} altDescription={"Blog"} />
+      <div className={style.title__container}>
+        <h1 className={globalStyle.seo__title}>
+          Розкриваємо цікаві факти про стоматологію
+        </h1>
+      </div>
       <Blog />
+      <div className={style.title__container}>
+        <h2 className={globalStyle.seo__subtitle}>
+          Все про стоматологію для наших читачів
+        </h2>
+      </div>
       <section className={style.form__wrapper}>
         <FormVisit />
       </section>

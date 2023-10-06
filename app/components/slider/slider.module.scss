@@ -68,6 +68,18 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .container {
+    min-height: 200px;
+  }
+  .img {
+    max-height: 200px;
+  }
+  .skeleton {
+    height: 200px !important;
+  }
+}
+
 @media screen and (max-width: 430px) {
   .container {
     min-height: 190px;

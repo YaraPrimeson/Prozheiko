@@ -139,12 +139,13 @@
 
 .input__edit__wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  margin: 20px auto;
 }
 
 .input__edit__label {
-  width: 20%;
+  width: 98%;
 }
 
 .btn__wrapper {
@@ -161,8 +162,10 @@
 .block__wrapper {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  margin: 20px auto;
 }
 
 .block__label {
-  width: 20%;
+  width: 98%;
 }

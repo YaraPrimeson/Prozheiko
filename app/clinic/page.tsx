@@ -18,14 +18,17 @@ export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/clinic"),
 
-    title: "Стоматологічна допомога у Києві",
+    title: "Стоматологічна клініка в Києві | Prozheiko Dental Studio 🦷",
     description:
-      "Стоматологія Prozheiko \n" +
-      "Сучасна стоматологічна клініка на бульварі Дружби народів. Фахівці з досвідом понад 12 років. Записатися онлайн до стоматолога або детальніше за ☎ (044) 38-38-532",
+      "Сучасна стоматологічна клініка в Києві. Фахівці з великим досвідом та золотими руками. Широкий спектр професійних послуг. Записуйтесь онлайн",
     keywords:
-      "стоматологія Київ, стоматологічна клініка, лікування зубів, запис до стоматолога онлайн,",
+      "стоматологія, стоматологія Київ, стоматологічна клініка, стоматологія центр",
     alternates: {
       canonical: "https://prozheiko.kiev.ua/clinic",
+    },
+    openGraph: {
+      images:
+        "https://res.cloudinary.com/djdymweyx/image/upload/v1693198657/Slider_zgsfjg.png",
     },
   };
 }
@@ -43,7 +46,9 @@ const Page = () => {
         <section className={style.history}>
           <div className={style.history__wrapper}>
             <div className={style.text__wrapper}>
-              <h3 className={globalStyles.title}>Історія заснування клініки</h3>
+              <h1 className={globalStyles.seo__title}>
+                Стоматологія Прожейко: історія заснування
+              </h1>
               <p className={globalStyles.text}>
                 В травні 2011 року була заснована студія PROZHEIKO dental
                 studio, яка складалася з невеликої команди з великим бажанням
@@ -86,7 +91,9 @@ const Page = () => {
             alt={"Філософія нашої стоматології"}
           />
           <div className={style.philosophy__text__wrapper}>
-            <h3 className={globalStyles.title}>Філософія нашої стоматології</h3>
+            <h2 className={globalStyles.seo__subtitle}>
+              Філософія нашої стоматології
+            </h2>
             <p className={globalStyles.text}>
               Не просто працювати, а творити - чесно та з професіоналізмом. Чому
               творити? Тому що ми розглядаємо стоматологію, як мистецтво, саме
@@ -100,11 +107,9 @@ const Page = () => {
         </section>
         <section className={style.doctors}>
           <Link href={"/doctors"} className={style.doctors__link}>
-            <h3
-              className={`${globalStyles.hover__link} ${globalStyles.title} ${style.doctors__title}`}
-            >
-              Лікарі
-            </h3>
+            <h2 className={globalStyles.seo__subtitle}>
+              Сертифіковані стоматологи Prozheiko Dental Studio
+            </h2>
           </Link>
           <div className={style.doctors__container}>
             <div className={style.doctor__wrapper}>

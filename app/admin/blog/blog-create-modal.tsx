@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useMemo, useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
@@ -10,7 +10,7 @@ import {
   Box,
   SelectChangeEvent,
 } from "@mui/material";
-import { Tag } from "@prisma/client";
+import { Article, Tag } from "@prisma/client";
 import BlockList from "@/app/admin/block-list";
 
 type BlogCreateModalProps = {
@@ -20,7 +20,7 @@ type BlogCreateModalProps = {
 };
 
 export interface IBlock {
-  type: "paragraph" | "subtitle" | "list" | "imageUrl";
+  type: "paragraph" | "subtitle" | "subtitleText" | "list" | "imageUrl";
   value: string | string[];
 }
 
@@ -36,16 +36,20 @@ const BlogCreateModal = ({
   const [seoTitle, setSeoTitle] = useState<string>("");
   const [seoDescription, setSeoDescription] = useState<string>("");
   const [seoKeywords, setSeoKeywords] = useState<string>("");
+  const [imgProperty, setImgProperty] = useState<string>("");
   const [imgUrl, setImgUrl] = useState("");
   const [like, setLike] = useState("");
   const [blocks, setBlocks] = useState<IBlock[]>([]);
   const [block, setBlock] = useState<IBlock | null>(null);
 
-  const addTitle = () => {
+  const addSubtitle = () => {
     setBlock({ type: "subtitle", value: "" });
   };
   const addParagraph = () => {
     setBlock({ type: "paragraph", value: "" });
+  };
+  const addSubtitleText = () => {
+    setBlock({ type: "subtitleText", value: "" });
   };
   const addList = () => {
     setBlock({ type: "list", value: [""] });
@@ -72,7 +76,7 @@ const BlogCreateModal = ({
     updatedList[index] = e.target.value;
 
     setBlock((prevBlock: any) => {
-      if (!prevBlock) return null; // Safeguard in case prevBlock is null or undefined
+      if (!prevBlock) return null;
       return {
         ...prevBlock,
         value: updatedList,
@@ -124,6 +128,7 @@ const BlogCreateModal = ({
           seoTitle,
           seoDescription,
           seoKeywords,
+          imgProperty,
           like,
           dislike: "0",
           blocks,
@@ -136,7 +141,7 @@ const BlogCreateModal = ({
         },
       }).finally(() => {
         fetchArticles().then((data: any) => {
-          setArticles(data.blog);
+          setArticles(data?.blog);
         });
       });
       setOpenModal(false);
@@ -146,6 +151,7 @@ const BlogCreateModal = ({
       setSeoTitle("");
       setSeoDescription("");
       setSeoKeywords("");
+      setImgProperty("");
       setImgUrl("");
       setLike("");
       setBlocks([]);
@@ -155,6 +161,27 @@ const BlogCreateModal = ({
     }
   }
 
+  const isValid = useMemo(
+    () =>
+      Boolean(chooseTag) &&
+      Boolean(title) &&
+      Boolean(urlName) &&
+      Boolean(seoTitle) &&
+      Boolean(seoDescription) &&
+      Boolean(imgProperty) &&
+      Boolean(seoKeywords) &&
+      Boolean(imgUrl),
+    [
+      chooseTag,
+      title,
+      urlName,
+      seoTitle,
+      seoDescription,
+      seoKeywords,
+      imgProperty,
+      imgUrl,
+    ]
+  );
   return (
     <div>
       <div onClick={toggleEditMode} className={globalS.btn__create__container}>
@@ -174,7 +201,7 @@ const BlogCreateModal = ({
                   borderRadius: "12px",
                 }}
               >
-                {tags.map(({ tag, id }: Tag) => (
+                {tags.slice(1).map(({ tag, id }: Tag) => (
                   <MenuItem key={id} value={tag}>
                     {tag}
                   </MenuItem>
@@ -184,7 +211,7 @@ const BlogCreateModal = ({
           </Box>
           <div className={style.input__container}>
             <div className={style.input__wrapper}>
-              <label>Заголовок</label>
+              <label>seo Заголовок(h1)</label>
               <input
                 className={style.input}
                 onChange={(e) => setTitle(e.target.value)}
@@ -209,7 +236,7 @@ const BlogCreateModal = ({
               />
             </div>
             <div className={style.input__wrapper}>
-              <label>SEO заголовок</label>
+              <label>SEO заголовок для metadata</label>
               <input
                 className={style.input}
                 onChange={(e) => setSeoTitle(e.target.value)}
@@ -220,7 +247,7 @@ const BlogCreateModal = ({
               />
             </div>
             <div className={style.input__wrapper}>
-              <label>SEO опис</label>
+              <label>SEO опис для metadata</label>
               <textarea
                 className={style.input}
                 onChange={(e) => setSeoDescription(e.target.value)}
@@ -230,13 +257,23 @@ const BlogCreateModal = ({
               />
             </div>
             <div className={style.input__wrapper}>
-              <label>SEO ключові слова</label>
+              <label>SEO ключові слова для metadata</label>
               <textarea
                 className={style.input}
                 onChange={(e) => setSeoKeywords(e.target.value)}
                 value={seoKeywords}
                 name="seoKeywords"
                 placeholder="SEO ключові слова"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>SEO img property(посилання на картинку)</label>
+              <textarea
+                className={style.input}
+                onChange={(e) => setImgProperty(e.target.value)}
+                value={imgProperty}
+                name="imgProperty"
+                placeholder="SEO img property"
               />
             </div>
             <div className={style.input__wrapper}>
@@ -269,7 +306,14 @@ const BlogCreateModal = ({
                       <p>{block?.value}</p>
                     </div>
                   );
-                else {
+                else if (block.type === "subtitle") {
+                  return (
+                    <div key={index}>
+                      <p>subtitle</p>
+                      <h2>{block?.value}</h2>
+                    </div>
+                  );
+                } else {
                   return <div key={index}>{block?.value}</div>;
                 }
               })}
@@ -289,7 +333,6 @@ const BlogCreateModal = ({
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  // flexWrap: "wrap",
                   justifyContent: "start",
                   gap: "20px",
                   marginTop: "20px",
@@ -297,9 +340,15 @@ const BlogCreateModal = ({
               >
                 <button
                   className={globalS.admin__btn__create}
-                  onClick={addTitle}
+                  onClick={addSubtitle}
                 >
-                  Додати підзаголовок
+                  Додати підзаголовок(h2)
+                </button>
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addSubtitleText}
+                >
+                  Додати підзаголовок(p)
                 </button>
                 <button
                   className={globalS.admin__btn__create}
@@ -323,7 +372,11 @@ const BlogCreateModal = ({
             )}
           </div>
           <div className={style.btn__wrapper}>
-            <button onClick={createNewArticle} className={globalS.btn__create}>
+            <button
+              onClick={createNewArticle}
+              className={globalS.btn__create}
+              disabled={!isValid}
+            >
               Створити
             </button>
             <button

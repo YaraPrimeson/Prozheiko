@@ -11,6 +11,30 @@
   color: #292929;
 }
 
+.seo__title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+  color: #292929;
+}
+
+.seo__subtitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 120%;
+  color: #292929;
+}
+
+.seo__subtitle404 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 120%;
+  color: #292929;
+}
+
 .text {
   font-style: normal;
   font-weight: 400;
@@ -194,6 +218,11 @@ h3.hover__link {
   &:hover {
     background: rgb(63, 4, 7);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .cancel__btn {
@@ -216,7 +245,8 @@ h3.hover__link {
 
 .notfound__container {
   position: relative;
-  height: 60vh;
+  height: 100%;
+  min-height: 600px;
 }
 
 .notfound__container .notfound {
@@ -229,6 +259,7 @@ h3.hover__link {
 }
 
 .notfound {
+  margin-top: 100px;
   max-width: 520px;
   width: 100%;
   line-height: 1.4;
@@ -240,10 +271,11 @@ h3.hover__link {
   height: 200px;
   margin: 0 auto 20px;
   z-index: -1;
+  width: 80%;
 }
 
 .notfound .notfound404 h1 {
-  font-size: 236px;
+  font-size: 436px;
   font-weight: 200;
   margin: 0;
   color: #211b19;
@@ -266,14 +298,14 @@ h3.hover__link {
   margin: auto;
   display: inline-block;
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   right: 0;
 }
 
 .notfound__link {
   display: inline-block;
-  margin-top: 230px;
+  margin-top: 80px;
   font-weight: 600;
   font-size: 22px;
 }
@@ -283,17 +315,42 @@ h3.hover__link {
     font-size: 45px;
     line-height: 110%;
   }
+  .seo__title {
+    font-size: 40px;
+    line-height: 110%;
+  }
+
+  .seo__subtitle {
+    font-size: 33px;
+    line-height: 110%;
+  }
 }
 
 @media screen and (max-width: 900px) {
   .title {
     font-size: 40px;
   }
+  .seo__title {
+    font-size: 40px;
+  }
+
+  .seo__subtitle {
+    font-size: 30px;
+  }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 790px) {
+  .notfound__container {
+    min-height: 500px;
+  }
+  .notfound {
+    margin-top: 50px;
+  }
   .notfound .notfound404 h1 {
-    font-size: 190px;
+    font-size: 200px;
+  }
+  .seo__subtitle404 {
+    font-size: 20px;
   }
   .notfound .notfound404 h2 {
     font-size: 20px;
@@ -301,30 +358,49 @@ h3.hover__link {
   }
 }
 
-@media screen and (max-width: 580px) {
-  .notfound .notfound404 h1 {
-    font-size: 150px;
+@media screen and (max-width: 600px) {
+  .seo__title, .seo__subtitle {
+    font-size: 30px;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .notfound__container {
+    min-height: 450px;
+  }
+
+  .notfound__link {
+    margin-top: 20px;
+  }
+
+  .notfound {
+    margin-top: 0;
+  }
   .button {
     font-size: 18px;
     line-height: 22px;
   }
+
   .title {
     font-size: 24px;
-    line-height: 110%;
   }
-}
 
-@media screen and (max-width: 440px) {
-  .notfound .notfound404 h1 {
-    font-size: 100px;
+  .seo__title {
+    font-size: 25px;
+  }
+
+  .seo__subtitle {
+    font-size: 25px;
   }
 }
 
 @media screen and (max-width: 360px) {
+  .notfound .notfound404 h1 {
+    font-size: 180px;
+  }
+  .seo__subtitle404 {
+    font-size: 18px;
+  }
   .notfound__link {
     font-size: 19px;
   }

@@ -9,7 +9,7 @@ const Card = ({ item }: any) => {
   return (
     <>
       <div className={style.tag__container}>
-        <h2 className={`${style.tag} ${globalS.title}`}>{item?.tag}</h2>
+        <p className={`${style.tag} ${globalS.title}`}>{item?.tag}</p>
         <span className={style.tag__line}></span>
       </div>
       <div className={style.service__wrapper}>
@@ -17,7 +17,8 @@ const Card = ({ item }: any) => {
           <div className={style.price__wrapper}>
             <div className={style.title__container}>
               <h1 className={`${style.title} ${globalS.title}`}>
-                {item?.title}
+                {item?.titleH1}
+                {/*{item?.title}*/}
               </h1>
             </div>
             <div className={style.price__container}>
@@ -26,11 +27,13 @@ const Card = ({ item }: any) => {
           </div>
         ) : (
           <div className={style.title__container}>
-            <h1 className={`${style.title} ${globalS.title}`}>{item?.title}</h1>
+            <h1 className={`${style.title} ${globalS.title}`}>
+              {item?.titleH1}
+              {/*{item?.title}*/}
+            </h1>
           </div>
         )}
         <div>
-          {/*<img src={item?.imageUrl} alt={item?.title} className={style.img} />*/}
           <Image
             loading="lazy"
             className={style.img}
@@ -50,6 +53,12 @@ const Card = ({ item }: any) => {
               );
             } else if (block.type === "paragraph") {
               return <FormattedText key={index} text={block.value} />;
+            } else if (block.type === "subtitleText") {
+              return (
+                <p className={style.subtitle} key={index}>
+                  {block.value}
+                </p>
+              );
             } else if (block.type === "imageUrl") {
               return (
                 <div key={index}>

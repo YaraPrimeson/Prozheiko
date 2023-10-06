@@ -4,7 +4,8 @@ import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
 import { Article } from "@prisma/client";
-import { TextField } from "@mui/material";
+import { Stack, TextField } from "@mui/material";
+import { IBlock } from "@/app/admin/blog/blog-create-modal";
 
 type BlogModalBlogProps = {
   article: Article & { imageUrl?: string };
@@ -21,6 +22,10 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
   const [formData, setFormData] = useState(article);
   const [blocks, setBlocks] = useState<any>(article?.blocks ?? []);
   const [title, setTitle] = useState(article.title);
+  const [urlName, setUrlName] = useState(article.urlName);
+  const [seoTitle, setSeoTitle] = useState(article.seoTitle);
+  const [seoDescription, setSeoDescription] = useState(article.seoDescription);
+  const [seoKeywords, setSeoKeywords] = useState(article.seoKeywords);
   const [imageUrl, setImageUrl] = useState(article?.imageUrl ?? "");
   const [tag, setTag] = useState(article.tag);
   const [like, setLike] = useState<string>(article.like);
@@ -34,6 +39,18 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
     switch (name) {
       case "title": {
         return setTitle(value);
+      }
+      case "urlName": {
+        return setUrlName(value);
+      }
+      case "seoTitle": {
+        return setSeoTitle(value);
+      }
+      case "seoDescription": {
+        return setSeoDescription(value);
+      }
+      case "seoKeywords": {
+        return setSeoKeywords(value);
       }
       case "imageUrl": {
         return setImageUrl(value);
@@ -63,16 +80,27 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const newValue = event.target.value;
-    const updatedBlocks = [...blocks] ?? []; // Create a copy of the array
-    updatedBlocks[index] = { type: updatedBlocks[index].type, value: newValue }; // Update the specific block
-    setBlocks(updatedBlocks); // Update the state
+    const updatedBlocks = [...blocks] ?? [];
+    updatedBlocks[index] = { type: updatedBlocks[index].type, value: newValue };
+    setBlocks(updatedBlocks);
   };
 
   const editArticle = async () => {
     try {
       await fetch(`/api/blog`, {
         method: "PATCH",
-        body: JSON.stringify(article),
+        body: JSON.stringify({
+          id: article.id,
+          title,
+          imageUrl,
+          urlName,
+          seoTitle,
+          seoDescription,
+          seoKeywords,
+          like,
+          dislike,
+          blocks,
+        }),
       }).finally(() => {
         fetchArticles().then((data: any) => {
           setArticles(data.blog);
@@ -112,6 +140,57 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                 onChange={(e) => onChange(e)}
               />
             </div>
+
+            <div className={style.input__edit__wrapper}>
+              <label className={style.input__edit__label}>
+                URL, назва статті для пошуку(писати в єдиному регістрі та без
+                пробілу)
+              </label>
+              <input
+                className={style.input}
+                type="text"
+                value={urlName}
+                name="urlName"
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+            <div className={style.input__edit__wrapper}>
+              <label className={style.input__edit__label}>
+                SEO заголовок для metadata
+              </label>
+              <input
+                className={style.input}
+                type="text"
+                value={seoTitle}
+                name="seoTitle"
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+            <div className={style.input__edit__wrapper}>
+              <label className={style.input__edit__label}>
+                SEO опис для metadata
+              </label>
+              <input
+                className={style.input}
+                type="text"
+                value={seoDescription}
+                name="seoDescription"
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+            <div className={style.input__edit__wrapper}>
+              <label className={style.input__edit__label}>
+                SEO ключові слова для metadata
+              </label>
+              <input
+                className={style.input}
+                type="text"
+                value={seoKeywords}
+                name="seoKeywords"
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+
             <div className={style.input__edit__wrapper}>
               <label className={style.input__edit__label}>
                 посилання на картинку
@@ -145,19 +224,11 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
               />
             </div>
             {Array.isArray(blocks) &&
-              blocks?.map((block: any, index) => {
+              blocks?.map((block: IBlock, index) => {
                 return (
                   <div className={style.block__wrapper} key={index}>
-                    <label className={style.block__label}>
-                      <>
-                        {() => {
-                          switch (block.type) {
-                            case "paragraph":
-                              return "test";
-                          }
-                        }}
-                      </>
-                    </label>
+                    <label className={style.block__label}>{block.type}</label>
+
                     {Array.isArray(block.value) ? (
                       <div
                         style={{
@@ -193,6 +264,16 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                         />
                       </div>
                     )}
+                    <div>
+                      <button
+                        disabled
+                        style={{ marginTop: "15px" }}
+                        className={globalS.delete__btn}
+                        onClick={() => console.log(index)}
+                      >
+                        Видалити {block.type}
+                      </button>
+                    </div>
                   </div>
                 );
               })}
