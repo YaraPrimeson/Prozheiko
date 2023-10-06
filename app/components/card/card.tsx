@@ -8,17 +8,16 @@ import Image from "next/image";
 const Card = ({ item }: any) => {
   return (
     <>
-      <div className={style.tag__container}>
-        <p className={`${style.tag} ${globalS.title}`}>{item?.tag}</p>
-        <span className={style.tag__line}></span>
-      </div>
+      {/*<div className={style.tag__container}>*/}
+      {/*  <p className={`${style.tag} ${globalS.title}`}>{item?.tag}</p>*/}
+      {/*  <span className={style.tag__line}></span>*/}
+      {/*</div>*/}
       <div className={style.service__wrapper}>
         {item?.price ? (
           <div className={style.price__wrapper}>
             <div className={style.title__container}>
               <h1 className={`${style.title} ${globalS.title}`}>
                 {item?.titleH1}
-                {/*{item?.title}*/}
               </h1>
             </div>
             <div className={style.price__container}>
@@ -29,7 +28,6 @@ const Card = ({ item }: any) => {
           <div className={style.title__container}>
             <h1 className={`${style.title} ${globalS.title}`}>
               {item?.titleH1}
-              {/*{item?.title}*/}
             </h1>
           </div>
         )}

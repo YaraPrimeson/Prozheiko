@@ -140,7 +140,7 @@ export default function Blog() {
                       width={360}
                       height={200}
                     />
-                    <h1 className={style.title}>{article.title}</h1>
+                    <p className={style.title}>{article.title}</p>
                   </div>
                 </Link>
               </React.Fragment>

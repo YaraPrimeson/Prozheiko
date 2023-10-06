@@ -3,11 +3,6 @@ import React, { ChangeEvent, useState } from "react";
 import InputMask from "react-input-mask";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/uk";
-import {
-  LocalizationProvider,
-  MobileDateTimePicker,
-} from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import style from "./form-visit.module.scss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +14,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 type FormVisitProps = {
   closeModal?: () => void;
@@ -40,6 +36,8 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
   const [phone, setPhone] = useState<number | null>(null);
   const [date, setDate] = useState<Dayjs | null>(null);
   const [communication, setCommunication] = useState("");
+
+  const router = useRouter();
 
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -123,6 +121,7 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
             closeModal();
           }
           notifySuccess();
+          router.replace("/thankyou");
         })
         .catch((e) => {
           notifyError();
@@ -153,17 +152,17 @@ const FormVisit = ({ closeModal }: FormVisitProps) => {
           type="tel"
           mask="+(380) 99-999-99-99"
         />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <MobileDateTimePicker
-            sx={{ mt: "20px" }}
-            disablePast={true}
-            ampm={false}
-            className={style.input}
-            label={"Побажання щодо часу/дати"}
-            value={date}
-            onChange={(newValue) => setDate(newValue)}
-          />
-        </LocalizationProvider>
+        {/*<LocalizationProvider dateAdapter={AdapterDayjs}>*/}
+        {/*  <MobileDateTimePicker*/}
+        {/*    sx={{ mt: "20px" }}*/}
+        {/*    disablePast={true}*/}
+        {/*    ampm={false}*/}
+        {/*    className={style.input}*/}
+        {/*    label={"Побажання щодо часу/дати"}*/}
+        {/*    value={date}*/}
+        {/*    onChange={(newValue) => setDate(newValue)}*/}
+        {/*  />*/}
+        {/*</LocalizationProvider>*/}
         <FormControl fullWidth>
           <InputLabel className={style.label} id="communication-label">
             Спосіб звʼязку

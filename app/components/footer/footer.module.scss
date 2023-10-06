@@ -46,12 +46,6 @@
   gap: 20px;
 }
 
-.general__list {
-}
-
-.general__link {
-}
-
 .schedule {
   display: flex;
   flex-direction: column;
@@ -90,7 +84,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  //width: fit-content;
   width: max-content;
 }
 
@@ -102,15 +95,12 @@
   justify-content: space-around;
 }
 
-.social__text__wrapper {
-}
-
 .social__text {
-  font-family: "Cera Pro", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+  color: #000000;
 }
 
 .social__links__wrapper {

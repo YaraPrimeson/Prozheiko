@@ -201,7 +201,7 @@ const Footer = () => {
       <div className={style.social__container}>
         <div className={style.social__text__wrapper}>
           <p className={style.social__text}>
-            Усі права захищено © Стоматологічна клініка{" "}
+            Усі права захищено © Стоматологічна клініка
             <span className={style.social__block__text}>
               PROZHEIKO DENTAL STUDIO
             </span>

@@ -30,7 +30,7 @@ const ServiceCard = ({
         height={350}
       />
       <div className={style.wrapper}>
-        <h2 className={`${style.title} ${global.title}`}>{title}</h2>
+        <p className={`${style.title} ${global.title}`}>{title}</p>
         <p className={style.text}>{text}</p>
         {list && (
           <ul className={style.list__wrapper}>
