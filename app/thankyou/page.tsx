@@ -5,6 +5,10 @@ import gStyle from "@/app/styles/global.module.scss";
 export async function generateMetadata() {
   return {
     metadataBase: new URL("https://prozheiko.kiev.ua/blog"),
+    robots: {
+      index: false,
+      nocache: false,
+    },
     title: "Дякуємо за звернення в стоматологію Прожейко",
     description:
       "Найближчим часом менеджер стоматологічної клініки Прожейко зв'яжеться з Вами для уточнення деталей. Дякуємо Вам за довіру.",
