@@ -18,6 +18,7 @@ const SliderModalDelete: FC<SliderModalDeleteProps> = ({
   const toggleDeleteMode = () => {
     setOpenModal(true);
   };
+
   const deleteArticle = async () => {
     try {
       await fetch(`/api/slider`, {
@@ -39,7 +40,7 @@ const SliderModalDelete: FC<SliderModalDeleteProps> = ({
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
-          <p className={globalS.title}>Видалити Слайд?</p>
+          <p className={style.title}>Видалити Слайд?</p>
           <div className={style.btn__wrapper}>
             <button className={globalS.delete__btn} onClick={deleteArticle}>
               Видалити

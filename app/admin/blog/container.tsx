@@ -98,6 +98,7 @@ const Container = () => {
                       fetchArticles={fetchArticles}
                       setArticles={setArticles}
                       article={article}
+                      tags={tags}
                     />
                     <BlogModalDelete
                       fetchArticles={fetchArticles}

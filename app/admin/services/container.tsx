@@ -95,6 +95,7 @@ const Container = () => {
                       fetchServices={fetchServices}
                       setServices={setServices}
                       service={service}
+                      tags={tags}
                     />
                     <ServiceDeleteModal
                       fetchServices={fetchServices}

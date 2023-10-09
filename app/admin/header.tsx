@@ -9,20 +9,12 @@ const Header = () => {
   return (
     <header className={style.header}>
       <ul className={style.wrapper}>
-        {/*<li className={style.list}>*/}
-        {/*  <Link*/}
-        {/*    className={style.link}*/}
-        {/*    href={pathname === "/admin" ? "admin/upload" : "/admin/upload"}*/}
-        {/*  >*/}
-        {/*    upload*/}
-        {/*  </Link>*/}
-        {/*</li>*/}
         <li className={style.list}>
           <Link
             className={style.link}
             href={pathname === "/admin" ? "admin/slider" : "/admin/slider"}
           >
-            slider
+            Слайдер
           </Link>
         </li>
         <li className={style.list}>
@@ -30,7 +22,7 @@ const Header = () => {
             className={style.link}
             href={pathname === "/admin" ? "admin/tags" : "/admin/tags"}
           >
-            Tags
+            Теги
           </Link>
         </li>
         <li className={style.list}>
@@ -38,7 +30,7 @@ const Header = () => {
             className={style.link}
             href={pathname === "/admin" ? "admin/blog" : "/admin/blog"}
           >
-            Blog
+            Блог
           </Link>
         </li>
         <li className={style.list}>
@@ -46,7 +38,7 @@ const Header = () => {
             className={style.link}
             href={pathname === "/admin" ? "admin/services" : "/admin/services"}
           >
-            Services
+            Послуги
           </Link>
         </li>
       </ul>

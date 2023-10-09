@@ -57,7 +57,7 @@ const TagModalCreate = ({ setTags, fetchTags }: TagModalCreateProps) => {
         handleClose={() => setOpenCreate(false)}
       >
         <div className={style.modal__container}>
-          <p className={globalS.title}>Створити новий тег</p>
+          <p className={globalS.seo__subtitle}>Створити новий тег</p>
           <input
             placeholder="новий тег"
             value={tag}
@@ -70,10 +70,10 @@ const TagModalCreate = ({ setTags, fetchTags }: TagModalCreateProps) => {
               className={globalS.btn__create}
               onClick={createNewTag}
             >
-              Create
+              Створити
             </button>
             <button className={globalS.cancel__btn} onClick={onCloseModal}>
-              Cancel
+              Скасувати
             </button>
           </div>
         </div>

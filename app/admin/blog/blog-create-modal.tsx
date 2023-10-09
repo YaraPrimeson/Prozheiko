@@ -36,7 +36,6 @@ const BlogCreateModal = ({
   const [seoTitle, setSeoTitle] = useState<string>("");
   const [seoDescription, setSeoDescription] = useState<string>("");
   const [seoKeywords, setSeoKeywords] = useState<string>("");
-  const [imgProperty, setImgProperty] = useState<string>("");
   const [imgUrl, setImgUrl] = useState("");
   const [like, setLike] = useState("");
   const [blocks, setBlocks] = useState<IBlock[]>([]);
@@ -64,6 +63,7 @@ const BlogCreateModal = ({
       ["value"]: e.target.value,
     }));
   };
+
   const onChangeBlockListValue = (
     index: number,
     e: ChangeEvent<HTMLInputElement>
@@ -83,6 +83,7 @@ const BlogCreateModal = ({
       };
     });
   };
+
   const onDeleteCurrentBlock = () => {
     setBlock(null);
   };
@@ -97,6 +98,7 @@ const BlogCreateModal = ({
     if (!block) return;
     setBlock((prev: any) => ({ type: prev.type, value: [...prev.value, ""] }));
   };
+
   const deleteCurrentListItem = (indexValue: number) => {
     setBlock((prevBlock: any) => {
       return {
@@ -128,7 +130,6 @@ const BlogCreateModal = ({
           seoTitle,
           seoDescription,
           seoKeywords,
-          imgProperty,
           like,
           dislike: "0",
           blocks,
@@ -151,7 +152,6 @@ const BlogCreateModal = ({
       setSeoTitle("");
       setSeoDescription("");
       setSeoKeywords("");
-      setImgProperty("");
       setImgUrl("");
       setLike("");
       setBlocks([]);
@@ -161,26 +161,16 @@ const BlogCreateModal = ({
     }
   }
 
-  const isValid = useMemo(
+  const isDisabled = useMemo(
     () =>
-      Boolean(chooseTag) &&
-      Boolean(title) &&
-      Boolean(urlName) &&
-      Boolean(seoTitle) &&
-      Boolean(seoDescription) &&
-      Boolean(imgProperty) &&
-      Boolean(seoKeywords) &&
-      Boolean(imgUrl),
-    [
-      chooseTag,
-      title,
-      urlName,
-      seoTitle,
-      seoDescription,
-      seoKeywords,
-      imgProperty,
-      imgUrl,
-    ]
+      !Boolean(chooseTag) ||
+      !Boolean(title) ||
+      !Boolean(urlName) ||
+      !Boolean(seoTitle) ||
+      !Boolean(seoDescription) ||
+      !Boolean(seoKeywords) ||
+      !Boolean(imgUrl),
+    [chooseTag, title, urlName, seoTitle, seoDescription, seoKeywords, imgUrl]
   );
   return (
     <div>
@@ -264,16 +254,6 @@ const BlogCreateModal = ({
                 value={seoKeywords}
                 name="seoKeywords"
                 placeholder="SEO ключові слова"
-              />
-            </div>
-            <div className={style.input__wrapper}>
-              <label>SEO img property(посилання на картинку)</label>
-              <textarea
-                className={style.input}
-                onChange={(e) => setImgProperty(e.target.value)}
-                value={imgProperty}
-                name="imgProperty"
-                placeholder="SEO img property"
               />
             </div>
             <div className={style.input__wrapper}>
@@ -375,7 +355,7 @@ const BlogCreateModal = ({
             <button
               onClick={createNewArticle}
               className={globalS.btn__create}
-              disabled={!isValid}
+              disabled={isDisabled}
             >
               Створити
             </button>

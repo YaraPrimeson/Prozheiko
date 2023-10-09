@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useMemo, useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "../blog/blog.module.scss";
@@ -146,10 +146,20 @@ const ServiceCreateModal = ({
     }
   }
 
+  const isDisabled = useMemo(
+    () =>
+      !Boolean(chooseTag) ||
+      !Boolean(title) ||
+      !Boolean(imgUrl) ||
+      !Boolean(text) ||
+      !Boolean(price),
+    [chooseTag, title, imgUrl, text, price]
+  );
+
   return (
     <div>
       <div onClick={toggleEditMode} className={globalS.btn__create__container}>
-        <button className={globalS.btn__create}>Create service</button>
+        <button className={globalS.btn__create}>Створити послугу</button>
       </div>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
@@ -293,14 +303,18 @@ const ServiceCreateModal = ({
             )}
           </div>
           <div className={style.btn__wrapper}>
-            <button onClick={createNewService} className={globalS.btn__create}>
-              Create
+            <button
+              disabled={isDisabled}
+              onClick={createNewService}
+              className={globalS.btn__create}
+            >
+              Створити
             </button>
             <button
               onClick={() => setOpenModal(false)}
               className={globalS.cancel__btn}
             >
-              Cancel
+              Скасувати
             </button>
           </div>
         </div>

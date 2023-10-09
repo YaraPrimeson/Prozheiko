@@ -30,7 +30,7 @@ model Article {
   tag            String
   imageUrl       String
   title          String
-  titleH1      String
+  titleH1        String
   urlName        String
   seoTitle       String
   seoDescription String
@@ -55,7 +55,7 @@ model Service {
   list           String[]
   blocks         Json
   imageUrl       String
-  titleH1      String
+  titleH1        String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }

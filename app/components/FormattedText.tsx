@@ -1,5 +1,6 @@
 import { Stack } from "@mui/material";
 import React, { FC } from "react";
+import gStyles from "@/app/styles/global.module.scss";
 
 const urlRegex = /(http[s]?:\/\/[^\s]+)/g;
 
@@ -14,15 +15,11 @@ const FormattedText: FC<FormattedTextProps> = ({ text }) => {
     <Stack sx={{ wordBreak: "break-word" }}>
       <>
         {lines.map((line, lineIndex) => {
-          // Split the line into segments by finding links with regex
           const segments = line.split(urlRegex);
-
           return (
-            <p key={lineIndex}>
+            <p key={lineIndex} className={gStyles.text}>
               {segments.map((segment, segmentIndex) => {
-                // Check if the segment is a link
                 if (segment.match(urlRegex)) {
-                  // If it is, wrap it in an anchor tag
                   return (
                     <a
                       key={segmentIndex}
@@ -35,7 +32,6 @@ const FormattedText: FC<FormattedTextProps> = ({ text }) => {
                     </a>
                   );
                 } else {
-                  // Otherwise, just render the segment as plain text
                   return <span key={segmentIndex}>{segment}</span>;
                 }
               })}

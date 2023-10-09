@@ -45,10 +45,13 @@ const SliderModalEdit: FC<SliderModalEdit> = ({
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
-          <p className={globalS.title}>Редагування Статті</p>
+          <p className={style.title}>Редагування слайду</p>
           <div className={style.input__edit__container}>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>href</label>
+              <label className={style.input__edit__label}>
+                Посилання(куди відбувається перенаправлення при натискані на
+                картинку)
+              </label>
               <input
                 className={style.input}
                 type="text"
@@ -58,7 +61,9 @@ const SliderModalEdit: FC<SliderModalEdit> = ({
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>imageUrl</label>
+              <label className={style.input__edit__label}>
+                посилання на картинку для слайду
+              </label>
               <input
                 className={style.input}
                 type="text"

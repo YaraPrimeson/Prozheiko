@@ -64,7 +64,7 @@ const TagModalEdit: React.FC<TagModalBlogProps> = ({
               Редагувати
             </button>
             <button className={globalS.cancel__btn} onClick={onCloseModal}>
-              Відмінити
+              Скасувати
             </button>
           </div>
         </div>

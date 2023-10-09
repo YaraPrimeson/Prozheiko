@@ -1,22 +1,33 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
-import { Article } from "@prisma/client";
-import { Stack, TextField } from "@mui/material";
+import { Article, Tag } from "@prisma/client";
+import { FormControl, MenuItem, Select, TextField } from "@mui/material";
 import { IBlock } from "@/app/admin/blog/blog-create-modal";
+import BlockList from "@/app/admin/block-list";
 
 type BlogModalBlogProps = {
   article: Article & { imageUrl?: string };
   fetchArticles: () => Promise<any>;
   setArticles: (data: any) => void;
+  tags: Tag[];
 };
+
+export const BlockType = [
+  "paragraph",
+  "subtitle",
+  "subtitleText",
+  "list",
+  "imageUrl",
+];
 
 const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
   article,
   fetchArticles,
   setArticles,
+  tags,
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [formData, setFormData] = useState(article);
@@ -30,10 +41,28 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
   const [tag, setTag] = useState(article.tag);
   const [like, setLike] = useState<string>(article.like);
   const [dislike, setDislike] = useState<string>(article.dislike);
+  const [block, setBlock] = useState<IBlock | null>(null);
 
   const toggleEditMode = () => {
     setOpenModal(true);
   };
+
+  const addSubtitle = () => {
+    setBlock({ type: "subtitle", value: "" });
+  };
+  const addParagraph = () => {
+    setBlock({ type: "paragraph", value: "" });
+  };
+  const addSubtitleText = () => {
+    setBlock({ type: "subtitleText", value: "" });
+  };
+  const addList = () => {
+    setBlock({ type: "list", value: [""] });
+  };
+  const addImage = () => {
+    setBlock({ type: "imageUrl", value: "" });
+  };
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     switch (name) {
@@ -55,9 +84,6 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
       case "imageUrl": {
         return setImageUrl(value);
       }
-      case "tag": {
-        return setTag(value);
-      }
       case "like": {
         return setLike(value);
       }
@@ -68,11 +94,77 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
         return;
     }
   };
-  const handleChange = (key: any, value: any) => {
+
+  const handleChange = (key: number, value: string) => {
+    console.log("sart handleChange");
     setFormData((prevFormData) => ({
       ...prevFormData,
       [key]: value,
     }));
+  };
+
+  const handleChangeType = (index: number, newType: string) => {
+    const updatedBlocks = [...blocks];
+    updatedBlocks[index].type = newType;
+    setBlocks(updatedBlocks);
+  };
+
+  const deleteBlock = (index: number) => {
+    const updatedBlocks = blocks.filter((_: any, i: number) => i !== index);
+    setBlocks(updatedBlocks);
+  };
+
+  const onDeleteCurrentBlock = () => {
+    setBlock(null);
+  };
+
+  const addToBlocks = () => {
+    if (!block) return;
+    setBlocks((prev: IBlock[]) => [...prev, block]);
+    setBlock(null);
+  };
+
+  const addNewListToBlock = () => {
+    if (!block) return;
+    setBlock((prev: any) => ({ type: prev.type, value: [...prev.value, ""] }));
+  };
+
+  const deleteCurrentListItem = (indexValue: number) => {
+    setBlock((prevBlock: any) => {
+      return {
+        ...prevBlock,
+        value: prevBlock?.value?.filter(
+          (value: string, index: number) => index !== indexValue
+        ),
+      };
+    });
+  };
+
+  const onChangeBlockValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setBlock((prev: any) => ({
+      ...prev,
+      ["value"]: e.target.value,
+    }));
+  };
+
+  const onChangeBlockListValue = (
+    index: number,
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const updatedList = Array.isArray(block?.value) && [
+      ...(block?.value || []),
+    ];
+
+    if (!updatedList) return;
+    updatedList[index] = e.target.value;
+
+    setBlock((prevBlock: any) => {
+      if (!prevBlock) return null;
+      return {
+        ...prevBlock,
+        value: updatedList,
+      };
+    });
   };
 
   const updateBlock = (
@@ -111,8 +203,22 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    setBlocks(article.blocks);
+    setTitle(article.title);
+    setUrlName(article.urlName);
+    setSeoTitle(article.seoTitle);
+    setSeoDescription(article.seoDescription);
+    setSeoKeywords(article.seoKeywords);
+    setImageUrl(article.imageUrl);
+    setTag(article.tag);
+    setLike(article.like);
+    setDislike(article.dislike);
+  }, []);
+
   return (
-    <div>
+    <>
       <button onClick={toggleEditMode} className={globalS.edit__btn}>
         Редагувати
       </button>
@@ -121,14 +227,23 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
           <p className={globalS.title}>Редагування Статті</p>
           <div className={style.input__edit__container}>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>Тег</label>
-              <input
-                className={style.input}
-                type="text"
-                value={tag}
-                name="tag"
-                onChange={(e) => onChange(e)}
-              />
+              <FormControl fullWidth>
+                <Select
+                  sx={{
+                    border: "1px solid",
+                    borderRadius: "6px",
+                  }}
+                  value={tag}
+                  label="Tag"
+                  onChange={(event) => setTag(event.target.value)}
+                >
+                  {tags.slice(1).map(({ tag }, index) => (
+                    <MenuItem key={index} value={tag}>
+                      {tag}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </div>
             <div className={style.input__edit__wrapper}>
               <label className={style.input__edit__label}>Заголовок</label>
@@ -227,8 +342,25 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
               blocks?.map((block: IBlock, index) => {
                 return (
                   <div className={style.block__wrapper} key={index}>
-                    <label className={style.block__label}>{block.type}</label>
-
+                    <FormControl fullWidth>
+                      <Select
+                        sx={{
+                          border: "1px solid",
+                          borderRadius: "6px",
+                        }}
+                        value={block.type}
+                        label="Type"
+                        onChange={(event) =>
+                          handleChangeType(index, event.target.value)
+                        }
+                      >
+                        {BlockType.map((type, index) => (
+                          <MenuItem key={index} value={type}>
+                            {type}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
                     {Array.isArray(block.value) ? (
                       <div
                         style={{
@@ -266,10 +398,9 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                     )}
                     <div>
                       <button
-                        disabled
                         style={{ marginTop: "15px" }}
                         className={globalS.delete__btn}
-                        onClick={() => console.log(index)}
+                        onClick={() => deleteBlock(index)}
                       >
                         Видалити {block.type}
                       </button>
@@ -278,6 +409,53 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                 );
               })}
           </div>
+          {block && (
+            <BlockList
+              block={block}
+              deleteCurrentListItem={deleteCurrentListItem}
+              addNewListToBlock={addNewListToBlock}
+              addToBlocks={addToBlocks}
+              onChange={onChangeBlockValue}
+              onChangeBlockListValue={onChangeBlockListValue}
+              onDeleteCurrentBlock={onDeleteCurrentBlock}
+            />
+          )}
+          {!block && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "start",
+                gap: "20px",
+                marginTop: "20px",
+              }}
+            >
+              <button
+                className={globalS.admin__btn__create}
+                onClick={addSubtitle}
+              >
+                Додати підзаголовок(h2)
+              </button>
+              <button
+                className={globalS.admin__btn__create}
+                onClick={addSubtitleText}
+              >
+                Додати підзаголовок(p)
+              </button>
+              <button
+                className={globalS.admin__btn__create}
+                onClick={addParagraph}
+              >
+                Додати параграф
+              </button>
+              <button className={globalS.admin__btn__create} onClick={addList}>
+                Додати список
+              </button>
+              <button className={globalS.admin__btn__create} onClick={addImage}>
+                Додати посилання на картинку
+              </button>
+            </div>
+          )}
           <div className={style.btn__wrapper}>
             <button className={globalS.edit__btn} onClick={editArticle}>
               Редагувати
@@ -291,7 +469,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
           </div>
         </div>
       </ModalContainer>
-    </div>
+    </>
   );
 };
 

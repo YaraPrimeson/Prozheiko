@@ -62,36 +62,39 @@ const SliderModalCreate = ({
           <p className={style.title}>Створення нового слайду</p>
           <div className={style.input__container}>
             <div className={style.input__wrapper}>
-              <label>Description</label>
-              <input
-                className={style.input}
-                onChange={(e) => setDescription(e.target.value)}
-                type="text"
-                value={description}
-                name="description"
-                placeholder="add description"
-              />
-            </div>
-            <div className={style.input__wrapper}>
-              <label>посилання</label>
+              <label>
+                Посилання(куди відбувається перенаправлення при натискані на
+                картинку)
+              </label>
               <input
                 className={style.input}
                 onChange={(e) => setHref(e.target.value)}
                 type="text"
                 value={href}
                 name="href"
-                placeholder="add href"
+                placeholder="Вставте посилання"
               />
             </div>
             <div className={style.input__wrapper}>
-              <label>imageUrl</label>
+              <label>Посилання на картинку для слайду</label>
               <input
                 className={style.input}
                 type="text"
                 onChange={(e) => setImageUrl(e.target.value)}
                 value={imageUrl}
                 name="imageUrl"
-                placeholder="add imageUrl"
+                placeholder="Вставте посилання на картинку"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>Опис зображення</label>
+              <input
+                className={style.input}
+                onChange={(e) => setDescription(e.target.value)}
+                type="text"
+                value={description}
+                name="description"
+                placeholder="Додайте опис"
               />
             </div>
           </div>
@@ -100,7 +103,7 @@ const SliderModalCreate = ({
               Створити
             </button>
             <button onClick={onCloseModal} className={globalS.cancel__btn}>
-              Відмінити
+              Скасувати
             </button>
           </div>
         </div>

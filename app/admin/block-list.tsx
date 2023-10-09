@@ -28,6 +28,7 @@ const BlockList: FC<BlockListProps> = ({
 }) => {
   return (
     <div>
+      <p>{block.type}</p>
       {block &&
         (block?.type === "subtitle" ? (
           <>
@@ -35,6 +36,31 @@ const BlockList: FC<BlockListProps> = ({
               className={style.input}
               type="text"
               placeholder={"Заголовок"}
+              value={block?.value as string}
+              onChange={onChange}
+            />
+            <div className={style.btn__create__wrapper}>
+              <button
+                className={globalS.btn__create}
+                disabled={!block?.value}
+                onClick={addToBlocks}
+              >
+                Додати в статтю
+              </button>
+              <button
+                className={globalS.cancel__btn}
+                onClick={onDeleteCurrentBlock}
+              >
+                Скасувати
+              </button>
+            </div>
+          </>
+        ) : block?.type === "subtitleText" ? (
+          <>
+            <input
+              className={style.input}
+              type="text"
+              placeholder={"Заголовок p"}
               value={block?.value as string}
               onChange={onChange}
             />
@@ -118,8 +144,9 @@ const BlockList: FC<BlockListProps> = ({
                   <Stack
                     key={index}
                     flexDirection="row"
-                    gap="5px"
+                    gap="15px"
                     alignItems="center"
+                    sx={{ mt: "15px" }}
                   >
                     <input
                       className={style.admin__input}
@@ -127,16 +154,12 @@ const BlockList: FC<BlockListProps> = ({
                       value={list as string}
                       onChange={(e) => onChangeBlockListValue(index, e)}
                     />
-                    {/*<IconButton onClick={() => deleteCurrentListItem(index)}>*/}
-                    <button onClick={() => deleteCurrentListItem(index)}>
+                    <button
+                      className={globalS.delete__btn}
+                      onClick={() => deleteCurrentListItem(index)}
+                    >
                       delete
                     </button>
-                    {/*<DeleteIcon*/}
-                    {/*  sx={{*/}
-                    {/*    color: "rgb(255, 31, 110)",*/}
-                    {/*  }}*/}
-                    {/*/>*/}
-                    {/*</IconButton>*/}
                   </Stack>
                 );
               })}

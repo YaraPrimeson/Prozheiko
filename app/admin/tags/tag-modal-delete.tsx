@@ -49,7 +49,7 @@ const TagModalDelete: React.FC<TagModalDeleteProps> = ({
         handleClose={() => setOpenDelete(false)}
       >
         <div className={style.modal__container}>
-          <p className={globalS.title}>Видалення тега?</p>
+          <p className={globalS.title}>Видалити тег?</p>
           <div className={style.btn__wrapper}>
             <button className={globalS.delete__btn} onClick={deleteTag}>
               Видалити
@@ -58,7 +58,7 @@ const TagModalDelete: React.FC<TagModalDeleteProps> = ({
               className={globalS.cancel__btn}
               onClick={() => setOpenDelete(false)}
             >
-              Відмінити видалення
+              Скасувати видалення
             </button>
           </div>
         </div>
