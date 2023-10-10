@@ -24,6 +24,8 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
   const [formData, setFormData] = useState(service);
   const [blocks, setBlocks] = useState<any>(service?.blocks ?? []);
   const [title, setTitle] = useState(service.title);
+  const [text, setText] = useState(service.text);
+  const [list, setList] = useState(service.list);
   const [urlName, setUrlName] = useState(service.urlName);
   const [seoTitle, setSeoTitle] = useState(service.seoTitle);
   const [seoDescription, setSeoDescription] = useState(service.seoDescription);
@@ -164,11 +166,14 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
 
   const editArticle = async () => {
     try {
-      await fetch(`/api/blog`, {
+      await fetch(`/api/services`, {
         method: "PATCH",
         body: JSON.stringify({
           id: service.id,
           title,
+          tag,
+          list,
+          text,
           imageUrl,
           urlName,
           seoTitle,
@@ -198,6 +203,8 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
     setImageUrl(service.imageUrl);
     setTag(service.tag);
     setPrice(service.price);
+    setText(service.text);
+    setList(service.list);
   }, []);
   return (
     <>

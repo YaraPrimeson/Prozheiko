@@ -43,7 +43,7 @@ const BlogArticle = async ({ params }: BlogArticleParamsProps) => {
         (articleItem: Article) => articleItem.id !== (article && article.id)
       ).length > 0 && (
         <section className={style.other}>
-          <h2 className={style.other__title}>Цікаві статті</h2>
+          <p className={style.other__title}>Цікаві статті</p>
           <ul className={style.other__container}>
             {articles
               .filter(

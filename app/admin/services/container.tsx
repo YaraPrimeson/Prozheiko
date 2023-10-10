@@ -6,6 +6,7 @@ import globalS from "@/app/styles/global.module.scss";
 import { Service, Tag } from "@prisma/client";
 import ServiceEditModal from "@/app/admin/services/service-edit-modal";
 import ServiceDeleteModal from "@/app/admin/services/service-delete-modal";
+import Image from "next/image";
 
 const Container = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -46,16 +47,16 @@ const Container = () => {
   }
 
   useEffect(() => {
-    fetchServices()
+    fetchTags()
       .then((data: any) => {
-        setServices(data.services);
+        setTags(data.tags);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-    fetchTags()
+    fetchServices()
       .then((data: any) => {
-        setTags(data.tags);
+        setServices(data.services);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -71,8 +72,8 @@ const Container = () => {
       />
       <div className={style.container}>
         {services
-          .sort((a: any, b: any) => a.tag.localeCompare(b.tag))
-          .map((service: Service, index: number) => {
+          ?.sort((a: any, b: any) => a.tag.localeCompare(b.tag))
+          ?.map((service: Service, index: number) => {
             const isFirstTag =
               index === 0 || service.tag !== services[index - 1].tag;
             return (
@@ -84,10 +85,12 @@ const Container = () => {
                   </div>
                 )}
                 <div key={service.id} className={style.wrapper}>
-                  <img
+                  <Image
                     className={style.img}
                     src={service.imageUrl}
                     alt={service.title}
+                    width={360}
+                    height={200}
                   />
                   <h1 className={style.title}>{service?.title}</h1>
                   <div className={globalS.btns__edit__wrapper}>

@@ -84,7 +84,7 @@ const Estimate: FC<EstimateProps> = ({ like, dislike, id }) => {
   };
   return (
     <div className={style.evaluation__container}>
-      <h2 className={style.evaluation__title}>Як вам стаття?</h2>
+      <p className={style.evaluation__title}>Як вам стаття?</p>
       <div className={style.evaluation__icons__container}>
         <div className={style.icon__container}>
           <svg
