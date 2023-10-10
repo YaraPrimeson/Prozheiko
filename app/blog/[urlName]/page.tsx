@@ -61,7 +61,7 @@ const BlogArticle = async ({ params }: BlogArticleParamsProps) => {
                       height={200}
                     />
                     <div className={style.other__subtitle__container}>
-                      <h1 className={style.other__subtitle}>{article.title}</h1>
+                      <p className={style.other__subtitle}>{article.title}</p>
                     </div>
                   </li>
                 </Link>
