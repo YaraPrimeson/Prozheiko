@@ -62,7 +62,7 @@ const Container = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-
+  console.log(services);
   return (
     <div>
       <ServiceCreateModal

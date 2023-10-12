@@ -218,7 +218,9 @@ const BlogCreateModal = ({
               </label>
               <input
                 className={style.input}
-                onChange={(e) => setUrlName(e.target.value.trim())}
+                onChange={(e) =>
+                  setUrlName(e.target.value.trim().toLowerCase())
+                }
                 type="text"
                 value={urlName}
                 name="urlName"
@@ -313,9 +315,9 @@ const BlogCreateModal = ({
                 style={{
                   display: "flex",
                   flexDirection: "row",
+                  flexWrap: "wrap",
                   justifyContent: "start",
                   gap: "20px",
-                  marginTop: "20px",
                 }}
               >
                 <button

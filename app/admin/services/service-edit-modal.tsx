@@ -7,6 +7,7 @@ import style from "@/app/admin/blog/blog.module.scss";
 import { FormControl, MenuItem, Select, TextField } from "@mui/material";
 import BlockList from "@/app/admin/block-list";
 import { BlockType } from "@/app/admin/blog/blog-modal-edit";
+import { toast } from "react-toastify";
 
 type ServiceEditModalProps = {
   fetchServices: () => Promise<any>;
@@ -163,7 +164,30 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
     updatedBlocks[index] = { type: updatedBlocks[index].type, value: newValue };
     setBlocks(updatedBlocks);
   };
+  const notifySuccess = () => {
+    toast.success("Оновлення пройшло успішно", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
+  const notifyError = () =>
+    toast.error("сталася помилка, спробуйте ,будь ласка, пізніше", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   const editArticle = async () => {
     try {
       await fetch(`/api/services`, {
@@ -184,11 +208,13 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
         }),
       }).finally(() => {
         fetchServices().then((data: any) => {
-          setServices(data.blog);
+          setServices(data.services);
         });
+        notifySuccess();
       });
       setOpenModal(false);
     } catch (error) {
+      notifyError();
       console.log(error);
     }
   };
@@ -213,7 +239,7 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
       </button>
       <ModalContainer open={openModal} handleClose={() => setOpenModal(false)}>
         <div className={style.modal__container}>
-          <p className={globalS.title}>Редагування Статті</p>
+          <p className={globalS.title}>Редагування послуги</p>
           <div className={style.input__edit__container}>
             <div className={style.input__edit__wrapper}>
               <FormControl fullWidth>
@@ -307,12 +333,12 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
               />
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>price</label>
+              <label className={style.input__edit__label}>Ціна</label>
               <input
                 className={style.input}
                 type="text"
                 value={price}
-                name="price"
+                name="Ціна"
                 onChange={(e) => onChange(e)}
               />
             </div>
@@ -355,9 +381,10 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
                               style={{ width: "100%" }}
                               type="text"
                               value={list}
-                              onChange={(e) =>
-                                handleChange(index, e.target.value)
-                              }
+                              onChange={(e) => {
+                                console.log("start");
+                                handleChange(index, e.target.value);
+                              }}
                             />
                           );
                         })}

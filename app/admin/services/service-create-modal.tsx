@@ -9,6 +9,7 @@ import {
   Select,
   Box,
   SelectChangeEvent,
+  Stack,
 } from "@mui/material";
 import { Tag } from "@prisma/client";
 import { IBlock } from "@/app/admin/blog/blog-create-modal";
@@ -27,6 +28,10 @@ const ServiceCreateModal = ({
   const [openModal, setOpenModal] = useState(false);
   const [chooseTag, setChooseTag] = useState<string>("");
   const [title, setTitle] = useState("");
+  const [urlName, setUrlName] = useState<string>("");
+  const [seoTitle, setSeoTitle] = useState<string>("");
+  const [seoDescription, setSeoDescription] = useState<string>("");
+  const [seoKeywords, setSeoKeywords] = useState<string>("");
   const [imgUrl, setImgUrl] = useState("");
   const [text, setText] = useState("");
   const [price, setPrice] = useState("");
@@ -34,11 +39,14 @@ const ServiceCreateModal = ({
   const [blocks, setBlocks] = useState<IBlock[]>([]);
   const [block, setBlock] = useState<IBlock | null>(null);
 
-  const addTitle = () => {
+  const addSubtitle = () => {
     setBlock({ type: "subtitle", value: "" });
   };
   const addParagraph = () => {
     setBlock({ type: "paragraph", value: "" });
+  };
+  const addSubtitleText = () => {
+    setBlock({ type: "subtitleText", value: "" });
   };
   const addList = () => {
     setBlock({ type: "list", value: [""] });
@@ -137,6 +145,10 @@ const ServiceCreateModal = ({
       setOpenModal(false);
       setChooseTag("");
       setTitle("");
+      setUrlName("");
+      setSeoTitle("");
+      setSeoDescription("");
+      setSeoKeywords("");
       setImgUrl("");
       setPrice("");
       setBlocks([]);
@@ -152,6 +164,10 @@ const ServiceCreateModal = ({
       !Boolean(title) ||
       !Boolean(imgUrl) ||
       !Boolean(text) ||
+      !Boolean(urlName) ||
+      !Boolean(seoTitle) ||
+      !Boolean(seoDescription) ||
+      !Boolean(seoKeywords) ||
       !Boolean(price),
     [chooseTag, title, imgUrl, text, price]
   );
@@ -175,7 +191,7 @@ const ServiceCreateModal = ({
                   borderRadius: "12px",
                 }}
               >
-                {tags.map(({ tag, id }: Tag) => (
+                {tags.slice(1).map(({ tag, id }: Tag) => (
                   <MenuItem key={id} value={tag}>
                     {tag}
                   </MenuItem>
@@ -185,77 +201,128 @@ const ServiceCreateModal = ({
           </Box>
           <div className={style.input__container}>
             <div className={style.input__wrapper}>
-              <label>Заголовок</label>
+              <label>seo Заголовок(h1)</label>
               <input
                 className={style.input}
                 onChange={(e) => setTitle(e.target.value)}
                 type="text"
                 value={title}
                 name="title"
-                placeholder="add title"
+                placeholder="Заголовок"
               />
             </div>
             <div className={style.input__wrapper}>
-              <label>посилання на картинку</label>
+              <label>
+                URL, назва статті для пошуку(писати в єдиному регістрі та без
+                пробілу)
+              </label>
+              <input
+                className={style.input}
+                onChange={(e) =>
+                  setUrlName(e.target.value.trim().toLowerCase())
+                }
+                type="text"
+                value={urlName}
+                name="urlName"
+                placeholder="URL"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>SEO заголовок для metadata</label>
+              <input
+                className={style.input}
+                onChange={(e) => setSeoTitle(e.target.value)}
+                type="text"
+                value={seoTitle}
+                name="seoTitle"
+                placeholder="SEO title"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>SEO опис для metadata</label>
+              <textarea
+                className={style.input}
+                onChange={(e) => setSeoDescription(e.target.value)}
+                value={seoDescription}
+                name="seoDescription"
+                placeholder="SEO опис"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>SEO ключові слова для metadata</label>
+              <textarea
+                className={style.input}
+                onChange={(e) => setSeoKeywords(e.target.value)}
+                value={seoKeywords}
+                name="seoKeywords"
+                placeholder="SEO ключові слова"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>Посилання на картинку</label>
               <input
                 className={style.input}
                 onChange={(e) => setImgUrl(e.target.value)}
                 type="text"
                 value={imgUrl}
                 name="image"
-                placeholder="add image url"
+                placeholder="Додати посилання на картинку"
               />
             </div>
-
             <div className={style.input__wrapper}>
-              <label>text</label>
+              <label>Текст</label>
               <input
                 className={style.input}
                 type="text"
                 onChange={(e) => setText(e.target.value)}
                 value={text}
                 name="text"
-                placeholder="add text"
+                placeholder="Додати текст"
               />
             </div>
             <div className={style.input__wrapper}>
-              <label>price</label>
+              <label>Ціна</label>
               <input
                 className={style.input}
                 type="price"
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
                 name="price"
-                placeholder="add price"
+                placeholder="Додати ціну"
               />
             </div>
             <div>
               {Array.isArray(list) &&
                 list.map((list: string, index: number) => {
                   return (
-                    <React.Fragment key={index}>
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      gap="10px"
+                      sx={{ m: "20px 0" }}
+                      key={index}
+                    >
                       <input
                         className={style.input}
                         placeholder={"list"}
+                        style={{ margin: "0" }}
                         value={list as string}
                         onChange={(e) => onChangeList(e, index)}
                       />
-                      <div style={{ margin: "20px 0" }}>
-                        <button
-                          className={globalS.delete__btn}
-                          onClick={() => deleteListItem(index)}
-                        >
-                          delete this list
-                        </button>
-                      </div>
-                    </React.Fragment>
+                      <button
+                        className={globalS.delete__btn}
+                        onClick={() => deleteListItem(index)}
+                      >
+                        Видалити
+                      </button>
+                    </Stack>
                   );
                 })}
               <button
                 onClick={() => setList((prev) => [...prev, ""])}
                 className={globalS.edit__btn}
               >
-                add list
+                Додати список
               </button>
             </div>
             {blocks &&
@@ -287,17 +354,35 @@ const ServiceCreateModal = ({
                   gap: "20px",
                 }}
               >
-                <button className={globalS.btn__create} onClick={addTitle}>
-                  додати Підзаголовок
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addSubtitle}
+                >
+                  Додати підзаголовок(h2)
                 </button>
-                <button className={globalS.btn__create} onClick={addParagraph}>
-                  додати Параграф
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addSubtitleText}
+                >
+                  Додати підзаголовок(p)
                 </button>
-                <button className={globalS.btn__create} onClick={addList}>
-                  додати Список
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addParagraph}
+                >
+                  Додати параграф
                 </button>
-                <button className={globalS.btn__create} onClick={addImage}>
-                  додати Посилання на картинку
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addList}
+                >
+                  Додати список
+                </button>
+                <button
+                  className={globalS.admin__btn__create}
+                  onClick={addImage}
+                >
+                  Додати посилання на картинку
                 </button>
               </div>
             )}
