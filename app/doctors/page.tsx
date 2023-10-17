@@ -191,34 +191,6 @@ const Page = () => {
                 <Image
                   loading="lazy"
                   className={style.doctor__img}
-                  src={Anastasia}
-                  alt={"Анастасія Лопуга,АДМІНІСТРАТОР"}
-                />
-                <div className={style.opacity__text}>
-                  <ul className={style.wrapper__opacity}>
-                    <li className={style.list__opacity}>
-                      <IconCheck />
-                      Прийом пацієнтів та планування записів
-                    </li>
-                    <li className={style.list__opacity}>
-                      <IconCheck />
-                      Управління медичною документацією
-                    </li>
-                    <li className={style.list__opacity}>
-                      <IconCheck />
-                      Забезпечення зручності пацієнтів
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <p className={style.doctor__position}>АДМІНІСТРАТОР</p>
-              <p className={style.doctor__name}>Анастасія Лопуга </p>
-            </div>
-            <div className={style.doctor__wrapper}>
-              <div className={style.hover__wrapper}>
-                <Image
-                  loading="lazy"
-                  className={style.doctor__img}
                   src={IrynaAdmin}
                   alt={"Ірина Кучеренко,АДМІНІСТРАТОР"}
                 />
