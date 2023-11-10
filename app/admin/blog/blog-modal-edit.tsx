@@ -7,6 +7,7 @@ import { Article, Tag } from "@prisma/client";
 import { FormControl, MenuItem, Select, TextField } from "@mui/material";
 import { IBlock } from "@/app/admin/blog/blog-create-modal";
 import BlockList from "@/app/admin/block-list";
+import { toast } from "react-toastify";
 
 type BlogModalBlogProps = {
   article: Article & { imageUrl?: string };
@@ -33,6 +34,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
   const [formData, setFormData] = useState(article);
   const [blocks, setBlocks] = useState<any>(article?.blocks ?? []);
   const [title, setTitle] = useState(article.title);
+  const [titleH1, setTitleH1] = useState(article.titleH1);
   const [urlName, setUrlName] = useState(article.urlName);
   const [seoTitle, setSeoTitle] = useState(article.seoTitle);
   const [seoDescription, setSeoDescription] = useState(article.seoDescription);
@@ -69,6 +71,9 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
       case "title": {
         return setTitle(value);
       }
+      case "titleH1": {
+        return setTitleH1(value);
+      }
       case "urlName": {
         return setUrlName(value);
       }
@@ -96,7 +101,6 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
   };
 
   const handleChange = (key: number, value: string) => {
-    console.log("sart handleChange");
     setFormData((prevFormData) => ({
       ...prevFormData,
       [key]: value,
@@ -177,6 +181,31 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
     setBlocks(updatedBlocks);
   };
 
+  const notifySuccess = () => {
+    toast.success("Оновлення пройшло успішно", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const notifyError = () =>
+    toast.error("сталася помилка, спробуйте ,будь ласка, пізніше", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const editArticle = async () => {
     try {
       await fetch(`/api/blog`, {
@@ -184,6 +213,7 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
         body: JSON.stringify({
           id: article.id,
           title,
+          titleH1,
           imageUrl,
           urlName,
           seoTitle,
@@ -197,16 +227,19 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
         fetchArticles().then((data: any) => {
           setArticles(data.blog);
         });
+        notifySuccess();
       });
       setOpenModal(false);
     } catch (error) {
-      console.log(error);
+      notifyError();
+      return console.log(error);
     }
   };
 
   useEffect(() => {
     setBlocks(article.blocks);
     setTitle(article.title);
+    setTitleH1(article.titleH1);
     setUrlName(article.urlName);
     setSeoTitle(article.seoTitle);
     setSeoDescription(article.seoDescription);
@@ -246,7 +279,10 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
               </FormControl>
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>Заголовок</label>
+              <label className={style.input__edit__label}>
+                Заголовок статті на загальній сторінці, відображається на
+                сторінці усіх статтей
+              </label>
               <input
                 className={style.input}
                 type="text"
@@ -255,7 +291,18 @@ const BlogModalEdit: React.FC<BlogModalBlogProps> = ({
                 onChange={(e) => onChange(e)}
               />
             </div>
-
+            <div className={style.input__edit__wrapper}>
+              <label className={style.input__edit__label}>
+                seo Заголовок(h1), відображається на сторінці статті
+              </label>
+              <input
+                className={style.input}
+                type="text"
+                value={titleH1}
+                name="titleH1"
+                onChange={(e) => onChange(e)}
+              />
+            </div>
             <div className={style.input__edit__wrapper}>
               <label className={style.input__edit__label}>
                 URL, назва статті для пошуку(писати в єдиному регістрі та без

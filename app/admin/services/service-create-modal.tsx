@@ -14,6 +14,7 @@ import {
 import { Tag } from "@prisma/client";
 import { IBlock } from "@/app/admin/blog/blog-create-modal";
 import BlockList from "@/app/admin/block-list";
+import { toast } from "react-toastify";
 
 type ServiceCreateModalProps = {
   tags: Tag[];
@@ -28,6 +29,7 @@ const ServiceCreateModal = ({
   const [openModal, setOpenModal] = useState(false);
   const [chooseTag, setChooseTag] = useState<string>("");
   const [title, setTitle] = useState("");
+  const [titleH1, setTitleH1] = useState("");
   const [urlName, setUrlName] = useState<string>("");
   const [seoTitle, setSeoTitle] = useState<string>("");
   const [seoDescription, setSeoDescription] = useState<string>("");
@@ -124,6 +126,31 @@ const ServiceCreateModal = ({
     setChooseTag(event.target.value as string);
   };
 
+  const notifySuccess = () => {
+    toast.success("Створення пройшло успішно", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const notifyError = () =>
+    toast.error("сталася помилка, спробуйте ,будь ласка, пізніше", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   async function createNewService() {
     try {
       await fetch(`/api/services`, {
@@ -136,15 +163,22 @@ const ServiceCreateModal = ({
           price,
           imageUrl: imgUrl,
           blocks,
+          urlName,
+          seoTitle,
+          seoDescription,
+          seoKeywords,
+          titleH1,
         }),
       }).finally(() => {
         fetchServices().then((data: any) => {
           setServices(data.services);
         });
+        notifySuccess();
       });
       setOpenModal(false);
       setChooseTag("");
       setTitle("");
+      setTitleH1("");
       setUrlName("");
       setSeoTitle("");
       setSeoDescription("");
@@ -154,6 +188,7 @@ const ServiceCreateModal = ({
       setBlocks([]);
       setBlock(null);
     } catch (error) {
+      notifyError();
       return console.log(error);
     }
   }
@@ -162,6 +197,7 @@ const ServiceCreateModal = ({
     () =>
       !Boolean(chooseTag) ||
       !Boolean(title) ||
+      !Boolean(titleH1) ||
       !Boolean(imgUrl) ||
       !Boolean(text) ||
       !Boolean(urlName) ||
@@ -169,7 +205,7 @@ const ServiceCreateModal = ({
       !Boolean(seoDescription) ||
       !Boolean(seoKeywords) ||
       !Boolean(price),
-    [chooseTag, title, imgUrl, text, price]
+    [chooseTag, title, titleH1, imgUrl, text, price]
   );
 
   return (
@@ -201,14 +237,30 @@ const ServiceCreateModal = ({
           </Box>
           <div className={style.input__container}>
             <div className={style.input__wrapper}>
-              <label>seo Заголовок(h1)</label>
+              <label>
+                Заголовок послуги на загальній сторінці, відображається на
+                сторінці усіх послуг
+              </label>
               <input
                 className={style.input}
                 onChange={(e) => setTitle(e.target.value)}
                 type="text"
                 value={title}
                 name="title"
-                placeholder="Заголовок"
+                placeholder="Заголовок на загальній сторінці"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>
+                seo Заголовок(h1), відображається на сторінці послуги
+              </label>
+              <input
+                className={style.input}
+                onChange={(e) => setTitleH1(e.target.value)}
+                type="text"
+                value={titleH1}
+                name="titleH1"
+                placeholder="Заголовок, відображається саме на сторінці статті"
               />
             </div>
             <div className={style.input__wrapper}>

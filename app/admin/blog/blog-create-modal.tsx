@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { Article, Tag } from "@prisma/client";
 import BlockList from "@/app/admin/block-list";
+import { toast } from "react-toastify";
 
 type BlogCreateModalProps = {
   tags: Tag[];
@@ -32,6 +33,7 @@ const BlogCreateModal = ({
   const [openModal, setOpenModal] = useState(false);
   const [chooseTag, setChooseTag] = useState<string>("");
   const [title, setTitle] = useState<string>("");
+  const [titleH1, setTitleH1] = useState("");
   const [urlName, setUrlName] = useState<string>("");
   const [seoTitle, setSeoTitle] = useState<string>("");
   const [seoDescription, setSeoDescription] = useState<string>("");
@@ -118,6 +120,31 @@ const BlogCreateModal = ({
     setChooseTag(event.target.value as string);
   };
 
+  const notifySuccess = () => {
+    toast.success("Створення пройшло успішно", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const notifyError = () =>
+    toast.error("сталася помилка, спробуйте ,будь ласка, пізніше", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   async function createNewArticle() {
     try {
       await fetch(`/api/blog`, {
@@ -133,6 +160,7 @@ const BlogCreateModal = ({
           like,
           dislike: "0",
           blocks,
+          titleH1,
         }),
         headers: {
           "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -144,10 +172,12 @@ const BlogCreateModal = ({
         fetchArticles().then((data: any) => {
           setArticles(data?.blog);
         });
+        notifySuccess();
       });
       setOpenModal(false);
       setChooseTag("");
       setTitle("");
+      setTitleH1("");
       setUrlName("");
       setSeoTitle("");
       setSeoDescription("");
@@ -157,6 +187,7 @@ const BlogCreateModal = ({
       setBlocks([]);
       setBlock(null);
     } catch (error) {
+      notifyError();
       return console.log(error);
     }
   }
@@ -166,11 +197,21 @@ const BlogCreateModal = ({
       !Boolean(chooseTag) ||
       !Boolean(title) ||
       !Boolean(urlName) ||
+      !Boolean(titleH1) ||
       !Boolean(seoTitle) ||
       !Boolean(seoDescription) ||
       !Boolean(seoKeywords) ||
       !Boolean(imgUrl),
-    [chooseTag, title, urlName, seoTitle, seoDescription, seoKeywords, imgUrl]
+    [
+      chooseTag,
+      title,
+      titleH1,
+      urlName,
+      seoTitle,
+      seoDescription,
+      seoKeywords,
+      imgUrl,
+    ]
   );
   return (
     <div>
@@ -201,14 +242,30 @@ const BlogCreateModal = ({
           </Box>
           <div className={style.input__container}>
             <div className={style.input__wrapper}>
-              <label>seo Заголовок(h1)</label>
+              <label>
+                Заголовок статті на загальній сторінці, відображається на
+                сторінці усіх статтей
+              </label>
               <input
                 className={style.input}
                 onChange={(e) => setTitle(e.target.value)}
                 type="text"
                 value={title}
                 name="title"
-                placeholder="Заголовок"
+                placeholder="Заголовок на загальній сторінці"
+              />
+            </div>
+            <div className={style.input__wrapper}>
+              <label>
+                seo Заголовок(h1), відображається на сторінці статті
+              </label>
+              <input
+                className={style.input}
+                onChange={(e) => setTitleH1(e.target.value)}
+                type="text"
+                value={titleH1}
+                name="titleH1"
+                placeholder="Заголовок, відображається саме на сторінці статті"
               />
             </div>
             <div className={style.input__wrapper}>

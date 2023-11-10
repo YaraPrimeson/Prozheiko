@@ -25,6 +25,7 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
   const [formData, setFormData] = useState(service);
   const [blocks, setBlocks] = useState<any>(service?.blocks ?? []);
   const [title, setTitle] = useState(service.title);
+  const [titleH1, setTitleH1] = useState(service.titleH1);
   const [text, setText] = useState(service.text);
   const [list, setList] = useState(service.list);
   const [urlName, setUrlName] = useState(service.urlName);
@@ -61,6 +62,9 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
     switch (name) {
       case "title": {
         return setTitle(value);
+      }
+      case "titleH1": {
+        return setTitleH1(value);
       }
       case "urlName": {
         return setUrlName(value);
@@ -164,6 +168,7 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
     updatedBlocks[index] = { type: updatedBlocks[index].type, value: newValue };
     setBlocks(updatedBlocks);
   };
+
   const notifySuccess = () => {
     toast.success("Оновлення пройшло успішно", {
       position: "top-center",
@@ -188,6 +193,7 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
       progress: undefined,
       theme: "light",
     });
+
   const editArticle = async () => {
     try {
       await fetch(`/api/services`, {
@@ -195,6 +201,7 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
         body: JSON.stringify({
           id: service.id,
           title,
+          titleH1,
           tag,
           list,
           text,
@@ -222,6 +229,7 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
   useEffect(() => {
     setBlocks(service.blocks);
     setTitle(service.title);
+    setTitleH1(service.titleH1);
     setUrlName(service.urlName);
     setSeoTitle(service.seoTitle);
     setSeoDescription(service.seoDescription);
@@ -261,12 +269,27 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
               </FormControl>
             </div>
             <div className={style.input__edit__wrapper}>
-              <label className={style.input__edit__label}>Заголовок</label>
+              <label className={style.input__edit__label}>
+                Заголовок послуги на загальній сторінці, відображається на
+                сторінці усіх послуг
+              </label>
               <input
                 className={style.input}
                 type="text"
                 value={title}
                 name="title"
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+            <div className={style.input__edit__wrapper}>
+              <label className={style.input__edit__label}>
+                seo Заголовок(h1), відображається на сторінці послуги
+              </label>
+              <input
+                className={style.input}
+                type="text"
+                value={titleH1}
+                name="titleH1"
                 onChange={(e) => onChange(e)}
               />
             </div>
@@ -338,7 +361,7 @@ const ServiceEditModal: FC<ServiceEditModalProps> = ({
                 className={style.input}
                 type="text"
                 value={price}
-                name="Ціна"
+                name="price"
                 onChange={(e) => onChange(e)}
               />
             </div>

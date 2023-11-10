@@ -19,7 +19,8 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       const service = JSON.parse(req.body);
-      await createService(service);
+      console.log(service);
+      const newService = await createService(service);
       return res.status(200).json({ message: "created" });
     } catch (error) {
       return res.status(500).json({ error: error.message });

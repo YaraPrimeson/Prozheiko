@@ -8,10 +8,6 @@ import Image from "next/image";
 const Card = ({ item }: any) => {
   return (
     <>
-      {/*<div className={style.tag__container}>*/}
-      {/*  <p className={`${style.tag} ${globalS.title}`}>{item?.tag}</p>*/}
-      {/*  <span className={style.tag__line}></span>*/}
-      {/*</div>*/}
       <div className={style.service__wrapper}>
         {item?.price ? (
           <div className={style.price__wrapper}>

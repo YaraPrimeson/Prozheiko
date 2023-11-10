@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "../blog/blog.module.scss";
+import { toast } from "react-toastify";
 
 type ServiceModalDeleteProps = {
   id: string;
@@ -19,6 +20,32 @@ const ServiceDeleteModal: React.FC<ServiceModalDeleteProps> = ({
   const toggleDeleteMode = () => {
     setOpenModal(true);
   };
+
+  const notifySuccess = () => {
+    toast.success("Видалення пройшло успішно", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const notifyError = () =>
+    toast.error("сталася помилка, спробуйте ,будь ласка, пізніше", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const deleteArticle = async () => {
     try {
       await fetch(`/api/services`, {
@@ -28,10 +55,12 @@ const ServiceDeleteModal: React.FC<ServiceModalDeleteProps> = ({
         fetchServices().then((data: any) => {
           setServices(data.services);
         });
+        notifySuccess();
       });
       setOpenModal(false);
     } catch (error) {
-      console.log(error);
+      notifyError();
+      return console.log(error);
     }
   };
   return (

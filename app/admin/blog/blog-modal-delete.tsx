@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ModalContainer from "@/app/components/modal/ModalContainer";
 import globalS from "@/app/styles/global.module.scss";
 import style from "./blog.module.scss";
+import { toast } from "react-toastify";
 
 type BlogModalDeleteProps = {
   id: string;
@@ -19,6 +20,32 @@ const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({
   const toggleDeleteMode = () => {
     setOpenModal(true);
   };
+
+  const notifySuccess = () => {
+    toast.success("Видалення пройшло успішно", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const notifyError = () =>
+    toast.error("сталася помилка, спробуйте ,будь ласка, пізніше", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const deleteArticle = async () => {
     try {
       await fetch(`/api/blog`, {
@@ -28,10 +55,12 @@ const BlogModalDelete: React.FC<BlogModalDeleteProps> = ({
         fetchArticles().then((data: any) => {
           setArticles(data.blog);
         });
+        notifySuccess();
       });
       setOpenModal(false);
     } catch (error) {
-      console.log(error);
+      notifyError();
+      return console.log(error);
     }
   };
   return (
